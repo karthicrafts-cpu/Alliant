@@ -1,0 +1,170 @@
+fileVersion: 1
+id: fe71d374-4b53-4878-a28a-6b80145c2f82
+name: STG_TEMP_PAYEE_GB_HASH
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 326284de-c8e4-41d1-9f93-b265d644d67e
+          stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_TRANSACTION_PAYMENT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d8a8d052-b13c-4cdd-af58-3d750c05bcfb
+                stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+            transform: K.ACA_TRANSACTION_PAYMENT_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ab810960-e4b2-4d24-811c-2ed108428574
+          stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PAYEE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 47863f82-a3c3-42e1-af0f-0dae86a51d45
+                stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+            transform: K.PAYEE_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 63e07d0f-430c-43f1-b958-86fd7ed761d7
+          stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PAYEE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c9614c2c-8182-4414-871d-57076a51e60a
+                stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+            transform: K.PAYEE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b535697d-bb62-42c2-841f-8255d6542152
+          stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: IRS_TAX_IDENTIFICATION_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bf89f1f0-9759-450a-a0f1-dafc1c2b5e2d
+                stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+            transform: K.IRS_TAX_IDENTIFICATION_NUMBER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c02c63c5-4d08-4d6d-995a-c60010901e16
+          stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+        config: {}
+        dataType: DATE
+        description: ""
+        name: PAYMENT_TRANSACTION_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a630238e-0cfd-4a11-a83d-3b5b63435164
+                stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+            transform: K.PAYMENT_TRANSACTION_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f31e7844-32ae-4c07-b08e-8973b4e70e30
+          stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+        config: {}
+        dataType: SMALLINT
+        description: ""
+        name: PAYMENT_SEQUENCE_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0399f92d-79e7-4b68-b3d4-b903487c0e86
+                stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+            transform: K.PAYMENT_SEQUENCE_NUMBER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f6e7c10d-2b4a-4d7a-b5f7-646e7f8b91c2
+          stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: ACA_DATE_UPDATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3217030e-561b-4f51-b844-30d8d578b97d
+                stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+            transform: K.ACA_DATE_UPDATED
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 93d0f41c-b638-4e3d-82c5-76c02a7b82f3
+          stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: MAIL_TO
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fa03a95d-222a-4a2e-834c-6f81e7d015b6
+                stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+            transform: K.MAIL_TO
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31032a1e-c6b7-4a0e-a6a9-8588f98d41e2
+          stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+        config: {}
+        dataType: VARBINARY
+        description: ""
+        name: SOURCE_SYSTEM_PAYEE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c9614c2c-8182-4414-871d-57076a51e60a
+                stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+              - columnCounter: 47863f82-a3c3-42e1-af0f-0dae86a51d45
+                stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+              - columnCounter: bf89f1f0-9759-450a-a0f1-dafc1c2b5e2d
+                stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+            transform: IFF(K.PAYEE IS NULL, NULL, MD5(CONCAT_WS('', K.PAYEE_TYPE, K.PAYEE,
+              K.IRS_TAX_IDENTIFICATION_NUMBER)))
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DBSHIFT
+            nodeName: STG_TEMP_PAYEE_GB_KEYSET
+        join:
+          joinCondition: FROM {{ ref('DBSHIFT', 'STG_TEMP_PAYEE_GB_KEYSET') }} "K"
+        name: STG_TEMP_PAYEE_GB_HASH
+        noLinkRefs: []
+  name: STG_TEMP_PAYEE_GB_HASH
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

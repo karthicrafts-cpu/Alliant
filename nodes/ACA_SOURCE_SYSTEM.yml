@@ -1,0 +1,54 @@
+fileVersion: 1
+id: 17769abf-a634-44b4-8742-d610dfb0b764
+name: ACA_SOURCE_SYSTEM
+operation:
+  database: ALLIANT_CLAIMS_ASTRUS
+  deployEnabled: true
+  description: ""
+  locationName: DBSHIFT
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b130e625-f703-455b-b9d9-bb35d2595992
+          stepCounter: 17769abf-a634-44b4-8742-d610dfb0b764
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: ACA_SOURCE_SYSTEM_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 97f3743c-6872-4d2b-b6d9-f21e053f3e7a
+          stepCounter: 17769abf-a634-44b4-8742-d610dfb0b764
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: SOURCE_SYSTEM
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: ACA_SOURCE_SYSTEM
+  schema: DBO
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node

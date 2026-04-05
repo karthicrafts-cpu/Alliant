@@ -1,0 +1,194 @@
+fileVersion: 1
+id: 6736a5c1-65bd-449e-b567-9195e7d95326
+name: STG_TEMP_PAYEE_GB_KEYSET
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d8a8d052-b13c-4cdd-af58-3d750c05bcfb
+          stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_TRANSACTION_PAYMENT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c4
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.ACA_TRANSACTION_PAYMENT_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 47863f82-a3c3-42e1-af0f-0dae86a51d45
+          stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PAYEE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b124376c-31c2-4809-9b97-15101a93d865
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: |-
+              CASE P.PAYEE_NAME_FORMAT 
+                WHEN 'I' THEN 'INDIVIDUAL' 
+                WHEN 'O' THEN 'ORGANIZATION' 
+                ELSE NULL 
+              END
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c9614c2c-8182-4414-871d-57076a51e60a
+          stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PAYEE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b124376c-31c2-4809-9b97-15101a93d865
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+              - columnCounter: b39b2f3a-c852-41eb-8186-b4895c6c0b96
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+              - columnCounter: 32621746-86d1-424a-8d76-13d42c38cc01
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+              - columnCounter: cb7e974e-0c0e-4cae-ae00-b6f70ff7a2ed
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: |-
+              CASE P.PAYEE_NAME_FORMAT 
+                WHEN 'I' THEN NULLIF(LTRIM(RTRIM(CONCAT(P.PAYEE_FIRSTNAME, ' ', CAST(UDF_DECRYPTBYKEYAUTOCERT('Certificate1', NULL, P.PAYEE_LASTNAME_ENCRYPTED, 1, '123') AS VARCHAR(512))))), '') 
+                WHEN 'O' THEN CAST(UDF_DECRYPTBYKEYAUTOCERT('Certificate1', NULL, P.PAYEE_ORGANIZATION_NAME_ENCRYPTED, 1, '123') AS VARCHAR(512)) 
+                ELSE NULL 
+              END
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bf89f1f0-9759-450a-a0f1-dafc1c2b5e2d
+          stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: IRS_TAX_IDENTIFICATION_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5e61d368-e4b2-4d24-811c-2ed108428574
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: CAST(UDF_DECRYPTBYKEYAUTOCERT('Certificate1', NULL, P.PAYEE_IRS_TAX_IDENTIFICATION_NUMBER_ENCRYPTED,
+              1, '123') AS VARCHAR(512))
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a630238e-0cfd-4a11-a83d-3b5b63435164
+          stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+        config: {}
+        dataType: DATE
+        description: ""
+        name: PAYMENT_TRANSACTION_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 93a525f0-b98a-40a8-a590-ed7f8303f847
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.PAYMENT_TRANSACTION_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0399f92d-79e7-4b68-b3d4-b903487c0e86
+          stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+        config: {}
+        dataType: SMALLINT
+        description: ""
+        name: PAYMENT_SEQUENCE_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f514589d-7f51-40be-a083-d3a6d4d1cc4a
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: CAST(P.PAYMENT_SEQUENCE_NUMBER AS SMALLINT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3217030e-561b-4f51-b844-30d8d578b97d
+          stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: ACA_DATE_UPDATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3233827d-9533-4f91-8848-12c2864191d4
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.ACA_DATE_UPDATED
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: fa03a95d-222a-4a2e-834c-6f81e7d015b6
+          stepCounter: 6736a5c1-65bd-449e-b567-9195e7d95326
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: MAIL_TO
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 38b6932a-5421-4d37-af3a-86a048031d27
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+              - columnCounter: d3274ab3-4a15-46aa-ac9b-11757ca50438
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+              - columnCounter: 63b7d157-1941-4c6e-8260-ab08bca08960
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+              - columnCounter: c2333b2a-8924-4286-90fd-164746017b3a
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: |-
+              CASE P.MAIL_TO_NAMEFORMAT 
+                WHEN 'I' THEN NULLIF(LTRIM(RTRIM(CONCAT(P.MAIL_TO_FIRSTNAME, ' ', CAST(UDF_DECRYPTBYKEYAUTOCERT('Certificate1', NULL, P.MAIL_TO_LASTNAME_ENCRYPTED, 1, '123') AS VARCHAR(512))))), '') 
+                WHEN 'O' THEN CAST(UDF_DECRYPTBYKEYAUTOCERT('Certificate1', NULL, P.MAIL_TO_ORGANIZATIONNAME_ENCRYPTED, 1, '123') AS VARCHAR(512)) 
+                ELSE NULL 
+              END
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DBSHIFT
+            nodeName: ACA_TRANSACTION_PAYMENT
+          - locationName: DBSHIFT
+            nodeName: ACA_PAYEE_GB
+          - locationName: DBSHIFT
+            nodeName: V_ACA_TRANSACTION_DATE_CURRENT
+        join:
+          joinCondition: |-
+            FROM {{ ref('DBSHIFT', 'ACA_TRANSACTION_PAYMENT') }} "P"
+            WHERE P.ACA_DATE_UPDATED > (
+              SELECT IFNULL(MAX(T.ACA_DATE_UPDATED), CAST('1776-07-04 00:00:00.000' AS DATETIME))
+              FROM {{ ref('DBSHIFT', 'ACA_PAYEE_GB') }} T
+              WHERE T.ACA_PAYEE_GB_ID <> -1
+            )
+            AND P.PAYMENT_TRANSACTION_DATE > (
+              SELECT V.TRANSACTION_DATE
+              FROM {{ ref('DBSHIFT', 'V_ACA_TRANSACTION_DATE_CURRENT') }} V
+              WHERE V.SOURCE_SYSTEM = 'GB'
+            )
+        name: STG_TEMP_PAYEE_GB_KEYSET
+        noLinkRefs: []
+  name: STG_TEMP_PAYEE_GB_KEYSET
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

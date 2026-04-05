@@ -1,0 +1,564 @@
+fileVersion: 1
+id: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+name: ACA_PAYEE_STAGING_GB
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: false
+  database: ALLIANT_CLAIMS_ASTRUS_STAGE
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f28d6c70-761e-450b-801e-0a5628b03120
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARBINARY
+        description: ""
+        name: SOURCE_SYSTEM_PAYEE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 31032a1e-c6b7-4a0e-a6a9-8588f98d41e2
+                stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+            transform: H.SOURCE_SYSTEM_PAYEE_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b6a9234b-d68a-40a2-9b26-f7253507d383
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_IRS_FORM_1099_TYPE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5971a812-70b7-4c07-b087-fc06f238b93f
+                stepCounter: 574164f6-8c90-449e-8c3b-31215b244792
+            transform: IFNULL(I.ACA_IRS_FORM_1099_TYPE_ID, -1)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b349c661-0d3c-44e2-8b43-26d0bb1a995e
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PAYEE_TYPE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b124376c-31c2-4809-9b97-15101a93d865
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.PAYEE_NAME_FORMAT
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c96b6d51-6d43-4f9e-a896-b0769cf37532
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PAYEE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ab810960-e4b2-4d24-811c-2ed108428574
+                stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+            transform: H.PAYEE_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e5566de3-d2d0-4d43-b9f1-32d7331826d9
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARBINARY
+        description: ""
+        name: PAYEE_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 63e07d0f-430c-43f1-b958-86fd7ed761d7
+                stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+            transform: UDF_ENCRYPTBYKEY('SymmetricKey1', H.PAYEE, 1, '123')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a6316335-f098-4402-bdf9-b8830237c8ef
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARBINARY
+        description: ""
+        name: LAST_NAME_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b124376c-31c2-4809-9b97-15101a93d865
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+              - columnCounter: 32621746-86d1-424a-8d76-13d42c38cc01
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: IFF(P.PAYEE_NAME_FORMAT = 'I', UDF_ENCRYPTBYKEY('SymmetricKey1',
+              CAST(CAST(UDF_DECRYPTBYKEYAUTOCERT('Certificate1', NULL, P.PAYEE_LASTNAME_ENCRYPTED,
+              1, '123') AS VARCHAR(512)) AS VARCHAR(256)), 1, '123'), NULL)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1a8c3e80-1a6c-48c9-8356-8ac522a4667b
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARBINARY
+        description: ""
+        name: FIRST_NAME_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b124376c-31c2-4809-9b97-15101a93d865
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+              - columnCounter: b39b2f3a-c852-41eb-8186-b4895c6c0b96
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: IFF(P.PAYEE_NAME_FORMAT = 'I', UDF_ENCRYPTBYKEY('SymmetricKey1',
+              CAST(P.PAYEE_FIRSTNAME AS VARCHAR(256)), 1, '123'), NULL)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 07d3910f-6202-42c2-9e8c-f063162b7191
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARBINARY
+        description: ""
+        name: ORGANIZATION_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b124376c-31c2-4809-9b97-15101a93d865
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+              - columnCounter: cb7e974e-0c0e-4cae-ae00-b6f70ff7a2ed
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: IFF(P.PAYEE_NAME_FORMAT = 'O', UDF_ENCRYPTBYKEY('SymmetricKey1',
+              CAST(CAST(UDF_DECRYPTBYKEYAUTOCERT('Certificate1', NULL, P.PAYEE_ORGANIZATION_NAME_ENCRYPTED,
+              1, '123') AS VARCHAR(512)) AS VARCHAR(256)), 1, '123'), NULL)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 48e892c2-75d3-4fc6-bfd4-6330eb7b049e
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARBINARY
+        description: ""
+        name: ADDRESS_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 630f9d9f-6824-4f0f-87d2-74c0b533e70d
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: UDF_ENCRYPTBYKEY('SymmetricKey1', CAST(CAST(UDF_DECRYPTBYKEYAUTOCERT('Certificate1',
+              NULL, P.PAYEE_ADDRESS_ENCRYPTED, 1, '123') AS VARCHAR(512)) AS VARCHAR(256)),
+              1, '123')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 634d0263-1259-4b61-9c16-9b519098c761
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 48e892c2-75d3-4fc6-bfd4-6330eb7b049d
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.PAYEE_CITY
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1533036e-d09f-4402-8d77-a89270e5b7b9
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: STATE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: df7d7f76-9289-4e76-8822-7f28ed9d220a
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.PAYEE_STATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ab430e38-c6fd-417b-83ee-09b9f9ff433c
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ZIP_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 634d0263-1259-4b61-9c16-9b519098c760
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.PAYEE_ZIPCODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8251e7cc-de46-4e50-936d-1b99a63c7887
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: COUNTRY_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1533036e-d09f-4402-8d77-a89270e5b7b8
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.PAYEE_COUNTRY
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: bc7e8dd8-da15-46f3-a9d9-952ca29bdf6f
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARBINARY
+        description: ""
+        name: IRS_TAX_IDENTIFICATION_NUMBER_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5e61d368-e4b2-4d24-811c-2ed108428574
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: UDF_ENCRYPTBYKEY('SymmetricKey1', CAST(CAST(UDF_DECRYPTBYKEYAUTOCERT('Certificate1',
+              NULL, P.PAYEE_IRS_TAX_IDENTIFICATION_NUMBER_ENCRYPTED, 1, '123') AS
+              VARCHAR(512)) AS VARCHAR(256)), 1, '123')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6a6839aa-0402-40f4-9040-ed8b83960010
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: IRS_FORM_1099_TYPE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ab430e38-c6fd-417b-83ee-09b9f9ff433b
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.PAYEE_IRS_FORM_1099_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b512a812-70b7-4c07-b087-fc06f238b93g
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: IRS_FORM_1099_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d16a7f5a-cce6-4f7f-8557-0a149c490a6d
+                stepCounter: 574164f6-8c90-449e-8c3b-31215b244792
+            transform: I.IRS_FORM_1099_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c11e741a-a8c4-4d89-9a2c-f6412705030f
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: MAIL_TO_TYPE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 38b6932a-5421-4d37-af3a-86a048031d27
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.MAIL_TO_NAMEFORMAT
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b57778b8-4c9f-4f81-9b16-52c7f461e713
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: MAIL_TO_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 38b6932a-5421-4d37-af3a-86a048031d27
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: |-
+              CASE P.MAIL_TO_NAMEFORMAT 
+                WHEN 'I' THEN 'INDIVIDUAL' 
+                WHEN 'O' THEN 'ORGANIZATION' 
+                ELSE NULL 
+              END
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 326284de-c8e4-41d1-9f93-b265d644d67f
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARBINARY
+        description: ""
+        name: MAIL_TO_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 93d0f41c-b638-4e3d-82c5-76c02a7b82f3
+                stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+            transform: UDF_ENCRYPTBYKEY('SymmetricKey1', H.MAIL_TO, 1, '123')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ab810960-e4b2-4d24-811c-2ed108428575
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARBINARY
+        description: ""
+        name: MAIL_TO_LAST_NAME_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 38b6932a-5421-4d37-af3a-86a048031d27
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+              - columnCounter: 63b7d157-1941-4c6e-8260-ab08bca08960
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: IFF(P.MAIL_TO_NAMEFORMAT = 'I', UDF_ENCRYPTBYKEY('SymmetricKey1',
+              CAST(CAST(UDF_DECRYPTBYKEYAUTOCERT('Certificate1', NULL, P.MAIL_TO_LASTNAME_ENCRYPTED,
+              1, '123') AS VARCHAR(512)) AS VARCHAR(256)), 1, '123'), NULL)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 63e07d0f-430c-43f1-b958-86fd7ed761d8
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARBINARY
+        description: ""
+        name: MAIL_TO_FIRST_NAME_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 38b6932a-5421-4d37-af3a-86a048031d27
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+              - columnCounter: d3274ab3-4a15-46aa-ac9b-11757ca50438
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: IFF(P.MAIL_TO_NAMEFORMAT = 'I', UDF_ENCRYPTBYKEY('SymmetricKey1',
+              CAST(P.MAIL_TO_FIRSTNAME AS VARCHAR(256)), 1, '123'), NULL)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b535697d-bb62-42c2-841f-8255d6542153
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARBINARY
+        description: ""
+        name: MAIL_TO_ORGANIZATION_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 38b6932a-5421-4d37-af3a-86a048031d27
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+              - columnCounter: c2333b2a-8924-4286-90fd-164746017b3a
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: IFF(P.MAIL_TO_NAMEFORMAT = 'O', UDF_ENCRYPTBYKEY('SymmetricKey1',
+              CAST(CAST(UDF_DECRYPTBYKEYAUTOCERT('Certificate1', NULL, P.MAIL_TO_ORGANIZATIONNAME_ENCRYPTED,
+              1, '123') AS VARCHAR(512)) AS VARCHAR(256)), 1, '123'), NULL)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c02c63c5-4d08-4d6d-995a-c60010901e17
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARBINARY
+        description: ""
+        name: MAIL_TO_ADDRESS_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8251e7cc-de46-4e50-936d-1b99a63c7886
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: UDF_ENCRYPTBYKEY('SymmetricKey1', CAST(CAST(UDF_DECRYPTBYKEYAUTOCERT('Certificate1',
+              NULL, P.MAIL_TO_ADDRESS_ENCRYPTED, 1, '123') AS VARCHAR(512)) AS VARCHAR(256)),
+              1, '123')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f31e7844-32ae-4c07-b08e-8973b4e70e31
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: MAIL_TO_CITY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bc7e8dd8-da15-46f3-a9d9-952ca29bdf6e
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.MAIL_TO_CITY
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f6e7c10d-2b4a-4d7a-b5f7-646e7f8b91c3
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: MAIL_TO_STATE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 07d3910f-6202-42c2-9e8c-f063162b7190
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.MAIL_TO_STATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 93d0f41c-b638-4e3d-82c5-76c02a7b82f4
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: MAIL_TO_ZIP_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1a8c3e80-1a6c-48c9-8356-8ac522a4667a
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.MAIL_TO_ZIPCODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31032a1e-c6b7-4a0e-a6a9-8588f98d41e3
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: MAIL_TO_COUNTRY_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a6316335-f098-4402-bdf9-b8830237c8ee
+                stepCounter: 039b139c-2933-40a2-9721-3968b449e776
+            transform: P.MAIL_TO_COUNTRY
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f31e7844-32ae-4c07-b08e-8973b4e70e32
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: DATE
+        description: ""
+        name: PAYMENT_TRANSACTION_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c02c63c5-4d08-4d6d-995a-c60010901e16
+                stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+            transform: H.PAYMENT_TRANSACTION_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c02c63c5-4d08-4d6d-995a-c60010901e18
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: SMALLINT
+        description: ""
+        name: PAYMENT_SEQUENCE_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f31e7844-32ae-4c07-b08e-8973b4e70e30
+                stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+            transform: H.PAYMENT_SEQUENCE_NUMBER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b535697d-bb62-42c2-841f-8255d6542154
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: SOURCE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f6e7c10d-2b4a-4d7a-b5f7-646e7f8b91c2
+                stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+            transform: H.ACA_DATE_UPDATED
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 63e07d0f-430c-43f1-b958-86fd7ed761d9
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_SOURCE_SYSTEM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b130e625-f703-455b-b9d9-bb35d2595992
+                stepCounter: 17769abf-a634-44b4-8742-d610dfb0b764
+            transform: (SELECT S.ACA_SOURCE_SYSTEM_ID FROM {{ ref('DBSHIFT', 'ACA_SOURCE_SYSTEM')
+              }} S WHERE S.SOURCE_SYSTEM = 'GB')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ab810960-e4b2-4d24-811c-2ed108428576
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: ACA_DATE_CREATED
+        nullable: true
+        sourceColumnReferences: []
+        transform: CURRENT_TIMESTAMP()
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 326284de-c8e4-41d1-9f93-b265d644d67g
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACA_CREATE_USER
+        nullable: true
+        sourceColumnReferences: []
+        transform: '''spaca_aca_payee_staging_gb_insert'''
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b57778b8-4c9f-4f81-9b16-52c7f461e714
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: ACA_DATE_UPDATED
+        nullable: true
+        sourceColumnReferences: []
+        transform: CURRENT_TIMESTAMP()
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c11e741a-a8c4-4d89-9a2c-f6412705030g
+          stepCounter: 978972e3-2e04-4638-b1ad-3236e8ccb7c5
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACA_UPDATE_USER
+        nullable: true
+        sourceColumnReferences: []
+        transform: '''spaca_aca_payee_staging_gb_insert'''
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DBSHIFT
+            nodeName: ACA_TRANSACTION_PAYMENT
+          - locationName: DBSHIFT
+            nodeName: STG_TEMP_PAYEE_GB_HASH
+          - locationName: DBSHIFT
+            nodeName: STG_TEMP_PAYEE_GB_ROW_FILTER
+          - locationName: DBSHIFT
+            nodeName: ACA_IRS_FORM_1099_TYPE
+          - locationName: DBSHIFT
+            nodeName: ACA_SOURCE_SYSTEM
+        join:
+          joinCondition: |-
+            FROM {{ ref('DBSHIFT', 'ACA_TRANSACTION_PAYMENT') }} "P"
+            INNER JOIN {{ ref('DBSHIFT', 'STG_TEMP_PAYEE_GB_HASH') }} "H" ON H.ACA_TRANSACTION_PAYMENT_ID = P.ACA_TRANSACTION_PAYMENT_ID
+            INNER JOIN {{ ref('DBSHIFT', 'STG_TEMP_PAYEE_GB_ROW_FILTER') }} "F" ON F.ACA_TRANSACTION_PAYMENT_ID = H.ACA_TRANSACTION_PAYMENT_ID
+            LEFT JOIN {{ ref('DBSHIFT', 'ACA_IRS_FORM_1099_TYPE') }} "I" ON I.IRS_FORM_1099_TYPE_CODE = P.PAYEE_IRS_FORM_1099_TYPE
+            WHERE F.ROW_SEQUENCE = 1
+        name: ACA_PAYEE_STAGING_GB
+        noLinkRefs: []
+  name: ACA_PAYEE_STAGING_GB
+  overrideSQL: false
+  schema: DBO
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

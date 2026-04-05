@@ -1,0 +1,76 @@
+fileVersion: 1
+id: 6f80a6b7-3b95-46aa-8a7e-4076e0e0f808
+name: STG_TEMP_PAYEE_GB_ROW_FILTER
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b57778b8-4c9f-4f81-9b16-52c7f461e712
+          stepCounter: 6f80a6b7-3b95-46aa-8a7e-4076e0e0f808
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_TRANSACTION_PAYMENT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 326284de-c8e4-41d1-9f93-b265d644d67e
+                stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+            transform: H.ACA_TRANSACTION_PAYMENT_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c11e741a-a8c4-4d89-9a2c-f6412705030e
+          stepCounter: 6f80a6b7-3b95-46aa-8a7e-4076e0e0f808
+        config: {}
+        dataType: INT
+        description: ""
+        name: ROW_SEQUENCE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 31032a1e-c6b7-4a0e-a6a9-8588f98d41e2
+                stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+              - columnCounter: c02c63c5-4d08-4d6d-995a-c60010901e16
+                stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+              - columnCounter: f31e7844-32ae-4c07-b08e-8973b4e70e30
+                stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+              - columnCounter: f6e7c10d-2b4a-4d7a-b5f7-646e7f8b91c2
+                stepCounter: fe71d374-4b53-4878-a28a-6b80145c2f82
+            transform: ROW_NUMBER() OVER (PARTITION BY H.SOURCE_SYSTEM_PAYEE_ID ORDER BY
+              H.PAYMENT_TRANSACTION_DATE DESC, H.PAYMENT_SEQUENCE_NUMBER DESC, H.ACA_DATE_UPDATED
+              DESC)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DBSHIFT
+            nodeName: STG_TEMP_PAYEE_GB_HASH
+        join:
+          joinCondition: FROM {{ ref('DBSHIFT', 'STG_TEMP_PAYEE_GB_HASH') }} "H"
+            WHERE H.SOURCE_SYSTEM_PAYEE_ID IS NOT NULL
+        name: STG_TEMP_PAYEE_GB_ROW_FILTER
+        noLinkRefs: []
+  name: STG_TEMP_PAYEE_GB_ROW_FILTER
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

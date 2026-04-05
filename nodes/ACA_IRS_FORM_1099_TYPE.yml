@@ -1,0 +1,73 @@
+fileVersion: 1
+id: 574164f6-8c90-449e-8c3b-31215b244792
+name: ACA_IRS_FORM_1099_TYPE
+operation:
+  database: ALLIANT_CLAIMS_ASTRUS
+  deployEnabled: true
+  description: ""
+  locationName: DBSHIFT
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5971a812-70b7-4c07-b087-fc06f238b93f
+          stepCounter: 574164f6-8c90-449e-8c3b-31215b244792
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: ACA_IRS_FORM_1099_TYPE_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a8c2c62c-7b44-486a-ad9d-43407e3295c0
+          stepCounter: 574164f6-8c90-449e-8c3b-31215b244792
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: IRS_FORM_1099_TYPE_CODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d16a7f5a-cce6-4f7f-8557-0a149c490a6d
+          stepCounter: 574164f6-8c90-449e-8c3b-31215b244792
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: IRS_FORM_1099_TYPE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: ACA_IRS_FORM_1099_TYPE
+  schema: REF
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node

@@ -1,0 +1,54 @@
+fileVersion: 1
+id: 54181a93-5484-46c5-af07-de657989eb22
+name: ACA_PAYEE_GB
+operation:
+  database: ALLIANT_CLAIMS_ASTRUS
+  deployEnabled: true
+  description: ""
+  locationName: DBSHIFT
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e86b86e0-25e4-41d3-ad08-724e38c95094
+          stepCounter: 54181a93-5484-46c5-af07-de657989eb22
+        config: {}
+        dataType: DATETIME
+        defaultValue: ""
+        description: ""
+        name: ACA_DATE_UPDATED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 322c3358-132d-453d-82d2-88746c8270f2
+          stepCounter: 54181a93-5484-46c5-af07-de657989eb22
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: ACA_PAYEE_GB_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: ACA_PAYEE_GB
+  schema: DBO
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node
