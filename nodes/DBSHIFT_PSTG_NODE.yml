@@ -1,0 +1,167 @@
+fileVersion: 1
+id: 57d8120e-c40d-4076-90f1-1e2474f881b2
+name: DBSHIFT_PSTG_NODE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: |-
+      BEGIN
+        -- SNOWFLAKE MIGRATION FOR DYNAMIC SQL:
+        -- This block replicates the logic of the original stored procedure, which dynamically
+        -- updates tables based on metadata from ACA_CONTROL_PACKAGE_SOURCE_TABLE.
+        -- The variable :iSourceGroupId would need to be supplied during execution (e.g., as a pipeline parameter).
+        DECLARE
+          iSourceGroupId INTEGER := 1; -- Example value, should be parameterized
+          DATABASE_NAME VARCHAR;
+          SCHEMA_NAME VARCHAR;
+          TABLE_NAME VARCHAR;
+          BACKUP_POSTFIX VARCHAR;
+          COLUMN_NAME VARCHAR;
+          SQL_UPDATE_STMT VARCHAR;
+          res RESULTSET DEFAULT (
+            SELECT
+              "database_name",
+              "schema_name",
+              "table_name",
+              "backup_table_name_postfix",
+              "date_column"
+            FROM
+              ALLIANT_CLAIMS_ASTRUS_STAGE.DBO.ACA_CONTROL_PACKAGE_SOURCE_TABLE
+            WHERE
+              "source_group_id" = :iSourceGroupId
+          );
+          cur_tables CURSOR FOR res;
+        BEGIN
+          FOR rec IN cur_tables DO DATABASE_NAME := rec."database_name";
+          SCHEMA_NAME := rec."schema_name";
+          TABLE_NAME := rec."table_name";
+          BACKUP_POSTFIX := rec."backup_table_name_postfix";
+          COLUMN_NAME := rec."date_column";
+          LET fq_target_table := IDENTIFIER(
+            :DATABASE_NAME || '.' || :SCHEMA_NAME || '.' || :TABLE_NAME
+          );
+          LET fq_backup_table := IDENTIFIER(
+            :DATABASE_NAME || '.' || :SCHEMA_NAME || '.' || :TABLE_NAME || :BACKUP_POSTFIX
+          );
+          LET update_col := IDENTIFIER(:COLUMN_NAME);
+          LET join_key_col := IDENTIFIER(:TABLE_NAME || '_id');
+          SQL_UPDATE_STMT := 'UPDATE ' || :fq_target_table || ' AS t ' || 'SET t.' || :update_col || ' = b.' || :update_col || ' ' || 'FROM ' || :fq_backup_table || ' AS b ' || 'WHERE b.' || :join_key_col || ' = t.' || :join_key_col || ';';
+          EXECUTE IMMEDIATE :SQL_UPDATE_STMT;
+        END FOR;
+        RETURN 'Dynamic updates completed.';
+      END;
+      END;
+    testsEnabled: true
+    truncateBefore: false
+  database: DBSHIFT
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 322c368c-f09c-4613-bc75-a8276f573de4
+          stepCounter: 57d8120e-c40d-4076-90f1-1e2474f881b2
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: DBSHIFT_PSTG_NODE_KEY
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 77a16f96-33ab-4171-897b-8dd87b7a67f1
+          stepCounter: 57d8120e-c40d-4076-90f1-1e2474f881b2
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: SYSTEM_VERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a0b2e8a1-c67d-411a-a82b-927cf4c281e2
+          stepCounter: 57d8120e-c40d-4076-90f1-1e2474f881b2
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SYSTEM_CURRENT_FLAG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f32c9676-e414-4340-975c-3f2d2bb812e9
+          stepCounter: 57d8120e-c40d-4076-90f1-1e2474f881b2
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 97f39420-55e1-455b-86d4-83b6329c030d
+          stepCounter: 57d8120e-c40d-4076-90f1-1e2474f881b2
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 63868661-d009-4081-9b69-8051287c8812
+          stepCounter: 57d8120e-c40d-4076-90f1-1e2474f881b2
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9781b292-cc20-4a81-93c0-d38a0f2b3e8e
+          stepCounter: 57d8120e-c40d-4076-90f1-1e2474f881b2
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping: []
+  name: DBSHIFT_PSTG_NODE
+  overrideSQL: false
+  schema: DBSHIFT_PSTG
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
