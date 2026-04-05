@@ -1,0 +1,408 @@
+fileVersion: 1
+id: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+name: PLANNING_FCCS_CLIENT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: |-
+      BEGIN
+          USE DATABASE PLANNING_ALLIANT;
+
+      	-- Do the Updates
+      	UPDATE	PC
+      	SET		PC.CLIENT_NAME		= PCS.CLIENT_NAME
+      			, PC.PLANNING_ALIAS	= PCS.PLANNING_ALIAS
+      			, PC.CLIENT_STATUS_INDICATOR = 'U'
+      			, PC.DW_DATE_UPDATED = CURRENT_TIMESTAMP()
+      			, PC.DW_UPDATE_USER  = 'sppa_planning_fccs_client_insertUpdate'
+      	FROM	PLANNING_ALLIANT.DBO.PLANNING_FCCS_CLIENT AS PC
+      	 INNER JOIN {{ ref('DBSHIFT', 'PLANNING_FCCS_CLIENT_STAGING') }} AS PCS  ON PC.PLANNING_ID = PCS.PLANNING_ID AND PCS.CLIENT_STATUS_INDICATOR = 'U';
+
+
+      	-- Update current_flag to 'Y'
+      	UPDATE	PC
+      	SET		CURRENT_FLAG      = 'Y'
+      			, DW_DATE_UPDATED = CURRENT_TIMESTAMP()
+      			, DW_UPDATE_USER  = 'sppa_planning_fccs_client_insertUpdate'
+      	FROM	PLANNING_ALLIANT.DBO.PLANNING_FCCS_CLIENT AS PC
+      	INNER JOIN {{ ref('DBSHIFT', 'PLANNING_FCCS_CLIENT_STAGING') }} AS STG ON PC.PLANNING_ID = STG.PLANNING_ID
+      	AND		IFNULL(PC.CURRENT_FLAG, '') <> 'Y';
+
+      END;
+    preSQL: |-
+      BEGIN
+          USE DATABASE PLANNING_ALLIANT;
+
+      	-- First set status to NULL
+      	UPDATE	PLANNING_ALLIANT.DBO.PLANNING_FCCS_CLIENT
+      	SET		CLIENT_STATUS_INDICATOR = NULL
+      	WHERE CLIENT_STATUS_INDICATOR IS NOT NULL;
+
+      	
+      	-- Set current_flag to 'N'
+      	UPDATE	PC
+      	SET		CURRENT_FLAG	  = 'N' 
+      			, DW_DATE_UPDATED = CURRENT_TIMESTAMP()
+      			, DW_UPDATE_USER  = 'sppa_planning_fccs_client_insertUpdate'
+      	FROM	PLANNING_ALLIANT.DBO.PLANNING_FCCS_CLIENT AS PC
+      	LEFT JOIN {{ ref('DBSHIFT', 'PLANNING_FCCS_CLIENT_STAGING') }} AS STG ON PC.PLANNING_ID = STG.PLANNING_ID
+      	WHERE	IFNULL(PC.CURRENT_FLAG, 'Y') = 'Y'
+      	AND		STG.PLANNING_ID IS NULL;
+
+      END;
+    testsEnabled: true
+    truncateBefore: false
+  database: PLANNING_ALLIANT
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 97f39420-13f5-4422-92e9-4e12e1a3be9e
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        isSurrogateKey: true
+        name: PLANNING_FCCS_CLIENT_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7e73546a-74d3-4632-901b-c73ff25000cc
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        isSystemVersion: true
+        name: SYSTEM_VERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2d1e021c-a320-4228-a405-b0c0ed1b00e3
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        isSystemCurrentFlag: true
+        name: SYSTEM_CURRENT_FLAG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7033580d-a337-4cbe-b472-7634f3747f52
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemStartDate: true
+        name: SYSTEM_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d7938fc2-6901-4475-802c-5645517228a4
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemEndDate: true
+        name: SYSTEM_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST('2999-12-31 00:00:00' AS TIMESTAMP)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c06a7413-5683-4a1d-a307-e0d04c0003c2
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemCreateDate: true
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c72f7596-f6d3-4927-a065-98305da39d6b
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: TIMESTAMP
+        defaultValue: ""
+        description: ""
+        isSystemUpdateDate: true
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d43b591b-6945-42a8-a6f6-49774659b8be
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        isBusinessKey: false
+        name: PARENT_PLANNING_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 5691c784-067f-440a-9d32-2432c6686307
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.PARENT_PLANNING_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a63e6962-d27d-411a-ae9c-0c1f4e190cc9
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        isBusinessKey: true
+        name: PLANNING_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 66a2fc5d-d1ef-4573-a832-c6198f7e2501
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.PLANNING_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1e996022-d7b3-469a-9e2c-23a788880a6b
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        isBusinessKey: false
+        name: CLIENT_NAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: fa4425dd-eb6b-4e12-b06f-b27a3c7c25c7
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.CLIENT_NAME
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 69c450c0-6d45-4209-a0fd-1eb2ff9a5165
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        isBusinessKey: false
+        name: CLIENT_LOOKUP_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 139e8081-3444-48f8-b570-5b23d9a1012a
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.CLIENT_LOOKUP_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 42240974-ec0f-488f-a5c8-103681577c38
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        isBusinessKey: false
+        name: PLANNING_ALIAS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a63e680a-9fc7-4228-a400-843de9f4d1e2
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.PLANNING_ALIAS
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d2444983-4903-4f93-8406-88b90c01a1bd
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        isBusinessKey: false
+        name: SOURCE_SYSTEM_CLIENT_LOOKUP_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9eb9195a-c4e2-45e0-8278-f70554045f8e
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.SOURCE_SYSTEM_CLIENT_LOOKUP_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d123f00e-6652-4752-969c-29f52f44224d
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        isBusinessKey: false
+        name: SOURCE_SYSTEM_CLIENT_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 15b497a9-95a2-4632-9ab2-a4f7e2a970e7
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.SOURCE_SYSTEM_CLIENT_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f4d81223-9366-4f4d-8cf4-406a48917e7c
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: INT
+        description: ""
+        isBusinessKey: false
+        name: DW_CLIENT_MASTER_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b56381c8-251f-44a6-be5d-a60233480026
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.DW_CLIENT_MASTER_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6363c46e-1d68-45eb-92f7-720614539a2d
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        isBusinessKey: false
+        name: SOURCE_SYSTEM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 22c548c7-43ca-4f51-a903-8d0092c68e36
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.SOURCE_SYSTEM
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5f98c8c2-eb3b-483f-846d-96695acda509
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: INT
+        description: ""
+        isBusinessKey: false
+        name: DW_SOURCE_SYSTEM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 32a033c4-4b52-4702-8a9d-161b5853f5fa
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.DW_SOURCE_SYSTEM_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a209b0b4-e4c1-4091-8ac5-7c1529d20c57
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        isBusinessKey: false
+        name: CLIENT_STATUS_INDICATOR
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 20264104-589f-4328-bd64-b5f76b8a1c97
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.CLIENT_STATUS_INDICATOR
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3773a4b9-875f-4d2d-be95-5f60683a388b
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        isBusinessKey: false
+        name: DW_DATE_CREATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a6344585-78c6-4d2a-89a0-97c71ca53a06
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.DW_DATE_CREATED
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b577e112-9c4c-47fc-8f6a-f60bb1463102
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        isBusinessKey: false
+        name: DW_CREATE_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3b171f1a-6415-46aa-acb7-a36746cfdf0a
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.DW_CREATE_USER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b66a9876-0fef-485a-af11-ab2c7d95655a
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        isBusinessKey: false
+        name: DW_DATE_UPDATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ca43034d-e9c5-412f-abf3-78f99723bb7c
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.DW_DATE_UPDATED
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8d2c0b02-5e48-4389-9486-4f7f5250ff51
+          stepCounter: d45e69e7-bd0a-42c2-b5e0-b6f48f47c3ab
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        isBusinessKey: false
+        name: DW_UPDATE_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ddb0f9c2-5c4d-45f8-bd08-f463259850da
+                stepCounter: 54a4a58b-7004-44ed-9602-466d691e1d03
+            transform: SRC.DW_UPDATE_USER
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          STG_PLANNING_FCCS_CLIENT_INSERT: src
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DBSHIFT
+            nodeName: STG_PLANNING_FCCS_CLIENT_INSERT
+        join:
+          joinCondition: FROM {{ ref('DBSHIFT', 'STG_PLANNING_FCCS_CLIENT_INSERT')
+            }} "src"
+        name: PLANNING_FCCS_CLIENT
+        noLinkRefs: []
+  name: PLANNING_FCCS_CLIENT
+  overrideSQL: false
+  schema: DBO
+  sqlType: Dimension
+  type: sql
+  version: 1
+type: Node
