@@ -1,0 +1,140 @@
+fileVersion: 1
+id: 3c5e0a6d-88b0-466a-b21a-472e382d6b7b
+name: ACA_CONTROL_PACKAGE_DATE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: false
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7e732d84-18e3-4696-a889-4b071a942a7a
+          stepCounter: 3c5e0a6d-88b0-466a-b21a-472e382d6b7b
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: INSTANCE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "CAST('{{ parameters.iInstanceId }}' AS VARCHAR)"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9a838b97-1f48-43d9-a797-2a07c1b504c5
+          stepCounter: 3c5e0a6d-88b0-466a-b21a-472e382d6b7b
+        config: {}
+        dataType: INT
+        description: ""
+        name: SOURCE_GROUP_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "CAST('{{ parameters.iSourceGroupId }}' AS INT)"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b13c8f8b-c6b2-4d57-b4d2-d81b7e4c6376
+          stepCounter: 3c5e0a6d-88b0-466a-b21a-472e382d6b7b
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: SOURCE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 167c135a-a3a8-448c-a111-e633d26a27d6
+                stepCounter: 593b1f5d-165c-4b68-80f0-c5a4b7d594f8
+            transform: SRC.SOURCE_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 47b99c0d-d4eb-4770-b6f7-c5ac90529712
+          stepCounter: 3c5e0a6d-88b0-466a-b21a-472e382d6b7b
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: PROCESSED_FLAG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "0"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e0c4f80e-3b2d-4537-88ab-d3d0f04e1444
+          stepCounter: 3c5e0a6d-88b0-466a-b21a-472e382d6b7b
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: ACA_DATE_CREATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CURRENT_TIMESTAMP()
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f31758c5-4a7b-402a-a92c-567e7eb1676f
+          stepCounter: 3c5e0a6d-88b0-466a-b21a-472e382d6b7b
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACA_CREATE_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'SPACA_ACA_CONTROL_PACKAGE_DATE_INSERT'"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a6b6e4e1-2c1c-4384-90f7-5390c58e8b83
+          stepCounter: 3c5e0a6d-88b0-466a-b21a-472e382d6b7b
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: ACA_DATE_UPDATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CURRENT_TIMESTAMP()
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3d5001c2-16e6-427c-9b6f-49526e84d943
+          stepCounter: 3c5e0a6d-88b0-466a-b21a-472e382d6b7b
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACA_UPDATE_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'SPACA_ACA_CONTROL_PACKAGE_DATE_INSERT'"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          V_TEMP_CONTROL_PACKAGE_DATE: SRC
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DBSHIFT
+            nodeName: V_TEMP_CONTROL_PACKAGE_DATE
+        join:
+          joinCondition: |-
+            FROM {{ ref('DBSHIFT', 'V_TEMP_CONTROL_PACKAGE_DATE') }} AS SRC
+            WHERE SRC.SOURCE_DATE NOT IN (SELECT TGT.SOURCE_DATE FROM ALLIANT_CLAIMS_ASTRUS_STAGE.DBO.ACA_CONTROL_PACKAGE_DATE AS TGT WHERE TGT.SOURCE_GROUP_ID = CAST('{{ parameters.iSourceGroupId }}' AS INT))
+        name: ACA_CONTROL_PACKAGE_DATE
+        noLinkRefs: []
+  name: ACA_CONTROL_PACKAGE_DATE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

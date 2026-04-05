@@ -1,0 +1,49 @@
+fileVersion: 1
+id: 593b1f5d-165c-4b68-80f0-c5a4b7d594f8
+name: V_TEMP_CONTROL_PACKAGE_DATE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 167c135a-a3a8-448c-a111-e633d26a27d6
+          stepCounter: 593b1f5d-165c-4b68-80f0-c5a4b7d594f8
+        config: {}
+        dataType: DATETIME
+        description: ""
+        name: SOURCE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL::DATETIME /* NOTE: This node represents a temp table populated by dynamic SQL in the source procedure. The logic to UNION data from various source tables (defined in 'aca_control_package_source_table') must be manually implemented here. */"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies: []
+        join:
+          joinCondition: SELECT 1
+        name: V_TEMP_CONTROL_PACKAGE_DATE
+        noLinkRefs: []
+  name: V_TEMP_CONTROL_PACKAGE_DATE
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node
