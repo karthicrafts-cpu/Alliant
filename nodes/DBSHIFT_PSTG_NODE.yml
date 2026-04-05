@@ -1,0 +1,184 @@
+fileVersion: 1
+id: 7c97893a-9669-4e76-88ed-c3132e12e118
+name: DBSHIFT_PSTG_NODE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: |-
+      BEGIN
+          USE DATABASE ALLIANT_CLAIMS_ASTRUS_STAGE;
+
+          --Delete bad data, these are header rows. For some reason GB puts extra records with header values in the middle of the extract.
+          DELETE FROM ALLIANT_CLAIMS_ASTRUS_STAGE.DBO.ACA_PYRAMID_STAGING
+          WHERE LEVEL = 'LEVEL';
+
+          --Trim whitespace. Old school system obviously.
+          UPDATE ALLIANT_CLAIMS_ASTRUS_STAGE.DBO.ACA_PYRAMID_STAGING AS ps
+          SET    ps.LEVEL = RTRIM(ps.LEVEL)
+                ,ps.UNIT_ID = RTRIM(ps.UNIT_ID)
+                ,ps.STATUS = RTRIM(ps.STATUS)
+                ,ps.UNIT_NAME = RTRIM(ps.UNIT_NAME)
+                ,ps.ADDRESS_1 = RTRIM(ps.ADDRESS_1)
+                ,ps.ADDRESS_2 = RTRIM(ps.ADDRESS_2)
+                ,ps.CITY = RTRIM(ps.CITY)
+                ,ps.STATE = RTRIM(ps.STATE)
+                ,ps.POSTAL_CODE = RTRIM(ps.POSTAL_CODE)
+                ,ps.INSURED = RTRIM(ps.INSURED)
+                ,ps.SUBSIDIARY = RTRIM(ps.SUBSIDIARY)
+                ,ps.LOCATION = RTRIM(ps.LOCATION)
+                ,ps.CLIENT = RTRIM(ps.CLIENT)
+                ,ps.DATE = RTRIM(ps.DATE)
+                ,ps.LVLSEQ = RTRIM(ps.LVLSEQ)
+                ,ps.ASSOC = RTRIM(ps.ASSOC)
+                ,ps.LEVEL_NAME = RTRIM(ps.LEVEL_NAME)
+                ,ps.ACA_DATE_UPDATED = CURRENT_TIMESTAMP()
+                ,ps.ACA_UPDATE_USER = 'spaca_aca_pyramid_staging_update';
+
+          --How wonderful. Extract is pipe delimited with a pipe value inside "Address_3 field shifting rows.
+          UPDATE ALLIANT_CLAIMS_ASTRUS_STAGE.DBO.ACA_PYRAMID_STAGING
+          SET
+          ADDRESS_3 = CONCAT(ADDRESS_3, '-', CITY)
+              ,CITY = STATE
+              ,STATE = POSTAL_CODE
+              ,POSTAL_CODE = COUNTRY
+              ,COUNTRY = PHONE
+              ,PHONE = FAX
+              ,FAX = CONTACT_NAME
+              ,CONTACT_NAME = FEIN
+              ,FEIN = SIC
+              ,SIC = COUNTY
+              ,COUNTY = NAICS
+              ,NAICS = TWX
+              ,TWX = PAYROLL_INDICATOR
+              ,PAYROLL_INDICATOR = EFFECTIVE_DATE
+              ,EFFECTIVE_DATE = DEACTIVATE_DATE
+              ,DEACTIVATE_DATE = REASON
+              ,REASON = RRE
+              ,RRE = ASTRUS
+              ,ASTRUS = INSURED
+              ,INSURED = SUBSIDIARY
+              ,SUBSIDIARY = LOCATION
+              ,LOCATION = CLIENT
+              ,CLIENT = CLIENT_NAME
+              ,CLIENT_NAME = DATE
+              ,DATE = LVLSEQ
+              ,LVLSEQ = ASSOC
+              ,ASSOC =  SUBSTRING (LEVEL_NAME, 1, 1)
+              ,LEVEL_NAME = SUBSTRING (LEVEL_NAME, 7, 10)
+          WHERE DATE NOT LIKE '%/%';
+
+      END;
+    testsEnabled: true
+    truncateBefore: false
+  database: ALLIANT_CLAIMS_ASTRUS_STAGE
+  deployEnabled: true
+  description: UPDATE-only conversion of spaca_aca_pyramid_staging_update
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e15a782b-0f2c-499b-9a25-c603a118e697
+          stepCounter: 7c97893a-9669-4e76-88ed-c3132e12e118
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: DBSHIFT_PSTG_NODE_KEY
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4b304c0d-d035-4a6f-a65c-6b37c02b3394
+          stepCounter: 7c97893a-9669-4e76-88ed-c3132e12e118
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: SYSTEM_VERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: "1"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a8d298ff-8a9d-488f-9a4f-5610d48a6096
+          stepCounter: 7c97893a-9669-4e76-88ed-c3132e12e118
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SYSTEM_CURRENT_FLAG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: '''Y'''
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c6f0e227-313b-487c-a0e2-2292f25b4974
+          stepCounter: 7c97893a-9669-4e76-88ed-c3132e12e118
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: CAST(CURRENT_TIMESTAMP() AS TIMESTAMP)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2d89e0e5-7b53-4318-8f56-6a2c7a523a1a
+          stepCounter: 7c97893a-9669-4e76-88ed-c3132e12e118
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: CAST('9999-12-31' AS TIMESTAMP)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f3a693f1-b84e-4f7d-817a-514d7c087e5b
+          stepCounter: 7c97893a-9669-4e76-88ed-c3132e12e118
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: CAST(CURRENT_TIMESTAMP() AS TIMESTAMP)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1c9d81aa-089c-44d4-a09c-48c9038d1792
+          stepCounter: 7c97893a-9669-4e76-88ed-c3132e12e118
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: CAST(CURRENT_TIMESTAMP() AS TIMESTAMP)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping: []
+  name: DBSHIFT_PSTG_NODE
+  overrideSQL: false
+  schema: DBO
+  sqlType: persistentStage
+  type: sql
+  version: 1
+type: Node
