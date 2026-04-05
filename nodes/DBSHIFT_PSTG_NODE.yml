@@ -1,0 +1,185 @@
+fileVersion: 1
+id: 59385d30-b3b3-4f9e-a0e2-63b5e40e2b4d
+name: DBSHIFT_PSTG_NODE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: |-
+      BEGIN
+      USE DATABASE ALLIANT_CLAIMS_ASTRUS_STAGE;
+
+      UPDATE ALLIANT_CLAIMS_ASTRUS_STAGE.DBO.ACA_EXPERIENCE_TRANSACTION_STAGING_GB T
+      SET
+          T.ACA_CLAIM_ID = SOURCE.NEW_ACA_CLAIM_ID,
+          T.ACA_POLICY_ID = SOURCE.NEW_ACA_POLICY_ID,
+          T.ACA_DATE_UPDATED = CURRENT_TIMESTAMP(),
+          T.ACA_UPDATE_USER = 'spaca_aca_experience_transaction_staging_gb_update'
+      FROM (
+          SELECT
+              T_INNER.SOURCE_SYSTEM_CLAIM_ID,
+              T_INNER.SOURCE_SYSTEM_POLICY_ID,
+              IFNULL(C.ACA_CLAIM_ID, -1) AS NEW_ACA_CLAIM_ID,
+              IFNULL(PO.ACA_POLICY_ID, -1) AS NEW_ACA_POLICY_ID
+          FROM ALLIANT_CLAIMS_ASTRUS_STAGE.DBO.ACA_EXPERIENCE_TRANSACTION_STAGING_GB AS T_INNER
+          LEFT JOIN ALLIANT_CLAIMS_ASTRUS.DBO.ACA_CLAIM AS C ON C.SOURCE_SYSTEM_CLAIM_ID = T_INNER.SOURCE_SYSTEM_CLAIM_ID
+          LEFT JOIN ALLIANT_CLAIMS_ASTRUS.DBO.ACA_POLICY AS PO ON PO.SOURCE_SYSTEM_POLICY_ID = T_INNER.SOURCE_SYSTEM_POLICY_ID
+      ) AS SOURCE
+      WHERE
+          EQUAL_NULL(T.SOURCE_SYSTEM_CLAIM_ID, SOURCE.SOURCE_SYSTEM_CLAIM_ID)
+          AND EQUAL_NULL(T.SOURCE_SYSTEM_POLICY_ID, SOURCE.SOURCE_SYSTEM_POLICY_ID);
+      END;
+    testsEnabled: true
+    truncateBefore: false
+  database: DBSHIFT
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9c095750-ccb5-4b36-a19e-e8c148f98d5c
+          stepCounter: 59385d30-b3b3-4f9e-a0e2-63b5e40e2b4d
+        config: {}
+        dataType: BINARY(16)
+        defaultValue: ""
+        description: ""
+        name: ACA_EXPERIENCE_TRANSACTION_STAGING_GB_KEY
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: MD5(TO_VARCHAR('DBSHIFT_PSTG_NODE'))
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f3a89304-4c59-4d87-9b2f-370c0c7d0d04
+          stepCounter: 59385d30-b3b3-4f9e-a0e2-63b5e40e2b4d
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: SYSTEM_VERSION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: "1"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c14936d5-a352-474c-8f4b-74113e632839
+          stepCounter: 59385d30-b3b3-4f9e-a0e2-63b5e40e2b4d
+        config: {}
+        dataType: BOOLEAN
+        defaultValue: ""
+        description: ""
+        name: SYSTEM_CURRENT_FLAG
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: "TRUE"
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e82e185c-a573-452f-9173-e3cf14a82208
+          stepCounter: 59385d30-b3b3-4f9e-a0e2-63b5e40e2b4d
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: SYSTEM_START_DATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: CAST('1900-01-01' AS TIMESTAMP)
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b5c0b115-3972-46be-91aa-462f928a6f3a
+          stepCounter: 59385d30-b3b3-4f9e-a0e2-63b5e40e2b4d
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: SYSTEM_END_DATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: CAST('9999-12-31' AS TIMESTAMP)
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 47b93a20-0431-411a-ae99-52ab5f79a953
+          stepCounter: 59385d30-b3b3-4f9e-a0e2-63b5e40e2b4d
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d32d0342-fd82-4217-a06a-a8d8396e95b0
+          stepCounter: 59385d30-b3b3-4f9e-a0e2-63b5e40e2b4d
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+        uniqueKey: false
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping: []
+  name: DBSHIFT_PSTG_NODE
+  overrideSQL: false
+  schema: PSTG
+  sqlType: persistentStage
+  type: sql
+  version: 1
+type: Node
