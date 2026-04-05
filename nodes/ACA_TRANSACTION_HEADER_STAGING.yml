@@ -1,0 +1,54 @@
+fileVersion: 1
+id: 5a7c2b6e-1d5f-4a0b-8e9d-3f1c7e9a8b1c
+name: ACA_TRANSACTION_HEADER_STAGING
+operation:
+  database: ALLIANT_CLAIMS_ASTRUS_STAGE
+  deployEnabled: true
+  description: ""
+  locationName: DBSHIFT
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3b4e9f2a-8c1d-4f7e-a9b0-1c6d8e5f2a1b
+          stepCounter: 5a7c2b6e-1d5f-4a0b-8e9d-3f1c7e9a8b1c
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: ACTIVITY_FROM_DATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9e2d1c5b-7a4f-4b8d-9c6e-8f5a3b2c1d7e
+          stepCounter: 5a7c2b6e-1d5f-4a0b-8e9d-3f1c7e9a8b1c
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: ACTIVITY_TO_DATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: ACA_TRANSACTION_HEADER_STAGING
+  schema: DBO
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node
