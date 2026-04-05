@@ -1,0 +1,733 @@
+fileVersion: 1
+id: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+name: STG_ACA_PAYMENT_TRANSACTION_ESIS
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ALLIANT_DW
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c69588b5-6fce-4279-8800-47b7440e2b34
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE_SYSTEM_PAYMENT_TRANSACTION_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 47b952f4-6663-4537-acfc-33d3c8141315
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.SOURCE_SYSTEM_PAYMENT_TRANSACTION_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f2b2609-b681-42ab-b472-de36e4f3a9e3
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_CLAIM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c023ca39-3580-496e-a67e-2f98f8045353
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.ACA_CLAIM_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b13c01be-5573-4f91-8848-d39b85c2c776
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_RESERVE_TYPE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a61921f0-090c-4e89-a29d-4355a16d5663
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.ACA_RESERVE_TYPE_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a631853d-82d2-432a-b7e6-79cf020580cc
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_POLICY_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a71f9859-9526-448f-8975-fc2ca1c70e28
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.ACA_POLICY_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b57dd141-8631-4122-b2d9-e970a24d5e9b
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_PAYMENT_ATTRIBUTE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f7944737-293d-4c3d-bcf6-e83712d7c5a0
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.ACA_PAYMENT_ATTRIBUTE_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c022834b-d748-4c3c-829d-64c8c7d1e8c7
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_PAYEE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d7ab7a3a-9e19-482a-a926-d62194689c1c
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.ACA_PAYEE_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a634123d-4c31-4521-b32a-7c2291cd6c30
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_DATE_ID_TRANSACTION_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e866385a-0744-4861-a083-d95a156e7195
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: TRY_CAST(TO_CHAR(SRC.TRANSACTION_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e866385a-0744-4861-a083-d95a156e7195
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_DATE_ID_PAYMENT_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d7dd1081-de2e-4b47-ab8d-19417c800880
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: TRY_CAST(TO_CHAR(SRC.PAYMENT_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dbe2becc-9964-44ac-8176-92c2f7b8d80e
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_DATE_ID_PAYMENT_ENTRY_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 322c335e-5264-42f0-91a5-3a7c64c73f4e
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: TRY_CAST(TO_CHAR(SRC.PAYMENT_ENTRY_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9381c002-4467-459f-ab51-683a45c3b171
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_DATE_ID_SERVICE_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 56c4d7e9-e16e-4171-87ac-4560a8b98bce
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: TRY_CAST(TO_CHAR(SRC.SERVICE_START_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a630983d-3682-416b-a111-d0b5ed6a4392
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_DATE_ID_SERVICE_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cff0a7aa-ab4a-4d7a-bca9-ddb7178c771a
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: TRY_CAST(TO_CHAR(SRC.SERVICE_END_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c822f77e-8c3b-4191-bb27-9c989025ff75
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_DATE_ID_BENEFIT_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 97d65df2-ddc1-4351-8716-ec72fdfac1ca
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: TRY_CAST(TO_CHAR(SRC.BENEFIT_START_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b13c4731-8979-4592-8868-2a07d39de98d
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_DATE_ID_BENEFIT_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8b0c4839-a759-4d82-8924-d2e82e707e7b
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: TRY_CAST(TO_CHAR(SRC.BENEFIT_END_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: cce8f804-0c2f-410a-8456-e970a24d5e9b
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_DATE_ID_SETTLEMENT_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0fdecfab-164b-4b2e-a5ac-04f762a4208a
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: TRY_CAST(TO_CHAR(SRC.SETTLEMENT_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: caa16d7a-7bd8-406a-a620-337d117565c7
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE_SYSTEM_CLAIM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 13ed1583-05b1-4045-a7b3-85b2e9894e63
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.SOURCE_SYSTEM_CLAIM_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b5c03c53-3392-4469-807d-533920c529da
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: DATE
+        description: ""
+        name: TRANSACTION_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e866385a-0744-4861-a083-d95a156e7195
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.TRANSACTION_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: dbe2becc-9964-44ac-8176-92c2f7b8d80e
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: DATE
+        description: ""
+        name: PAYMENT_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d7dd1081-de2e-4b47-ab8d-19417c800880
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.PAYMENT_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 98453489-3549-43c2-aa7c-87d55990264b
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: DATE
+        description: ""
+        name: PAYMENT_ENTRY_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 322c335e-5264-42f0-91a5-3a7c64c73f4e
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.PAYMENT_ENTRY_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b1304560-6340-4f51-a7b6-f521b44d715d
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: DATE
+        description: ""
+        name: SERVICE_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 56c4d7e9-e16e-4171-87ac-4560a8b98bce
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.SERVICE_START_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f2b604e-e1bb-459f-9c60-a4a35cf91d9a
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: DATE
+        description: ""
+        name: SERVICE_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: cff0a7aa-ab4a-4d7a-bca9-ddb7178c771a
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.SERVICE_END_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3223fc9e-5b12-40e8-b7c1-04df86576d8b
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: DATE
+        description: ""
+        name: BENEFIT_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 97d65df2-ddc1-4351-8716-ec72fdfac1ca
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.BENEFIT_START_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a631ddb8-1b9a-4c2c-ac94-91c68e309d94
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: DATE
+        description: ""
+        name: BENEFIT_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8b0c4839-a759-4d82-8924-d2e82e707e7b
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.BENEFIT_END_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 147e62a9-c7da-4e20-b384-e4c1de7c92b2
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: DATE
+        description: ""
+        name: SETTLEMENT_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0fdecfab-164b-4b2e-a5ac-04f762a4208a
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.SETTLEMENT_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a8c627be-629f-43e6-946f-c1871a25d2b7
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: TRANSACTION_SEQUENCE_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: af489f6d-1bd3-4f90-84c4-726487e411fe
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.TRANSACTION_SEQUENCE_NUMBER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d1a6d45b-6f81-432d-8acb-8d697926b23d
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PAYMENT_CONTROL_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 09c5b29b-8e10-482a-a9a3-5c7774d6c77d
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.PAYMENT_CONTROL_NUMBER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f317498c-8519-4786-8805-021b67482d8c
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PAYMENT_CONTROL_NUMBER_CLIENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 09c065f3-529a-4712-ac7f-2b02a9bd7e54
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.PAYMENT_CONTROL_NUMBER_CLIENT
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3262f270-b1d5-4702-b062-094186522c0d
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: RECIPIENT_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: bca74041-9492-49da-ad02-3932e67df1fd
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.RECIPIENT_NUMBER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a63f707f-f77e-402a-939e-b9846c4f4b23
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: LOST_WORK_DAYS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ba659c23-d34e-4f0e-b873-1fcf41b9d4c7
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.LOST_WORK_DAYS
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 97ac00f2-b8d9-4b20-af80-c11626f2a893
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: CHECK_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b5719a93-7b44-4696-857e-3796541f5344
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.CHECK_NUMBER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8206d7fd-4e78-4a57-b0fd-a5214840d24c
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: BINARY
+        description: ""
+        name: CLIENT_NUMBER_BANK_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e82e1d71-55cc-48a5-83e9-4e785b9549f3
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.CLIENT_NUMBER_BANK_ENCRYPTED
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b13c8f8b-f459-4591-9549-c12e52e50587
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: BINARY
+        description: ""
+        name: BANK_NUMBER_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a6314f8a-9f4c-4700-a193-4a1d35509930
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.BANK_NUMBER_ENCRYPTED
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 47b973a8-4c6c-4867-b7a4-a78b4bd2d0a0
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: BINARY
+        description: ""
+        name: ACCOUNT_NUMBER_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3ff54013-e57f-442a-a922-a9bd91d09e53
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.ACCOUNT_NUMBER_ENCRYPTED
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8b06c888-294c-4e89-80ac-a52145244199
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PAYMENT_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: ab3a35ce-72c0-4824-9b2f-2d7f8d689b9d
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.PAYMENT_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 93427181-e2aa-4f24-9dfc-59ac0c551270
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: EXPENSE_PAYMENT_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2b9b7754-5c91-4cbe-8bce-d2f6233d45f3
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.EXPENSE_PAYMENT_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a4884260-2441-4796-905e-a9ca3b392a82
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: CLIENT_OPTIONAL_PAYMENT_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a634563d-4c31-4043-9878-a3f7fc067160
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.CLIENT_OPTIONAL_PAYMENT_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7e738927-5d07-4581-9b81-a7b3790513e5
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: CLAIM_ADJUSTING_BRANCH_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 6363c467-f311-4f11-9c88-165c02b9f3e4
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.CLAIM_ADJUSTING_BRANCH_NUMBER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f9361a9-b3a5-48b4-82a0-43187c95e1c4
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: BINARY
+        description: ""
+        name: PAYMENT_MESSAGE_ENCRYPTED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 4799981e-1f79-4d89-9b6f-474c65dd30d4
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.PAYMENT_MESSAGE_ENCRYPTED
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5c7827e8-f7b5-4bfe-be24-eb136368d37c
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: INDEMNITY_BREAKDOWN_PAYMENT_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8b732560-6b61-4623-afc0-e7f0174293f0
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.INDEMNITY_BREAKDOWN_PAYMENT_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a63412fd-9993-479c-b3b3-82cd6b483c9a
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: INDEMNITY_BREAKDOWN_DCI_BENEFIT_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9381c002-4467-459f-ab51-683a45c3b171
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.INDEMNITY_BREAKDOWN_DCI_BENEFIT_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 53c83b8b-d54b-486d-979a-e27c1abf8582
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        name: INDEMNITY_BREAKDOWN_PAYMENT_AMOUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b57e84aa-8f74-4bfe-98f5-932f99d985a9
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.INDEMNITY_BREAKDOWN_PAYMENT_AMOUNT
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8b06606f-1246-4c46-95da-78c691f37920
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PAYMENT_TYPE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a4945118-a6d1-4470-8b09-de4e5e786968
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.PAYMENT_TYPE_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9e4f5593-3765-4f47-8b02-7c980302ed1c
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: COVERAGE_GROUP_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9140ca10-91c8-4710-8588-ac4985dd6c30
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.COVERAGE_GROUP_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c3581775-6f56-4c45-8fd1-a1288c83e0c0
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: RESERVE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 52402170-449e-4e47-bd7e-e47cfcf0743b
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.RESERVE_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 015f81f9-038c-4860-845b-7b06b9b1d9c7
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: NUMBER(38,2)
+        description: ""
+        name: PAYMENT_AMOUNT_BY_RESERVE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b13c4731-8979-4592-8868-2a07d39de98d
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.PAYMENT_AMOUNT_BY_RESERVE_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b1cc88b4-8255-48b4-9276-880629a8fcf2
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: RESERVED_FOR_INTERNAL_USE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c822f77e-8c3b-4191-bb27-9c989025ff75
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.RESERVED_FOR_INTERNAL_USE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a6c44917-7e61-46fd-9c77-6c04fdf807e3
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_SOURCE_SYSTEM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 638c4c37-9759-4d64-8ed9-ca913988b132
+                stepCounter: 5970220a-dd7a-42c2-8411-9f93933c0eb4
+            transform: SRC.ACA_SOURCE_SYSTEM_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 97f37482-1c21-4f35-9003-88746c075775
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: ACA_DATE_CREATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CURRENT_TIMESTAMP()
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d7ab6660-f1c5-43a9-a78d-69bb2463e263
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACA_CREATE_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'dbo.spaca_aca_payment_transaction_deleteInsert'"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b57a5223-28eb-426c-829d-64c8c7d1e8c7
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: ACA_DATE_UPDATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CURRENT_TIMESTAMP()
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d7ab6660-f1c5-43a9-a78d-69bb2463e263
+          stepCounter: 5920e81c-2346-4a1d-84e5-9c8491c6e17d
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACA_UPDATE_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'dbo.spaca_aca_payment_transaction_deleteInsert'"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          ACA_PAYMENT_TRANSACTION_STAGING_ESIS: SRC
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DBSHIFT
+            nodeName: ACA_PAYMENT_TRANSACTION_STAGING_ESIS
+        join:
+          joinCondition: FROM {{ ref('DBSHIFT', 'ACA_PAYMENT_TRANSACTION_STAGING_ESIS')
+            }} "SRC"
+        name: STG_ACA_PAYMENT_TRANSACTION_ESIS
+        noLinkRefs: []
+  name: STG_ACA_PAYMENT_TRANSACTION_ESIS
+  overrideSQL: false
+  schema: STAGING
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
