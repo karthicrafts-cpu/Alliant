@@ -381,7 +381,7 @@ operation:
               - columnCounter: 8b0c897f-4318-4d56-bd4e-8625b6a70e7e
                 stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
             transform: U.MARITAL_STATUS
-     - appliedColumnTests: {}
+      - appliedColumnTests: {}
         columnReference:
           columnCounter: 0c265e31-d85f-4a0b-911e-e4a839f28c2e
           stepCounter: 5743b3b2-6c7e-4b47-ab87-d40b02005a7f
