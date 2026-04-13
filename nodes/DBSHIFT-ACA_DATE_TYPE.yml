@@ -1,6 +1,6 @@
 fileVersion: 1
-id: 7b6c2d3e-4f5a-4b6c-7d8e-9f0a1b2c3d4e
-name: ACA_COVERAGE_CODE
+id: 9d8e4f5a-6b7c-4d8e-9f0a-1b2c3d4e5f6a
+name: ACA_DATE_TYPE
 operation:
   database: ALLIANT_CLAIMS_ASTRUS
   deployEnabled: true
@@ -13,13 +13,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: a2b3c4d5-e6f7-4a8b-9c0d-1e2f3a4b5c6d
-          stepCounter: 7b6c2d3e-4f5a-4b6c-7d8e-9f0a1b2c3d4e
+          columnCounter: b9c0d1e2-f3a4-4b5c-6d7e-8f9g0h1i2j3k
+          stepCounter: 9d8e4f5a-6b7c-4d8e-9f0a-1b2c3d4e5f6a
         config: {}
         dataType: VARCHAR
         defaultValue: ""
         description: ""
-        name: CODE
+        name: DATE_TYPE_CODE
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -32,13 +32,13 @@ operation:
           values: []
         appliedColumnTests: {}
         columnReference:
-          columnCounter: b3c4d5e6-f7a8-4b9c-0d1e-2f3a4b5c6d7e
-          stepCounter: 7b6c2d3e-4f5a-4b6c-7d8e-9f0a1b2c3d4e
+          columnCounter: c0d1e2f3-a4b5-4c6d-7e8f-9g0h1i2j3k4l
+          stepCounter: 9d8e4f5a-6b7c-4d8e-9f0a-1b2c3d4e5f6a
         config: {}
-        dataType: VARCHAR
+        dataType: INT
         defaultValue: ""
         description: ""
-        name: CLASS
+        name: ACA_DATE_TYPE_ID
         nullable: true
         primaryKey: false
         sourceColumnReferences:
@@ -46,7 +46,26 @@ operation:
             transform: ""
         transform: ""
         uniqueKey: false
-  name: ACA_COVERAGE_CODE
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d1e2f3a4-b5c6-4d7e-8f9g-0h1i2j3k4l5m
+          stepCounter: 9d8e4f5a-6b7c-4d8e-9f0a-1b2c3d4e5f6a
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: DATE_TYPE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: ACA_DATE_TYPE
   schema: REF
   sqlType: Source
   type: sourceInput
