@@ -22,7 +22,7 @@ operation:
           columnCounter: 3266e741-f052-4a0b-932f-4e0d9b43d3a9
           stepCounter: 5743b3b2-6c7e-4b47-ab87-d40b02005a7f
         config: {}
-        dataType: VARCHAR
+        dataType: BINARY
         description: ""
         name: SOURCE_SYSTEM_CLAIMANT_ID
         nullable: true
@@ -78,7 +78,7 @@ operation:
           columnCounter: 2d12e8b6-96a8-444a-a929-e88387a63721
           stepCounter: 5743b3b2-6c7e-4b47-ab87-d40b02005a7f
         config: {}
-        dataType: VARCHAR
+        dataType: BINARY
         description: ""
         name: CLAIMANT_ENCRYPTED
         nullable: true
@@ -92,7 +92,7 @@ operation:
           columnCounter: 8e578a1c-3b99-44d5-94f8-e1d88a18357a
           stepCounter: 5743b3b2-6c7e-4b47-ab87-d40b02005a7f
         config: {}
-        dataType: VARCHAR
+        dataType: BINARY
         description: ""
         name: LAST_NAME_ENCRYPTED
         nullable: true
@@ -106,7 +106,7 @@ operation:
           columnCounter: 15b61b34-8c83-4a6c-922e-e47820d86a41
           stepCounter: 5743b3b2-6c7e-4b47-ab87-d40b02005a7f
         config: {}
-        dataType: VARCHAR
+        dataType: BINARY
         description: ""
         name: FIRST_NAME_ENCRYPTED
         nullable: true
@@ -120,7 +120,7 @@ operation:
           columnCounter: 32a76f23-017e-4672-913a-a1cc313e2f5f
           stepCounter: 5743b3b2-6c7e-4b47-ab87-d40b02005a7f
         config: {}
-        dataType: VARCHAR
+        dataType: BINARY
         description: ""
         name: ORGANIZATION_ENCRYPTED
         nullable: true
@@ -134,7 +134,7 @@ operation:
           columnCounter: 0f3c830e-093a-4dd2-8b9a-7a523d24e138
           stepCounter: 5743b3b2-6c7e-4b47-ab87-d40b02005a7f
         config: {}
-        dataType: VARCHAR
+        dataType: BINARY
         description: ""
         name: ADDRESS_ENCRYPTED
         nullable: true
@@ -232,7 +232,7 @@ operation:
           columnCounter: 3c751283-8a35-429f-a2e6-7b44558e8b0b
           stepCounter: 5743b3b2-6c7e-4b47-ab87-d40b02005a7f
         config: {}
-        dataType: VARCHAR
+        dataType: BINARY
         description: ""
         name: SSN_ENCRYPTED
         nullable: true
@@ -288,7 +288,7 @@ operation:
           columnCounter: 9c0e7b95-a4f1-471a-bc04-8b6305a40a6b
           stepCounter: 5743b3b2-6c7e-4b47-ab87-d40b02005a7f
         config: {}
-        dataType: VARCHAR
+        dataType: BINARY
         description: ""
         name: PHONE_ENCRYPTED
         nullable: true

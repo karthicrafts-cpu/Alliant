@@ -420,7 +420,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: '''3'''
+            transform: "'3'"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: d1a4c4a4-c5b1-4f16-86d1-4273c52a0d9e
@@ -432,7 +432,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: '''Records that exists ESIS and GB and having the same aca_date_updated'''
+            transform: "'Records that exists ESIS and GB and having the same aca_date_updated'"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 421b5f1f-4f24-4d11-b1e9-74d32a322c36
@@ -470,7 +470,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: '''dbo.spaca_aca_claimant_staging_insert'''
+            transform: "'dbo.spaca_aca_claimant_staging_insert'"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: c1441a1a-4f5c-4f16-86d1-4273c52a0d9e
@@ -494,13 +494,13 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: '''dbo.spaca_aca_claimant_staging_insert'''
+            transform: "'dbo.spaca_aca_claimant_staging_insert'"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          ACA_CLAIMANT_GB: gb
           ACA_CLAIMANT_ESIS: esis
+          ACA_CLAIMANT_GB: gb
         customSQL:
           customSQL: ""
         dependencies:

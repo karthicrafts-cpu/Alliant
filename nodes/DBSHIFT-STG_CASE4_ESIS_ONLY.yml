@@ -1,6 +1,6 @@
 fileVersion: 1
-id: 61e9389f-862d-48d8-9993-9c8a14138e67
-name: STG_CASE1_GB_WINNERS
+id: ee450eec-ec0f-41f6-9a93-40581ea3c94b
+name: STG_CASE4_ESIS_ONLY
 operation:
   config:
     insertStrategy: INSERT
@@ -19,8 +19,8 @@ operation:
     columns:
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 9c0e7b95-a4f1-471a-bc04-8b6305a40a6b
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 712b770b-7350-4320-8551-0e9c65f30c7b
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -33,8 +33,8 @@ operation:
             transform: GB.SOURCE_SYSTEM_CLAIMANT_ID
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 981d3d62-df21-4f81-ad8a-028c05710609
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 8c5454e5-3fe1-43b1-a5df-4aa51e359598
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: NUMBER
         description: ""
@@ -47,8 +47,8 @@ operation:
             transform: GB.ACA_EMPLOYMENT_STATUS_ID
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 8d1f0578-831e-455b-8f19-3f0e8f3b4969
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 5fa215f5-6114-4445-b8f7-59014cd6159a
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: NUMBER
         description: ""
@@ -61,8 +61,8 @@ operation:
             transform: GB.ACA_MARITAL_STATUS_ID
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 80f08969-92f7-436f-8700-1c05d761d49e
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 1d4e3269-b52f-44be-bd0a-d82091e49edf
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -75,8 +75,8 @@ operation:
             transform: GB.CLAIMANT_TYPE
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: c149303c-c37b-40b9-858a-a43c224b5a37
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 387d1c96-585f-43c3-90b7-641e98b48403
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -89,8 +89,8 @@ operation:
             transform: GB.CLAIMANT_ENCRYPTED
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: b185e35d-4f35-46b0-9832-618a8bb2a2f8
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 72f08520-ab7c-4d92-ba9c-7746e50d0f1e
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -103,8 +103,8 @@ operation:
             transform: GB.LAST_NAME_ENCRYPTED
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 479b1836-e820-4e58-8686-efb50742d4a6
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: caa277f3-8845-4864-8d99-6c610b708c32
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -117,8 +117,8 @@ operation:
             transform: GB.FIRST_NAME_ENCRYPTED
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 1c33f81e-0a56-4c4f-801a-cfc5d41f53e3
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: a62a4dec-bcac-43e9-bbe8-ffded31e1769
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -131,8 +131,8 @@ operation:
             transform: GB.ORGANIZATION_ENCRYPTED
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 0f3c830e-093a-4dd2-8b9a-7a523d24e138
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: d165b1c9-7085-4af0-8ace-f21a8755d388
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -145,8 +145,8 @@ operation:
             transform: GB.ADDRESS_ENCRYPTED
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 8b0c897f-4318-4d56-bd4e-8625b6a70e7e
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 883aaae8-a244-49ff-969a-27b8aec54c29
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -159,8 +159,8 @@ operation:
             transform: GB.CITY
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: e5b61b2b-f3c1-401f-b5b6-764951478546
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 4d6763bd-c2d7-4709-baa3-9d69e83c3f90
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -173,8 +173,8 @@ operation:
             transform: GB.STATE_CODE
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: a63124ae-4b5b-4171-aa3b-e018d4076f8e
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 8fe2a549-659d-4126-b5b6-d4752780b7b8
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -187,8 +187,8 @@ operation:
             transform: GB.COUNTRY_CODE
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 3a2c1618-5a23-45a8-941f-d31c51d62c99
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: b2e63477-94db-4ba1-9e30-bfb248aad43c
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -201,8 +201,8 @@ operation:
             transform: GB.ZIP_CODE
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: d1a4c4a4-c5b1-4f16-86d1-4273c52a0d9e
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: d5e8850b-79eb-4585-b9b5-39fdf1574d45
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: NUMBER
         description: ""
@@ -215,8 +215,8 @@ operation:
             transform: GB.AGE
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 421b5f1f-4f24-4d11-b1e9-74d32a322c36
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: e610631f-ebe3-4193-bea7-9e58e51807dc
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -229,8 +229,8 @@ operation:
             transform: GB.GENDER
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 3c751283-8a35-429f-a2e6-7b44558e8b0b
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 3a38aefc-079a-4715-9238-a63240fb93d0
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -243,8 +243,8 @@ operation:
             transform: GB.SSN_ENCRYPTED
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: c823b2b8-9f1e-4138-8e6d-74d32a322c36
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 1ae3c294-ee5d-4c71-87cd-a1ebb9cff073
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: NUMBER
         description: ""
@@ -257,8 +257,8 @@ operation:
             transform: GB.AVERAGE_WEEKLY_WAGE
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: c1441a1a-4f5c-4f16-86d1-4273c52a0d9e
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 171dfef2-866e-4002-9a6f-1457b49d5e7b
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -271,8 +271,8 @@ operation:
             transform: GB.NCCI_JOB_CLASSIFICATION_CODE
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 3a281b1f-5a23-45a8-941f-d31c51d62c99
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 12204757-8873-4d9b-ad75-a8bd5d54dac8
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: NUMBER
         description: ""
@@ -285,8 +285,8 @@ operation:
             transform: GB.LENGTH_OF_SERVICE_IN_YEAR
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 9c0e7b95-a4f1-471a-bc04-8b6305a40a6b
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 8675dad3-93a5-4898-91a2-a0bb47d8c064
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -299,8 +299,8 @@ operation:
             transform: GB.PHONE_ENCRYPTED
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 8d1f0578-831e-455b-8f19-3f0e8f3b4969
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 04607f4c-a219-4fa7-94fd-03c183ed2aaa
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: TIMESTAMP_NTZ
         description: ""
@@ -313,8 +313,8 @@ operation:
             transform: GB.HIRE_DATE
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 80f08969-92f7-436f-8700-1c05d761d49e
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: bf097f39-2597-47af-b876-2fc86634b729
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -327,8 +327,8 @@ operation:
             transform: GB.EMPLOYMENT_STATUS_CODE
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 479b1836-e820-4e58-8686-efb50742d4a6
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 2850fa9b-caf4-47bc-b48e-f7ae48591ae7
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -341,8 +341,8 @@ operation:
             transform: GB.EMPLOYMENT_STATUS
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 1c33f81e-0a56-4c4f-801a-cfc5d41f53e3
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 554cd3f6-9849-4b4c-b1da-013437f6cf21
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: TIMESTAMP_NTZ
         description: ""
@@ -355,8 +355,8 @@ operation:
             transform: GB.BIRTH_DATE
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 0f3c830e-093a-4dd2-8b9a-7a523d24e138
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: c66ca78a-21af-4f9c-9ee9-f3cd8b62557f
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -369,8 +369,8 @@ operation:
             transform: GB.MARITAL_STATUS_CODE
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 8b0c897f-4318-4d56-bd4e-8625b6a70e7e
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 20c425fc-ab36-4305-8153-820420cc8106
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -383,8 +383,8 @@ operation:
             transform: GB.MARITAL_STATUS
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: e5b61b2b-f3c1-401f-b5b6-764951478546
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 67eec0be-9711-49d6-bc3a-f3405e707005
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -397,8 +397,8 @@ operation:
             transform: GB.OCCUPATION
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: a63124ae-4b5b-4171-aa3b-e018d4076f8e
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 89cb6438-40cc-48ec-b74b-4939b97ae43c
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -411,8 +411,8 @@ operation:
             transform: GB.EMPLOYEE_NUMBER
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 3a2c1618-5a23-45a8-941f-d31c51d62c99
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: b98c958a-dd61-46e4-a932-2d2fc0e8268b
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: NUMBER
         description: ""
@@ -420,11 +420,11 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: '''1'''
+            transform: "'3'"
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: d1a4c4a4-c5b1-4f16-86d1-4273c52a0d9e
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 203ff25c-60bf-467e-8b2f-d632092a0194
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -432,11 +432,11 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: '''Records in GB that exists in ESIS but having Higher aca_date_updated'''
+            transform: "'Records that exists ESIS and GB and having the same aca_date_updated'"
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 421b5f1f-4f24-4d11-b1e9-74d32a322c36
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: c958f9b0-4bb5-4ae5-bb1e-8b5e98efcefe
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: NUMBER
         description: ""
@@ -449,8 +449,8 @@ operation:
             transform: GB.ACA_SOURCE_SYSTEM_ID
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 3c751283-8a35-429f-a2e6-7b44558e8b0b
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 3cfe26d4-ee78-4d14-acc0-16cb3bcab403
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: TIMESTAMP_NTZ
         description: ""
@@ -461,8 +461,8 @@ operation:
             transform: CURRENT_TIMESTAMP()
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: c823b2b8-9f1e-4138-8e6d-74d32a322c36
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: ebf75d6b-27dc-4f95-b0fb-cd008cb6cb5c
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -470,11 +470,11 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: '''dbo.spaca_aca_claimant_staging_insert'''
+            transform: "'dbo.spaca_aca_claimant_staging_insert'"
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: c1441a1a-4f5c-4f16-86d1-4273c52a0d9e
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: 5ed69754-2182-4614-98b1-d7fc522e6a9d
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: TIMESTAMP_NTZ
         description: ""
@@ -485,8 +485,8 @@ operation:
             transform: CURRENT_TIMESTAMP()
       - appliedColumnTests: {}
         columnReference:
-          columnCounter: 3a281b1f-5a23-45a8-941f-d31c51d62c99
-          stepCounter: 61e9389f-862d-48d8-9993-9c8a14138e67
+          columnCounter: b006036a-b8cc-41d0-a9b2-4f6947f3d3f4
+          stepCounter: ee450eec-ec0f-41f6-9a93-40581ea3c94b
         config: {}
         dataType: VARCHAR
         description: ""
@@ -494,30 +494,43 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: '''dbo.spaca_aca_claimant_staging_insert'''
+            transform: "'dbo.spaca_aca_claimant_staging_insert'"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
       - aliases:
-          ACA_CLAIMANT_GB: gb
-          ACA_CLAIMANT_ESIS: esis
+          ESIS: 64f786d7-e23a-4ddc-8822-263a6e9a7e02
+          GB: 610f6350-09e8-466d-8b09-54b9d07f3630
         customSQL:
           customSQL: ""
         dependencies:
           - locationName: DBSHIFT
-            nodeName: ACA_CLAIMANT_GB
+            nodeName: ACA_CLAIMANT
           - locationName: DBSHIFT
             nodeName: ACA_CLAIMANT_ESIS
           - locationName: DBSHIFT
-            nodeName: ACA_CLAIMANT
+            nodeName: ACA_CLAIMANT_GB
         join:
           joinCondition: |-
-            FROM {{ ref('DBSHIFT', 'ACA_CLAIMANT_GB') }} "GB"
-            INNER JOIN {{ ref('DBSHIFT', 'ACA_CLAIMANT_ESIS') }} "ESIS" ON ESIS.SOURCE_SYSTEM_CLAIMANT_ID = GB.SOURCE_SYSTEM_CLAIMANT_ID
-            WHERE GB.ACA_CLAIMANT_GB_ID <> -1 AND ESIS.ACA_CLAIMANT_ESIS_ID <> -1 AND GB.ACA_DATE_UPDATED > (SELECT IFNULL(MAX(ACA_DATE_UPDATED), '1776-07-04 00:00:00.000'::TIMESTAMP_NTZ) FROM {{ ref('DBSHIFT', 'ACA_CLAIMANT') }} WHERE ACA_CLAIMANT_ID <> -1) AND ESIS.ACA_DATE_UPDATED > (SELECT IFNULL(MAX(ACA_DATE_UPDATED), '1776-07-04 00:00:00.000'::TIMESTAMP_NTZ) FROM {{ ref('DBSHIFT', 'ACA_CLAIMANT') }} WHERE ACA_CLAIMANT_ID <> -1) AND CAST(GB.ACA_DATE_UPDATED AS DATE) > CAST(ESIS.ACA_DATE_UPDATED AS DATE)
-        name: STG_CASE1_GB_WINNERS
+            FROM {{ ref('DBSHIFT', 'ACA_CLAIMANT_ESIS') }} "ESIS"
+            LEFT JOIN {{ ref('DBSHIFT', 'ACA_CLAIMANT_GB') }} "GB"
+              ON GB.SOURCE_SYSTEM_CLAIMANT_ID = ESIS.SOURCE_SYSTEM_CLAIMANT_ID
+              AND GB.ACA_DATE_UPDATED > (
+                    SELECT IFNULL(MAX(ACA_DATE_UPDATED), '1776-07-04 00:00:00.000'::TIMESTAMP_NTZ)
+                    FROM {{ ref('DBSHIFT', 'ACA_CLAIMANT') }}
+                    WHERE ACA_CLAIMANT_ID <> -1
+              )
+
+            WHERE ESIS.ACA_CLAIMANT_ESIS_ID <> -1
+              AND ESIS.ACA_DATE_UPDATED > (
+                    SELECT IFNULL(MAX(ACA_DATE_UPDATED), '1776-07-04 00:00:00.000'::TIMESTAMP_NTZ)
+                    FROM {{ ref('DBSHIFT', 'ACA_CLAIMANT') }}
+                    WHERE ACA_CLAIMANT_ID <> -1
+              )
+              AND GB.SOURCE_SYSTEM_CLAIMANT_ID IS NULL
+        name: STG_CASE4_ESIS_ONLY
         noLinkRefs: []
-  name: STG_CASE1_GB_WINNERS
+  name: STG_CASE4_ESIS_ONLY
   overrideSQL: false
   schema: ""
   sqlType: View

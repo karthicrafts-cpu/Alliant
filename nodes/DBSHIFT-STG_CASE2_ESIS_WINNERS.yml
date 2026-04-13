@@ -1,6 +1,6 @@
 fileVersion: 1
 id: 597a7e8e-d91d-4882-938a-e994966d5b0c
-name: STG_CASE4_ESIS_ONLY
+name: STG_CASE2_ESIS_WINNERS
 operation:
   config:
     insertStrategy: INSERT
@@ -420,7 +420,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: '''4'''
+            transform: "'2'"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 3c751283-8a35-429f-a2e6-7b44558e8b0b
@@ -432,7 +432,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: '''Records In ESIS that don''t exists in GB'''
+            transform: "'Records in ESIS that exists in GB but having Higher aca_date_updated'"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: d823b2b8-9f1e-4138-8e6d-74d32a322c36
@@ -470,7 +470,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: '''dbo.spaca_aca_claimant_staging_insert'''
+            transform: "'dbo.spaca_aca_claimant_staging_insert'"
       - appliedColumnTests: {}
         columnReference:
           columnCounter: 1a49c4a4-c5b1-4f16-86d1-4273c52a0d9e
@@ -494,7 +494,7 @@ operation:
         nullable: true
         sourceColumnReferences:
           - columnReferences: []
-            transform: '''dbo.spaca_aca_claimant_staging_insert'''
+            transform: "'dbo.spaca_aca_claimant_staging_insert'"
     cteString: ""
     enabledColumnTestIDs: []
     sourceMapping:
@@ -513,11 +513,11 @@ operation:
         join:
           joinCondition: |-
             FROM {{ ref('DBSHIFT', 'ACA_CLAIMANT_ESIS') }} "ESIS"
-            LEFT JOIN {{ ref('DBSHIFT', 'ACA_CLAIMANT_GB') }} "GB" ON GB.SOURCE_SYSTEM_CLAIMANT_ID = ESIS.SOURCE_SYSTEM_CLAIMANT_ID AND GB.ACA_DATE_UPDATED > (SELECT IFNULL(MAX(ACA_DATE_UPDATED), '1776-07-04 00:00:00.000'::TIMESTAMP_NTZ) FROM {{ ref('DBSHIFT', 'ACA_CLAIMANT') }} WHERE ACA_CLAIMANT_ID <> -1)
-            WHERE ESIS.ACA_CLAIMANT_ESIS_ID <> -1 AND ESIS.ACA_DATE_UPDATED > (SELECT IFNULL(MAX(ACA_DATE_UPDATED), '1776-07-04 00:00:00.000'::TIMESTAMP_NTZ) FROM {{ ref('DBSHIFT', 'ACA_CLAIMANT') }} WHERE ACA_CLAIMANT_ID <> -1) AND GB.SOURCE_SYSTEM_CLAIMANT_ID IS NULL
-        name: STG_CASE4_ESIS_ONLY
+            INNER JOIN {{ ref('DBSHIFT', 'ACA_CLAIMANT_GB') }} "GB" ON GB.SOURCE_SYSTEM_CLAIMANT_ID = ESIS.SOURCE_SYSTEM_CLAIMANT_ID
+            WHERE ESIS.ACA_CLAIMANT_ESIS_ID <> -1 AND GB.ACA_CLAIMANT_GB_ID <> -1 AND ESIS.ACA_DATE_UPDATED > (SELECT IFNULL(MAX(ACA_DATE_UPDATED), '1776-07-04 00:00:00.000'::TIMESTAMP_NTZ) FROM {{ ref('DBSHIFT', 'ACA_CLAIMANT') }} WHERE ACA_CLAIMANT_ID <> -1) AND GB.ACA_DATE_UPDATED > (SELECT IFNULL(MAX(ACA_DATE_UPDATED), '1776-07-04 00:00:00.000'::TIMESTAMP_NTZ) FROM {{ ref('DBSHIFT', 'ACA_CLAIMANT') }} WHERE ACA_CLAIMANT_ID <> -1) AND CAST(ESIS.ACA_DATE_UPDATED AS DATE) > CAST(GB.ACA_DATE_UPDATED AS DATE)
+        name: STG_CASE2_ESIS_WINNERS
         noLinkRefs: []
-  name: STG_CASE4_ESIS_ONLY
+  name: STG_CASE2_ESIS_WINNERS
   overrideSQL: false
   schema: ""
   sqlType: View
