@@ -1,0 +1,54 @@
+fileVersion: 1
+id: 5971a179-8b8a-4411-a3f2-a0b23023901b
+name: ACA_CLAIMANT
+operation:
+  database: ALLIANT_CLAIMS_ASTRUS
+  deployEnabled: true
+  description: ""
+  locationName: DBSHIFT
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8b671a1a-42c2-40f4-ab9a-5b12a874b3d3
+          stepCounter: 5971a179-8b8a-4411-a3f2-a0b23023901b
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        defaultValue: ""
+        description: ""
+        name: ACA_DATE_UPDATED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a63013d5-0f8c-4a17-b649-14a01c6204c3
+          stepCounter: 5971a179-8b8a-4411-a3f2-a0b23023901b
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        name: ACA_CLAIMANT_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: ACA_CLAIMANT
+  schema: DBO
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node
