@@ -1,0 +1,354 @@
+fileVersion: 1
+id: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+name: ACA_EXPERIENCE_TRANSACTION_STAGING_GB
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ALLIANT_CLAIMS_ASTRUS_STAGE
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5040f7b1-7a6e-47c3-83c9-04a441e88849
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE_SYSTEM_EXPERIENCE_TRANSACTION_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+              - columnCounter: c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+              - columnCounter: d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8g
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+              - columnCounter: d5e6f7a8-b9c0-4d1e-2f3a-4b5c6d7e8f9g
+                stepCounter: 8c7d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f
+            transform: MD5(CONCAT_WS('||', E.UNIQUE_CLAIM_ID, E.EXPERIENCE_TRANSACTION_DATE,
+              CAST(TRY_CAST(E.TRANSACTION_SEQUENCE_NUMBER AS INT) AS VARCHAR),
+              RT.RESERVE_TYPE))
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 32675de6-3982-411a-ae9a-5e725656c1d0
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE_SYSTEM_CLAIM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+            transform: E.UNIQUE_CLAIM_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 98fd447e-a0e2-4d18-ac61-26c79a55dd12
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE_SYSTEM_POLICY_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e7f8g9h0-i1j2-4k3l-4m5n-6o7p8q9r0s1t
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+              - columnCounter: f8g9h0i1-j2k3-4l4m-5n6o-7p8q9r0s1t2u
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+            transform: IFF(E.POLICY_NUMBER30 IS NULL, NULL, MD5(CONCAT_WS('||', E.POLICY_NUMBER30,
+              E.POLICY_EFFECTIVE_DATE)))
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: caa0d810-8b1e-450a-a9e9-158a77d85c4e
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_RESERVE_TYPE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a8b9c0d1-e2f3-4a4b-5c6d-7e8f9g0h1i2j
+                stepCounter: 8c7d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f
+            transform: IFNULL(RT.ACA_RESERVE_TYPE_ID, -1)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b5723b7b-23ac-4458-be85-b82776c5b967
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_DATE_ID_EXPERIENCE_TRANSACTION_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+            transform: CAST(TRY_CAST(TO_VARCHAR(E.EXPERIENCE_TRANSACTION_DATE, 'YYYYMMDD')
+              AS INT) AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b4fd75b2-3837-4340-9a3b-2bd482618625
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_DATE_TYPE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c0d1e2f3-a4b5-4c6d-7e8f-9g0h1i2j3k4l
+                stepCounter: 9d8e4f5a-6b7c-4d8e-9f0a-1b2c3d4e5f6a
+            transform: DT.ACA_DATE_TYPE_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 322de31a-0746-4ed0-b2ab-927958f3b171
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: POLICY_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e7f8g9h0-i1j2-4k3l-4m5n-6o7p8q9r0s1t
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+            transform: E.POLICY_NUMBER30
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a63456c8-0d85-4228-a34f-9e73b22c710d
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: DATE
+        description: ""
+        name: POLICY_EFFECTIVE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f8g9h0i1-j2k3-4l4m-5n6o-7p8q9r0s1t2u
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+            transform: E.POLICY_EFFECTIVE_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2d1df7c5-59fe-4ef6-ac4c-255ec36ec6f3
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: DATE
+        description: ""
+        name: EXPERIENCE_TRANSACTION_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+            transform: E.EXPERIENCE_TRANSACTION_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 33b006c3-1cf0-4c7b-a010-3882f03f56eb
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: INT
+        description: ""
+        name: TRANSACTION_SEQUENCE_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8g
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+            transform: TRY_CAST(E.TRANSACTION_SEQUENCE_NUMBER AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b138c205-04de-4f51-b84e-28c0c976f3f0
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: RECIPIENT_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a9h0i1j2-k3l4-4m5n-6o7p-8q9r0s1t2u3v
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+            transform: E.RECIPIENT_NUMBER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f7d16550-13f8-47c0-a359-994c2560b45f
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: DATE_TYPE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b0i1j2k3-l4m5-4n6o-7p8q-9r0s1t2u3v4w
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+            transform: E.DATE_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b43272d3-1c39-4700-a616-d87b003c2006
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: DATE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d1e2f3a4-b5c6-4d7e-8f9g-0h1i2j3k4l5m
+                stepCounter: 9d8e4f5a-6b7c-4d8e-9f0a-1b2c3d4e5f6a
+            transform: DT.DATE_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 18b76dfb-17c4-4e20-bfcb-961f65c192c7
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: COVERAGE_GROUP_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e
+                stepCounter: 6a5b1c2d-3e4f-4a5b-6c7d-8e9f0a1b2c3d
+            transform: E.CLAIM_COVERAGE_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 16d6ec03-f36b-4e11-8919-474c243a44c7
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: RESERVE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d5e6f7a8-b9c0-4d1e-2f3a-4b5c6d7e8f9g
+                stepCounter: 8c7d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f
+            transform: RT.RESERVE_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a603b7a5-c89b-4395-8855-6b67bdc76a92
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_AMOUNT_BY_RESERVE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b130e463-b883-42e7-8b5e-4bbab0a430d4
+                stepCounter: d17df474-1a2d-4179-882d-88f615f0eb1a
+            transform: EA.EXPERIENCE_AMOUNT_BY_RESERVE_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2d1a3c74-e35c-4869-9524-7f1207e32402
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_SOURCE_SYSTEM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e2f3a4b5-c6d7-4e8f-9g0h-1i2j3k4l5m6n
+                stepCounter: 0e9f5a6b-7c8d-4e9f-0a1b-2c3d4e5f6a7b
+            transform: (SELECT ACA_SOURCE_SYSTEM_ID FROM {{ ref('DBSHIFT', 'ACA_SOURCE_SYSTEM')
+              }} WHERE SOURCE_SYSTEM = 'GB')
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 474a0017-d5d1-4475-b823-380d3550e56e
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: ACA_DATE_CREATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CURRENT_TIMESTAMP()
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d13303c7-4340-424a-97d8-12946cd68661
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACA_CREATE_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'dbo.spaca_aca_experience_transaction_staging_gb_insert'"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e82e0e47-4959-455a-b6b8-65b16e09e023
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: ACA_DATE_UPDATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CURRENT_TIMESTAMP()
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 98fd93c2-d3b2-4d22-b9b2-3f6e165d21a5
+          stepCounter: 597a73f5-7f28-4c1e-ac14-ac6b896fef46
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: ACA_UPDATE_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'dbo.spaca_aca_experience_transaction_staging_gb_insert'"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          ACA_TRANSACTION_EXPERIENCE: E
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DBSHIFT
+            nodeName: ACA_TRANSACTION_EXPERIENCE
+          - locationName: DBSHIFT
+            nodeName: V_TEMP_EXPERIENCE_BY_RESERVE_TYPE
+          - locationName: DBSHIFT
+            nodeName: ACA_DATE_TYPE
+          - locationName: DBSHIFT
+            nodeName: ACA_COVERAGE_CODE
+          - locationName: DBSHIFT
+            nodeName: ACA_RESERVE_TYPE_MAPPING
+          - locationName: DBSHIFT
+            nodeName: ACA_SOURCE_SYSTEM
+        join:
+          joinCondition: |
+            FROM {{ ref('DBSHIFT', 'ACA_TRANSACTION_EXPERIENCE') }} AS E
+            INNER JOIN {{ ref('DBSHIFT', 'V_TEMP_EXPERIENCE_BY_RESERVE_TYPE') }} AS EA ON EA.ACA_TRANSACTION_EXPERIENCE_ID = E.ACA_TRANSACTION_EXPERIENCE_ID
+            LEFT JOIN {{ ref('DBSHIFT', 'ACA_DATE_TYPE') }} AS DT ON DT.DATE_TYPE_CODE = E.DATE_TYPE
+            LEFT JOIN {{ ref('DBSHIFT', 'ACA_COVERAGE_CODE') }} AS CC ON CC.CODE = EA.CLAIM_COVERAGE_CODE
+            LEFT JOIN {{ ref('DBSHIFT', 'ACA_RESERVE_TYPE_MAPPING') }} AS RT ON RT.CLASS_CODE = CC.CLASS AND RT.RESERVE_TYPE_COLUMN_NUMBER = EA.RESERVE_TYPE_COLUMN_NUMBER AND RT.ACA_SOURCE_SYSTEM_ID = (SELECT ACA_SOURCE_SYSTEM_ID FROM {{ ref('DBSHIFT', 'ACA_SOURCE_SYSTEM') }} WHERE SOURCE_SYSTEM = 'GB')
+        name: ACA_EXPERIENCE_TRANSACTION_STAGING_GB
+        noLinkRefs: []
+  name: ACA_EXPERIENCE_TRANSACTION_STAGING_GB
+  overrideSQL: false
+  schema: DBO
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

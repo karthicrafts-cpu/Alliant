@@ -1,0 +1,298 @@
+fileVersion: 1
+id: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+name: V_TEMP_EXPERIENCE_MEASURE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3a73c4d9-5f10-41f2-9844-46c55d04dd10
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_TRANSACTION_EXPERIENCE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0f2bda06-a78c-4a7b-a010-3844f2c0b8ac
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.ACA_TRANSACTION_EXPERIENCE_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b1d9893a-826a-4c28-98e3-0d3f82052f95
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: VARCHAR(25)
+        description: ""
+        name: UNIQUE_CLAIM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 673d404e-e11b-43ad-bb3a-d46f3d9b43ed
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.UNIQUE_CLAIM_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 181f21aa-85fc-4226-a979-d3e9c4033b00
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: CHAR(2)
+        description: ""
+        name: CLAIM_COVERAGE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d752c03c-8a03-455b-b9d9-06364175317f
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.CLAIM_COVERAGE_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 77c38c82-1fd3-47a3-ab30-01c37b2d2f2d
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: DATE
+        description: ""
+        name: EXPERIENCE_TRANSACTION_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e0997190-2c70-4f50-96f9-0c58e74a8809
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.EXPERIENCE_TRANSACTION_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c0cf958a-36b6-4ac8-b0a3-3294c643198f
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: INT
+        description: ""
+        name: TRANSACTION_SEQUENCE_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 326d2e67-d86e-4c74-82a8-a6d1c876008b
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.TRANSACTION_SEQUENCE_NUMBER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8d26987e-e5e3-4d7a-b5e1-229d44f8069d
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_AMOUNT1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e5b14c33-8a03-4ab9-992d-90c74d8122c6
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.EXPERIENCE_AMOUNT1
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 93450e18-69eb-43f1-b1e6-231a5c68b757
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_AMOUNT2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e34f0d6e-9243-4b68-8a8b-1e5f8f87e220
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.EXPERIENCE_AMOUNT2
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d744f4ac-4bb9-450f-90e8-0b53d86f7b11
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_AMOUNT3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 97fdd745-f09d-4bd9-9ba3-81b0a70195ae
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.EXPERIENCE_AMOUNT3
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1e1c390a-a070-4966-834c-687f8934ab2d
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_AMOUNT4
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8b671a7d-b4b1-4f7f-8d9e-13e2f9f1de9e
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.EXPERIENCE_AMOUNT4
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e827d0b7-6b08-4e89-994c-e87a2ac16d64
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_AMOUNT5
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3bb467cd-d3ba-44f2-9852-671c2672e811
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.EXPERIENCE_AMOUNT5
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 671b29a2-a9b0-4660-8488-8742544a053c
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_AMOUNT6
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 9eb915d5-827a-4299-8bd2-65825a0a38b2
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.EXPERIENCE_AMOUNT6
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 636e0539-74e9-467b-b8df-9c024d9c0542
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_CHANGE_AMOUNT1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e216694e-7b75-4fc1-a1e4-8422119139d6
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.EXPERIENCE_CHANGE_AMOUNT1
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f2852267-33d7-4467-b873-455f3be4d50d
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_CHANGE_AMOUNT2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e01a6b0c-a9a3-4877-ab01-44755a5b1285
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.EXPERIENCE_CHANGE_AMOUNT2
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b1d54ab9-99c9-4822-a9b0-bd9469e38f12
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_CHANGE_AMOUNT3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 322c34d3-0667-4228-b99b-44bbab772f4f
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.EXPERIENCE_CHANGE_AMOUNT3
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 971340a6-5381-424a-ae9c-097c36a4959a
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_CHANGE_AMOUNT4
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0f28e21a-e87a-40ad-be14-1e56bda190fc
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.EXPERIENCE_CHANGE_AMOUNT4
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 423b0d4c-0c17-48f8-b325-1ffefef5b46e
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_CHANGE_AMOUNT5
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b45ef1dd-18d4-42b7-8495-2ac0f2307521
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.EXPERIENCE_CHANGE_AMOUNT5
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d199d75b-5136-4071-884f-e25f8287d3e5
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_CHANGE_AMOUNT6
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 1541094f-4886-444f-bc98-963e1467a840
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.EXPERIENCE_CHANGE_AMOUNT6
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a6f1a84f-a0e2-411a-ac5d-22fc149e6f96
+          stepCounter: 5e62f4c9-f10f-48d1-949e-f78a846c4295
+        config: {}
+        dataType: BOOLEAN
+        description: ""
+        name: IS_EXISTING
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e8c627b0-c081-4251-9e8a-e5788e0c839f
+                stepCounter: 59711677-1c64-445a-94a8-9d41334c2edc
+            transform: U.IS_EXISTING
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DBSHIFT
+            nodeName: V_TEMP_EXPERIENCE_MEASURE_NEW
+          - locationName: DBSHIFT
+            nodeName: V_TEMP_EXPERIENCE_EXISTING
+        join:
+          joinCondition: |
+            FROM (
+              SELECT * FROM {{ ref('DBSHIFT','V_TEMP_EXPERIENCE_MEASURE_NEW') }}
+              UNION ALL
+              SELECT * FROM {{ ref('DBSHIFT','V_TEMP_EXPERIENCE_EXISTING') }}
+            ) U
+        name: V_TEMP_EXPERIENCE_MEASURE
+        noLinkRefs: []
+  name: V_TEMP_EXPERIENCE_MEASURE
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

@@ -1,0 +1,104 @@
+fileVersion: 1
+id: d17df474-1a2d-4179-882d-88f615f0eb1a
+name: V_TEMP_EXPERIENCE_BY_RESERVE_TYPE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c822e118-2e63-4560-8f96-2715b53e414c
+          stepCounter: d17df474-1a2d-4179-882d-88f615f0eb1a
+        config: {}
+        dataType: INT
+        description: ""
+        name: ACA_TRANSACTION_EXPERIENCE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f371f464-9271-468f-9d32-d170f2f36070
+                stepCounter: 5920c78c-0610-47b1-912f-9b04ab64e0a7
+            transform: U.ACA_TRANSACTION_EXPERIENCE_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3e78619d-b4b3-4fcc-9a5c-7b4486665e75
+          stepCounter: d17df474-1a2d-4179-882d-88f615f0eb1a
+        config: {}
+        dataType: CHAR(2)
+        description: ""
+        name: CLAIM_COVERAGE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 16bbca8c-9c71-447a-8f43-305f6b976451
+                stepCounter: 5920c78c-0610-47b1-912f-9b04ab64e0a7
+            transform: U.CLAIM_COVERAGE_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e34eb92f-9c0d-4581-9b6f-402a11b65e99
+          stepCounter: d17df474-1a2d-4179-882d-88f615f0eb1a
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: RESERVE_TYPE_COLUMN_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: U.RESERVE_TYPE_COLUMN_NUMBER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b130e463-b883-42e7-8b5e-4bbab0a430d4
+          stepCounter: d17df474-1a2d-4179-882d-88f615f0eb1a
+        config: {}
+        dataType: NUMERIC(19, 2)
+        description: ""
+        name: EXPERIENCE_AMOUNT_BY_RESERVE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: U.EXPERIENCE_AMOUNT_BY_RESERVE_TYPE
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DBSHIFT
+            nodeName: V_TEMP_EXPERIENCE_DELTA
+        join:
+          joinCondition: |
+            FROM (
+              SELECT ACA_TRANSACTION_EXPERIENCE_ID, CLAIM_COVERAGE_CODE, 'col1' AS RESERVE_TYPE_COLUMN_NUMBER, DELTA_AMOUNT1 AS EXPERIENCE_AMOUNT_BY_RESERVE_TYPE FROM {{ ref('DBSHIFT', 'V_TEMP_EXPERIENCE_DELTA') }} WHERE IS_EXISTING = FALSE AND DELTA_AMOUNT1 <> 0.00
+              UNION ALL
+              SELECT ACA_TRANSACTION_EXPERIENCE_ID, CLAIM_COVERAGE_CODE, 'col2' AS RESERVE_TYPE_COLUMN_NUMBER, DELTA_AMOUNT2 AS EXPERIENCE_AMOUNT_BY_RESERVE_TYPE FROM {{ ref('DBSHIFT', 'V_TEMP_EXPERIENCE_DELTA') }} WHERE IS_EXISTING = FALSE AND DELTA_AMOUNT2 <> 0.00
+              UNION ALL
+              SELECT ACA_TRANSACTION_EXPERIENCE_ID, CLAIM_COVERAGE_CODE, 'col3' AS RESERVE_TYPE_COLUMN_NUMBER, DELTA_AMOUNT3 AS EXPERIENCE_AMOUNT_BY_RESERVE_TYPE FROM {{ ref('DBSHIFT', 'V_TEMP_EXPERIENCE_DELTA') }} WHERE IS_EXISTING = FALSE AND DELTA_AMOUNT3 <> 0.00
+              UNION ALL
+              SELECT ACA_TRANSACTION_EXPERIENCE_ID, CLAIM_COVERAGE_CODE, 'col4' AS RESERVE_TYPE_COLUMN_NUMBER, DELTA_AMOUNT4 AS EXPERIENCE_AMOUNT_BY_RESERVE_TYPE FROM {{ ref('DBSHIFT', 'V_TEMP_EXPERIENCE_DELTA') }} WHERE IS_EXISTING = FALSE AND DELTA_AMOUNT4 <> 0.00
+              UNION ALL
+              SELECT ACA_TRANSACTION_EXPERIENCE_ID, CLAIM_COVERAGE_CODE, 'col5' AS RESERVE_TYPE_COLUMN_NUMBER, DELTA_AMOUNT5 AS EXPERIENCE_AMOUNT_BY_RESERVE_TYPE FROM {{ ref('DBSHIFT', 'V_TEMP_EXPERIENCE_DELTA') }} WHERE IS_EXISTING = FALSE AND DELTA_AMOUNT5 <> 0.00
+              UNION ALL
+              SELECT ACA_TRANSACTION_EXPERIENCE_ID, CLAIM_COVERAGE_CODE, 'col6' AS RESERVE_TYPE_COLUMN_NUMBER, DELTA_AMOUNT6 AS EXPERIENCE_AMOUNT_BY_RESERVE_TYPE FROM {{ ref('DBSHIFT', 'V_TEMP_EXPERIENCE_DELTA') }} WHERE IS_EXISTING = FALSE AND DELTA_AMOUNT6 <> 0.00
+            ) U
+        name: V_TEMP_EXPERIENCE_BY_RESERVE_TYPE
+        noLinkRefs: []
+  name: V_TEMP_EXPERIENCE_BY_RESERVE_TYPE
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node
