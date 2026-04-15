@@ -1,0 +1,176 @@
+fileVersion: 1
+id: 5b4c1a93-8b7a-4c2d-9e6f-1a3b4c5d6e7f
+name: PSTG_SPACA_ACA_PAYEE_STAGING_ESIS_UPDATE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: |-
+      BEGIN
+          USE DATABASE ALLIANT_CLAIMS_ASTRUS_STAGE;
+      
+          UPDATE DBO.ACA_PAYEE_STAGING_ESIS AS p
+          SET
+              payee_encrypted = s.new_payee_encrypted,
+              last_name_encrypted = s.new_last_name_encrypted,
+              first_name_encrypted = s.new_first_name_encrypted,
+              organization_encrypted = s.new_organization_encrypted,
+              address_encrypted = s.new_address_encrypted,
+              irs_tax_identification_number_encrypted = s.new_irs_tax_identification_number_encrypted,
+              mail_to_encrypted = s.new_mail_to_encrypted,
+              mail_to_last_name_encrypted = s.new_mail_to_last_name_encrypted,
+              mail_to_first_name_encrypted = s.new_mail_to_first_name_encrypted,
+              mail_to_organization_encrypted = s.new_mail_to_organization_encrypted,
+              mail_to_address_encrypted = s.new_mail_to_address_encrypted,
+              payee = NULL,
+              last_name = NULL,
+              first_name = NULL,
+              organization = NULL,
+              address = NULL,
+              irs_tax_identification_number = NULL,
+              mail_to = NULL,
+              mail_to_last_name = NULL,
+              mail_to_first_name = NULL,
+              mail_to_organization = NULL,
+              mail_to_address = NULL,
+              aca_irs_form_1099_type_id = s.new_aca_irs_form_1099_type_id,
+              irs_form_1099_type = s.new_irs_form_1099_type,
+              aca_source_system_id = s.new_aca_source_system_id,
+              aca_date_updated = CURRENT_TIMESTAMP(),
+              aca_update_user = 'spaca_aca_payee_staging_esis_update'
+          FROM (
+              SELECT
+                  p_inner.DW_ID, -- ASSUMED PRIMARY KEY
+                  IFNULL(p_inner.payee_encrypted, ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), p_inner.payee, 1, '123')) AS new_payee_encrypted,
+                  IFNULL(p_inner.last_name_encrypted, ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), p_inner.last_name, 1, '123')) AS new_last_name_encrypted,
+                  IFNULL(p_inner.first_name_encrypted, ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), p_inner.first_name, 1, '123')) AS new_first_name_encrypted,
+                  IFNULL(p_inner.organization_encrypted, ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), p_inner.organization, 1, '123')) AS new_organization_encrypted,
+                  IFNULL(p_inner.address_encrypted, ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), p_inner.address, 1, '123')) AS new_address_encrypted,
+                  IFNULL(p_inner.irs_tax_identification_number_encrypted, ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), p_inner.irs_tax_identification_number, 1, '123')) AS new_irs_tax_identification_number_encrypted,
+                  IFNULL(p_inner.mail_to_encrypted, ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), p_inner.mail_to, 1, '123')) AS new_mail_to_encrypted,
+                  IFNULL(p_inner.mail_to_last_name_encrypted, ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), p_inner.mail_to_last_name, 1, '123')) AS new_mail_to_last_name_encrypted,
+                  IFNULL(p_inner.mail_to_first_name_encrypted, ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), p_inner.mail_to_first_name, 1, '123')) AS new_mail_to_first_name_encrypted,
+                  IFNULL(p_inner.mail_to_organization_encrypted, ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), p_inner.mail_to_organization, 1, '123')) AS new_mail_to_organization_encrypted,
+                  IFNULL(p_inner.mail_to_address_encrypted, ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), p_inner.mail_to_address, 1, '123')) AS new_mail_to_address_encrypted,
+                  IFNULL(i.aca_irs_form_1099_type_id, -1) AS new_aca_irs_form_1099_type_id,
+                  i.irs_form_1099_type AS new_irs_form_1099_type,
+                  s.aca_source_system_id AS new_aca_source_system_id
+              FROM DBO.ACA_PAYEE_STAGING_ESIS p_inner
+              LEFT JOIN ALLIANT_CLAIMS_ASTRUS.REF.ACA_IRS_FORM_1099_TYPE AS i ON i.irs_form_1099_type_code = p_inner.irs_form_1099_type_code
+              LEFT JOIN ALLIANT_CLAIMS_ASTRUS.DBO.ACA_SOURCE_SYSTEM AS s ON s.source_system = p_inner.source_system
+          ) AS s
+          WHERE p.DW_ID = s.DW_ID;
+      END
+    testsEnabled: true
+    truncateBefore: false
+  database: ""
+  deployEnabled: true
+  description: "UPDATE-only conversion of spaca_aca_payee_staging_esis_update"
+  isMultisource: false
+  locationName: ALLIANT_CLAIMS_ASTRUS_STAGE_DBO
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d
+          stepCounter: 5b4c1a93-8b7a-4c2d-9e6f-1a3b4c5d6e7f
+        config: {}
+        dataType: VARCHAR(32)
+        description: ""
+        name: DW_ID
+        nullable: true
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e
+          stepCounter: 5b4c1a93-8b7a-4c2d-9e6f-1a3b4c5d6e7f
+        config: {}
+        dataType: NUMBER(10,0)
+        description: ""
+        name: SYSTEM_VERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: "1"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f
+          stepCounter: 5b4c1a93-8b7a-4c2d-9e6f-1a3b4c5d6e7f
+        config: {}
+        dataType: CHAR(1)
+        description: ""
+        name: SYSTEM_CURRENT_FLAG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: "'Y'"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a
+          stepCounter: 5b4c1a93-8b7a-4c2d-9e6f-1a3b4c5d6e7f
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: "CAST(CURRENT_TIMESTAMP AS TIMESTAMP)"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b
+          stepCounter: 5b4c1a93-8b7a-4c2d-9e6f-1a3b4c5d6e7f
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: "CAST(NULL AS TIMESTAMP)"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9a0b1c
+          stepCounter: 5b4c1a93-8b7a-4c2d-9e6f-1a3b4c5d6e7f
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: "CAST(CURRENT_TIMESTAMP AS TIMESTAMP)"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d
+          stepCounter: 5b4c1a93-8b7a-4c2d-9e6f-1a3b4c5d6e7f
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: "CAST(CURRENT_TIMESTAMP AS TIMESTAMP)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping: []
+  name: PSTG_SPACA_ACA_PAYEE_STAGING_ESIS_UPDATE
+  overrideSQL: false
+  schema: ""
+  sqlType: persistentStage
+  type: sql
+  version: 1
+type: Node
