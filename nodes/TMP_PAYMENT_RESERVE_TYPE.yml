@@ -73,8 +73,8 @@ operation:
           - locationName: ALLIANT_CLAIMS_ASTRUS_REF
             nodeName: ACA_RESERVE_TYPE_GB
         join:
-          joinCondition: |-
-FROM {{ ref('ALLIANT_CLAIMS_ASTRUS_DBO', 'TMP_PAYMENT_PIVOT') }} AS T1
+          joinCondition: |
+            FROM {{ ref('ALLIANT_CLAIMS_ASTRUS_DBO', 'TMP_PAYMENT_PIVOT') }} AS T1
             INNER JOIN {{ ref('ALLIANT_CLAIMS_ASTRUS_REF', 'ACA_RESERVE_TYPE_GB') }} AS RT ON T1.CLASS = RT.CLASS_CODE AND T1.RESERVE_TYPE_COLUMN_NUMBER = RT.RESERVE_TYPE_COLUMN_NUMBER
         name: TMP_PAYMENT_RESERVE_TYPE
         noLinkRefs: []
