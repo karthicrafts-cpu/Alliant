@@ -1,0 +1,54 @@
+fileVersion: 1
+id: c8d1fc18-8f6a-49e0-ad83-2c1b2f0a1c1a
+name: ACA_POLICY
+operation:
+  database: ""
+  deployEnabled: true
+  description: ""
+  locationName: ALLIANT_CLAIMS_ASTRUS_DBO
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8ef4ea9c-6b3a-441f-829d-4c311654aeb2
+          stepCounter: c8d1fc18-8f6a-49e0-ad83-2c1b2f0a1c1a
+        config: {}
+        dataType: BINARY(16)
+        defaultValue: ""
+        description: ""
+        name: SOURCE_SYSTEM_POLICY_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d8ac6998-ef43-4f10-bf9e-f05cc51d7c08
+          stepCounter: c8d1fc18-8f6a-49e0-ad83-2c1b2f0a1c1a
+        config: {}
+        dataType: NUMBER(10,0)
+        defaultValue: ""
+        description: ""
+        name: ACA_POLICY_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: ACA_POLICY
+  schema: ""
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node
