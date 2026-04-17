@@ -1,0 +1,149 @@
+fileVersion: 1
+id: ab9f5462-81e5-4f4c-b17f-7cfd6c0a7e18
+name: ACA_CONTROL_PACKAGE_SOURCE_TABLE
+operation:
+  database: ""
+  deployEnabled: true
+  description: ""
+  locationName: ALLIANT_CLAIMS_ASTRUS_STAGE_DBO
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 153d37c8-8df0-4baf-be72-cde0a531cf6d
+          stepCounter: ab9f5462-81e5-4f4c-b17f-7cfd6c0a7e18
+        config: {}
+        dataType: NUMBER(10,0)
+        defaultValue: ""
+        description: ""
+        name: ACA_CONTROL_PACKAGE_SOURCE_TABLE_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 269f8d68-15cd-4df2-a39c-5e47c1abf83c
+          stepCounter: ab9f5462-81e5-4f4c-b17f-7cfd6c0a7e18
+        config: {}
+        dataType: VARCHAR(255)
+        defaultValue: ""
+        description: ""
+        name: DATE_COLUMN
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3b2e5df7-e6f7-4f6e-9824-348bca6128cf
+          stepCounter: ab9f5462-81e5-4f4c-b17f-7cfd6c0a7e18
+        config: {}
+        dataType: VARCHAR(255)
+        defaultValue: ""
+        description: ""
+        name: DATABASE_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4a3b8cd2-d8e2-45e3-82a1-ef9cd0b1c2fa
+          stepCounter: ab9f5462-81e5-4f4c-b17f-7cfd6c0a7e18
+        config: {}
+        dataType: VARCHAR(255)
+        defaultValue: ""
+        description: ""
+        name: SCHEMA_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5dfc8e19-5d41-4c12-a1b9-3b9cd41e57a3
+          stepCounter: ab9f5462-81e5-4f4c-b17f-7cfd6c0a7e18
+        config: {}
+        dataType: VARCHAR(255)
+        defaultValue: ""
+        description: ""
+        name: TABLE_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6c47fa81-2c9e-4eab-9812-7f9a1b8c2d5e
+          stepCounter: ab9f5462-81e5-4f4c-b17f-7cfd6c0a7e18
+        config: {}
+        dataType: VARCHAR(255)
+        defaultValue: ""
+        description: ""
+        name: BACKUP_TABLE_NAME_POSTFIX
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7e9f3b18-8d4e-4f7a-bca9-5a12e3f4b67c
+          stepCounter: ab9f5462-81e5-4f4c-b17f-7cfd6c0a7e18
+        config: {}
+        dataType: NUMBER(10,0)
+        defaultValue: ""
+        description: ""
+        name: SOURCE_GROUP_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: ACA_CONTROL_PACKAGE_SOURCE_TABLE
+  schema: ""
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node
