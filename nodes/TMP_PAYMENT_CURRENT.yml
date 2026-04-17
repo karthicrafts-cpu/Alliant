@@ -1,0 +1,173 @@
+fileVersion: 1
+id: a1d4b9c2-8e5f-4a70-e9d8-f1c2a5b4c8d9
+name: TMP_PAYMENT_CURRENT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: ALLIANT_CLAIMS_ASTRUS_DBO
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f1a2b3c4-d5e6-44c8-c7d8-e9f0a1b2c3d4
+          stepCounter: a1d4b9c2-8e5f-4a70-e9d8-f1c2a5b4c8d9
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: UNIQUE_CLAIM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a1b2c3d4-e5f6-41e8-c7d8-e9f0a1b2c3d4
+                stepCounter: d4a1b9c2-5e8f-4d60-9c3b-e7f1a2d8b5c4
+            transform: "TP.UNIQUE_CLAIM_ID"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a2b3c4d5-e6f7-44c8-c7d8-a1b2c3d4e5f6
+          stepCounter: a1d4b9c2-8e5f-4a70-e9d8-f1c2a5b4c8d9
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: CLAIM_COVERAGE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c5d6e7f8-a9b0-41e8-c7d8-a1b2c3d4e5f6
+                stepCounter: d4a1b9c2-5e8f-4d60-9c3b-e7f1a2d8b5c4
+            transform: "TP.CLAIM_COVERAGE_CODE"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c4d5e6f7-a8b9-44c8-c7d8-e9f0a1b2c3d4
+          stepCounter: a1d4b9c2-8e5f-4a70-e9d8-f1c2a5b4c8d9
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: CLASS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c5d6e7f8-a9b0-41c8-c7d8-a1b2c3d4e5f6
+                stepCounter: e1f4a9b2-6c3d-4e50-8b7a-d9c2f5b1e8a4
+            transform: "ACC.CLASS"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e6f7a8b9-c0d1-44c8-c7d8-a1b2c3d4e5f6
+          stepCounter: a1d4b9c2-8e5f-4a70-e9d8-f1c2a5b4c8d9
+        config: {}
+        dataType: NUMBER(19,4)
+        description: ""
+        name: RESERVE_AMT1
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e1f2a3b4-c5d6-41e8-c7d8-e9f0a1b2c3d4
+                stepCounter: d4a1b9c2-5e8f-4d60-9c3b-e7f1a2d8b5c4
+            transform: "SUM(TP.RESERVE_AMT1)"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b2c3d4e5-f6a7-44c8-c7d8-e9f0a1b2c3d4
+          stepCounter: a1d4b9c2-8e5f-4a70-e9d8-f1c2a5b4c8d9
+        config: {}
+        dataType: NUMBER(19,4)
+        description: ""
+        name: RESERVE_AMT2
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b1c2d3e4-f5a6-41e8-c7d8-a1b2c3d4e5f6
+                stepCounter: d4a1b9c2-5e8f-4d60-9c3b-e7f1a2d8b5c4
+            transform: "SUM(TP.RESERVE_AMT2)"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d4e5f6a7-b8c9-44c8-c7d8-a1b2c3d4e5f6
+          stepCounter: a1d4b9c2-8e5f-4a70-e9d8-f1c2a5b4c8d9
+        config: {}
+        dataType: NUMBER(19,4)
+        description: ""
+        name: RESERVE_AMT3
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: d5e6f7a8-b9c0-41e8-c7d8-e9f0a1b2c3d4
+                stepCounter: d4a1b9c2-5e8f-4d60-9c3b-e7f1a2d8b5c4
+            transform: "SUM(TP.RESERVE_AMT3)"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f6a7b8c9-d0e1-44c8-c7d8-e9f0a1b2c3d4
+          stepCounter: a1d4b9c2-8e5f-4a70-e9d8-f1c2a5b4c8d9
+        config: {}
+        dataType: NUMBER(19,4)
+        description: ""
+        name: RESERVE_AMT4
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f1a2b3c4-d5e6-41e8-c7d8-a1b2c3d4e5f6
+                stepCounter: d4a1b9c2-5e8f-4d60-9c3b-e7f1a2d8b5c4
+            transform: "SUM(TP.RESERVE_AMT4)"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a1b2c3d4-e5f6-44d8-c7d8-a1b2c3d4e5f6
+          stepCounter: a1d4b9c2-8e5f-4a70-e9d8-f1c2a5b4c8d9
+        config: {}
+        dataType: NUMBER(19,4)
+        description: ""
+        name: RESERVE_AMT5
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a2b3c4d5-e6f7-41e8-c7d8-e9f0a1b2c3d4
+                stepCounter: d4a1b9c2-5e8f-4d60-9c3b-e7f1a2d8b5c4
+            transform: "SUM(TP.RESERVE_AMT5)"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c5d6e7f8-a9b0-44d8-c7d8-e9f0a1b2c3d4
+          stepCounter: a1d4b9c2-8e5f-4a70-e9d8-f1c2a5b4c8d9
+        config: {}
+        dataType: NUMBER(19,4)
+        description: ""
+        name: RESERVE_AMT6
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c4d5e6f7-a8b9-41e8-c7d8-a1b2c3d4e5f6
+                stepCounter: d4a1b9c2-5e8f-4d60-9c3b-e7f1a2d8b5c4
+            transform: "SUM(TP.RESERVE_AMT6)"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          TP: TP
+          ACC: ACC
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: ALLIANT_CLAIMS_ASTRUS_DBO
+            nodeName: ACA_TRANSACTION_PAYMENT
+          - locationName: ALLIANT_CLAIMS_ASTRUS_REF
+            nodeName: ACA_COVERAGE_CODE
+        join:
+          joinCondition: |-
+            FROM {{ ref('ALLIANT_CLAIMS_ASTRUS_DBO', 'ACA_TRANSACTION_PAYMENT') }} AS TP
+            LEFT OUTER JOIN {{ ref('ALLIANT_CLAIMS_ASTRUS_REF', 'ACA_COVERAGE_CODE') }} AS ACC ON TP.CLAIM_COVERAGE_CODE = ACC.CODE
+            WHERE TP.PAYMENT_TRANSACTION_DATE <= {{ parameters.TransDate }}
+            GROUP BY TP.UNIQUE_CLAIM_ID, TP.CLAIM_COVERAGE_CODE, ACC.CLASS
+        name: TMP_PAYMENT_CURRENT
+        noLinkRefs: []
+  name: TMP_PAYMENT_CURRENT
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

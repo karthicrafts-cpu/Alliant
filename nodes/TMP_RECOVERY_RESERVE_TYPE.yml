@@ -1,0 +1,87 @@
+fileVersion: 1
+id: c5d6e7f8-a9b0-4d30-c7b8-a1b2c3d4e5f6
+name: TMP_RECOVERY_RESERVE_TYPE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: ALLIANT_CLAIMS_ASTRUS_DBO
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e1f2a3b4-c5d6-45b8-c7d8-e9f0a1b2c3d4
+          stepCounter: c5d6e7f8-a9b0-4d30-c7b8-a1b2c3d4e5f6
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: UNIQUE_CLAIM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c5d6e7f8-a9b0-45a8-c7d8-a1b2c3d4e5f6
+                stepCounter: a1b2c3d4-e5f6-4d30-c7b8-e9f0a1b2c3d4
+            transform: "T1.UNIQUE_CLAIM_ID"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b1c2d3e4-f5a6-45b8-c7d8-a1b2c3d4e5f6
+          stepCounter: c5d6e7f8-a9b0-4d30-c7b8-a1b2c3d4e5f6
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: RESERVE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e1f2a3b4-c5d6-41d8-c7d8-e9f0a1b2c3d4
+                stepCounter: b6d2e5f1-4a9c-4e30-8d7b-a1c9f2b8e4d5
+            transform: "RT.RESERVE_TYPE"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d5e6f7a8-b9c0-45b8-c7d8-e9f0a1b2c3d4
+          stepCounter: c5d6e7f8-a9b0-4d30-c7b8-a1b2c3d4e5f6
+        config: {}
+        dataType: NUMBER(19,4)
+        description: ""
+        name: RECOVERY_AMOUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e1f2a3b4-c5d6-45a8-c7d8-e9f0a1b2c3d4
+                stepCounter: a1b2c3d4-e5f6-4d30-c7b8-e9f0a1b2c3d4
+            transform: "T1.RECOVERY_AMOUNT"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          T1: T1
+          RT: RT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: ALLIANT_CLAIMS_ASTRUS_DBO
+            nodeName: TMP_RECOVERY_PIVOT
+          - locationName: ALLIANT_CLAIMS_ASTRUS_REF
+            nodeName: ACA_RESERVE_TYPE_GB
+        join:
+          joinCondition: |-
+            FROM {{ ref('ALLIANT_CLAIMS_ASTRUS_DBO', 'TMP_RECOVERY_PIVOT') }} AS T1
+            INNER JOIN {{ ref('ALLIANT_CLAIMS_ASTRUS_REF', 'ACA_RESERVE_TYPE_GB') }} AS RT ON T1.CLASS = RT.CLASS_CODE AND T1.RESERVE_TYPE_COLUMN_NUMBER = RT.RESERVE_TYPE_COLUMN_NUMBER
+        name: TMP_RECOVERY_RESERVE_TYPE
+        noLinkRefs: []
+  name: TMP_RECOVERY_RESERVE_TYPE
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

@@ -1,0 +1,108 @@
+fileVersion: 1
+id: a1b2c3d4-e5f6-4d30-c7b8-e9f0a1b2c3d4
+name: TMP_RECOVERY_PIVOT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: ALLIANT_CLAIMS_ASTRUS_DBO
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c5d6e7f8-a9b0-45a8-c7d8-a1b2c3d4e5f6
+          stepCounter: a1b2c3d4-e5f6-4d30-c7b8-e9f0a1b2c3d4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: UNIQUE_CLAIM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a1b2c3d4-e5f6-44f8-c7d8-e9f0a1b2c3d4
+                stepCounter: f6a7b8c9-d0e1-4d30-c7b8-a1b2c3d4e5f6
+            transform: "U.UNIQUE_CLAIM_ID"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e1f2a3b4-c5d6-45a8-c7d8-e9f0a1b2c3d4
+          stepCounter: a1b2c3d4-e5f6-4d30-c7b8-e9f0a1b2c3d4
+        config: {}
+        dataType: NUMBER(19,4)
+        description: ""
+        name: RECOVERY_AMOUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "U.RECOVERY_AMOUNT"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b1c2d3e4-f5a6-45a8-c7d8-a1b2c3d4e5f6
+          stepCounter: a1b2c3d4-e5f6-4d30-c7b8-e9f0a1b2c3d4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: CLAIM_COVERAGE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c5d6e7f8-a9b0-44f8-c7d8-a1b2c3d4e5f6
+                stepCounter: f6a7b8c9-d0e1-4d30-c7b8-a1b2c3d4e5f6
+            transform: "U.CLAIM_COVERAGE_CODE"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d5e6f7a8-b9c0-45a8-c7d8-e9f0a1b2c3d4
+          stepCounter: a1b2c3d4-e5f6-4d30-c7b8-e9f0a1b2c3d4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: CLASS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e1f2a3b4-c5d6-44f8-c7d8-e9f0a1b2c3d4
+                stepCounter: f6a7b8c9-d0e1-4d30-c7b8-a1b2c3d4e5f6
+            transform: "U.CLASS"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f1a2b3c4-d5e6-45a8-c7d8-a1b2c3d4e5f6
+          stepCounter: a1b2c3d4-e5f6-4d30-c7b8-e9f0a1b2c3d4
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: RESERVE_TYPE_COLUMN_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "CASE WHEN U.REC_COLUMN = 'RECOVERY_AMOUNT1' THEN 'col1' WHEN U.REC_COLUMN = 'RECOVERY_AMOUNT2' THEN 'col2' WHEN U.REC_COLUMN = 'RECOVERY_AMOUNT3' THEN 'col3' WHEN U.REC_COLUMN = 'RECOVERY_AMOUNT4' THEN 'col4' WHEN U.REC_COLUMN = 'RECOVERY_AMOUNT5' THEN 'col5' ELSE 'col6' END"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          TE: TE
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: ALLIANT_CLAIMS_ASTRUS_DBO
+            nodeName: TMP_RECOVERY_CURRENT
+        join:
+          joinCondition: |-
+            FROM {{ ref('ALLIANT_CLAIMS_ASTRUS_DBO', 'TMP_RECOVERY_CURRENT') }} AS TE
+            UNPIVOT ( RECOVERY_AMOUNT FOR REC_COLUMN IN (RECOVERY_AMOUNT1, RECOVERY_AMOUNT2, RECOVERY_AMOUNT3, RECOVERY_AMOUNT4, RECOVERY_AMOUNT5, RECOVERY_AMOUNT6) ) U
+        name: TMP_RECOVERY_PIVOT
+        noLinkRefs: []
+  name: TMP_RECOVERY_PIVOT
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

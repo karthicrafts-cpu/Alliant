@@ -1,0 +1,64 @@
+fileVersion: 1
+id: b6d2e5f1-4a9c-4e30-8d7b-a1c9f2b8e4d5
+name: ACA_RESERVE_TYPE_GB
+operation:
+  database: ""
+  deployEnabled: true
+  description: ""
+  locationName: ALLIANT_CLAIMS_ASTRUS_REF
+  metadata:
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a1b2c3d4-e5f6-41d8-c7d8-e9f0a1b2c3d4
+          stepCounter: b6d2e5f1-4a9c-4e30-8d7b-a1c9f2b8e4d5
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: CLASS_CODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c5d6e7f8-a9b0-41d8-c7d8-a1b2c3d4e5f6
+          stepCounter: b6d2e5f1-4a9c-4e30-8d7b-a1c9f2b8e4d5
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: RESERVE_TYPE_COLUMN_NUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e1f2a3b4-c5d6-41d8-c7d8-e9f0a1b2c3d4
+          stepCounter: b6d2e5f1-4a9c-4e30-8d7b-a1c9f2b8e4d5
+        config: {}
+        dataType: VARCHAR(16777216)
+        defaultValue: ""
+        description: ""
+        name: RESERVE_TYPE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: ACA_RESERVE_TYPE_GB
+  schema: ""
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node

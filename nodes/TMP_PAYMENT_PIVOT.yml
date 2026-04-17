@@ -1,0 +1,108 @@
+fileVersion: 1
+id: b9c2a1d4-5e8f-4d60-f1e9-c2d5b4a8c7d9
+name: TMP_PAYMENT_PIVOT
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: ALLIANT_CLAIMS_ASTRUS_DBO
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e1f2a3b4-c5d6-44d8-c7d8-a1b2c3d4e5f6
+          stepCounter: b9c2a1d4-5e8f-4d60-f1e9-c2d5b4a8c7d9
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: UNIQUE_CLAIM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f1a2b3c4-d5e6-44c8-c7d8-e9f0a1b2c3d4
+                stepCounter: a1d4b9c2-8e5f-4a70-e9d8-f1c2a5b4c8d9
+            transform: "U.UNIQUE_CLAIM_ID"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b1c2d3e4-f5a6-44d8-c7d8-e9f0a1b2c3d4
+          stepCounter: b9c2a1d4-5e8f-4d60-f1e9-c2d5b4a8c7d9
+        config: {}
+        dataType: NUMBER(19,4)
+        description: ""
+        name: PAYMENT_AMOUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "U.PAYMENT_AMOUNT"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d5e6f7a8-b9c0-44d8-c7d8-a1b2c3d4e5f6
+          stepCounter: b9c2a1d4-5e8f-4d60-f1e9-c2d5b4a8c7d9
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: CLAIM_COVERAGE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a2b3c4d5-e6f7-44c8-c7d8-a1b2c3d4e5f6
+                stepCounter: a1d4b9c2-8e5f-4a70-e9d8-f1c2a5b4c8d9
+            transform: "U.CLAIM_COVERAGE_CODE"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f1a2b3c4-d5e6-44d8-c7d8-e9f0a1b2c3d4
+          stepCounter: b9c2a1d4-5e8f-4d60-f1e9-c2d5b4a8c7d9
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: CLASS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: c4d5e6f7-a8b9-44c8-c7d8-e9f0a1b2c3d4
+                stepCounter: a1d4b9c2-8e5f-4a70-e9d8-f1c2a5b4c8d9
+            transform: "U.CLASS"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a2b3c4d5-e6f7-44d8-c7d8-a1b2c3d4e5f6
+          stepCounter: b9c2a1d4-5e8f-4d60-f1e9-c2d5b4a8c7d9
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: RESERVE_TYPE_COLUMN_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "CASE WHEN U.PMT_COLUMN = 'RESERVE_AMT1' THEN 'col1' WHEN U.PMT_COLUMN = 'RESERVE_AMT2' THEN 'col2' WHEN U.PMT_COLUMN = 'RESERVE_AMT3' THEN 'col3' WHEN U.PMT_COLUMN = 'RESERVE_AMT4' THEN 'col4' WHEN U.PMT_COLUMN = 'RESERVE_AMT5' THEN 'col5' ELSE 'col6' END"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          PC: PC
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: ALLIANT_CLAIMS_ASTRUS_DBO
+            nodeName: TMP_PAYMENT_CURRENT
+        join:
+          joinCondition: |-
+            FROM {{ ref('ALLIANT_CLAIMS_ASTRUS_DBO', 'TMP_PAYMENT_CURRENT') }} AS PC
+            UNPIVOT ( PAYMENT_AMOUNT FOR PMT_COLUMN IN (RESERVE_AMT1, RESERVE_AMT2, RESERVE_AMT3, RESERVE_AMT4, RESERVE_AMT5, RESERVE_AMT6) ) U
+        name: TMP_PAYMENT_PIVOT
+        noLinkRefs: []
+  name: TMP_PAYMENT_PIVOT
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node
