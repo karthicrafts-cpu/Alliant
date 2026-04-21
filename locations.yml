@@ -1,9 +1,0 @@
-defaultStorageMapping: DBSHIFT
-fileVersion: 1
-locations:
-  - ALLIANT_CLAIMS_ASTRUS_DBO
-  - ALLIANT_CLAIMS_ASTRUS_STAGE_DBO
-  - ALLIANT_ONE_DBO
-  - DBSHIFT
-  - PLANNING_ALLAINT_DBO
-  - TARGET
