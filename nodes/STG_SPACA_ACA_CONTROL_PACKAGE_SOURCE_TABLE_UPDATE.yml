@@ -1,0 +1,78 @@
+fileVersion: 1
+id: 28b7e9c5-1d6a-4f3b-8290-7c5e1a4d6f82
+name: STG_SPACA_ACA_CONTROL_PACKAGE_SOURCE_TABLE_UPDATE
+type: Node
+operation:
+  name: STG_SPACA_ACA_CONTROL_PACKAGE_SOURCE_TABLE_UPDATE
+  type: sql
+  config:
+    insertStrategy: INSERT
+    postSQL: "BEGIN\n    LET proc_name STRING := 'spaca_aca_control_package_source_table_update';\n\
+      \    LET current_timestamp TIMESTAMP_NTZ := CURRENT_TIMESTAMP();\n    LET sourceGroupId\
+      \ INT := {{ parameters.ISOURCEGROUPID }};\n    LET sqlDropStatements STRING;\n\
+      \n    SELECT LISTAGG('DROP TABLE IF EXISTS ' || DATABASE_NAME || '.' || SCHEMA_NAME\
+      \ || '.' || TABLE_NAME || BACKUP_TABLE_NAME_POSTFIX, ';')\n    INTO :sqlDropStatements\n\
+      \    FROM {{ ref_no_link('SRC', 'ACA_CONTROL_PACKAGE_SOURCE_TABLE') }}\n   \
+      \ WHERE BACKED_UP_FLAG = 0 AND SOURCE_GROUP_ID = :sourceGroupId;\n\n    IF (:sqlDropStatements\
+      \ IS NOT NULL) THEN\n        EXECUTE IMMEDIATE :sqlDropStatements;\n    END\
+      \ IF;\n\n    FOR row_var IN (\n        SELECT\n            ACA_CONTROL_PACKAGE_SOURCE_TABLE_ID,\n\
+      \            DATABASE_NAME,\n            SCHEMA_NAME,\n            TABLE_NAME,\n\
+      \            BACKUP_TABLE_NAME_POSTFIX\n        FROM {{ ref_no_link('SRC', 'ACA_CONTROL_PACKAGE_SOURCE_TABLE')\
+      \ }}\n        WHERE BACKED_UP_FLAG = 0 AND SOURCE_GROUP_ID = :sourceGroupId\n\
+      \    )\n    DO\n        BEGIN TRANSACTION;\n\n        LET sqlInsert STRING :=\
+      \ 'CREATE OR REPLACE TABLE ' || row_var.DATABASE_NAME || '.' || row_var.SCHEMA_NAME\
+      \ || '.' || row_var.TABLE_NAME || row_var.BACKUP_TABLE_NAME_POSTFIX || ' AS\
+      \ SELECT * FROM ' || row_var.DATABASE_NAME || '.' || row_var.SCHEMA_NAME ||\
+      \ '.' || row_var.TABLE_NAME;\n        EXECUTE IMMEDIATE :sqlInsert;\n\n    \
+      \    LET backedupRecordCount INT := IFNULL(SQLROWCOUNT, 0);\n\n        UPDATE\
+      \ {{ ref_no_link('SRC', 'ACA_CONTROL_PACKAGE_SOURCE_TABLE') }}\n        SET\n\
+      \            BACKED_UP_FLAG = 1,\n            BACKED_UP_RECORD_COUNT = :backedupRecordCount,\n\
+      \            ACA_DATE_UPDATED = :current_timestamp,\n            ACA_UPDATE_USER\
+      \ = :proc_name\n        WHERE ACA_CONTROL_PACKAGE_SOURCE_TABLE_ID = :row_var.ACA_CONTROL_PACKAGE_SOURCE_TABLE_ID;\n\
+      \n        LET sqlTruncate STRING := 'TRUNCATE TABLE ' || row_var.DATABASE_NAME\
+      \ || '.' || row_var.SCHEMA_NAME || '.' || row_var.TABLE_NAME;\n        EXECUTE\
+      \ IMMEDIATE :sqlTruncate;\n\n        COMMIT;\n    END FOR;\n\nEXCEPTION\n  \
+      \  WHEN OTHER THEN\n        ROLLBACK;\n        RAISE;\nEND;"
+    preSQL: ''
+    testsEnabled: true
+    truncateBefore: true
+  database: ''
+  deployEnabled: true
+  description: ''
+  isMultisource: false
+  locationName: ALLIANT_CLAIMS_ASTRUS_STAGE_DBO
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4d9f1e7b-2a5c-4830-9b6d-1c5e8f2a4b70
+          stepCounter: 28b7e9c5-1d6a-4f3b-8290-7c5e1a4d6f82
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ''
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ''
+        transform: CURRENT_TIMESTAMP()
+    cteString: ''
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ''
+        dependencies:
+          - locationName: ALLIANT_CLAIMS_ASTRUS_STAGE_DBO
+            nodeName: ACA_CONTROL_PACKAGE_SOURCE_TABLE
+        join:
+          joinCondition: FROM {{ ref('ALLIANT_CLAIMS_ASTRUS_STAGE_DBO', 'ACA_CONTROL_PACKAGE_SOURCE_TABLE')
+            }}
+        name: STG_SPACA_ACA_CONTROL_PACKAGE_SOURCE_TABLE_UPDATE
+        noLinkRefs: []
+  overrideSQL: false
+  schema: ''
+  sqlType: Stage
+  version: 1
