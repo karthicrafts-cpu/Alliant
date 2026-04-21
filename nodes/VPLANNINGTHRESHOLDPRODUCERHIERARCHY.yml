@@ -1,0 +1,224 @@
+fileVersion: 1
+id: 59002237-7728-4dd0-97e0-478144ff53e8
+name: VPLANNINGTHRESHOLDPRODUCERHIERARCHY
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: PLANNING_ALLIANT
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d8a848c7-d467-4d64-a690-340263f350c7
+          stepCounter: 59002237-7728-4dd0-97e0-478144ff53e8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PARENTPLANNINGID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 326759c8-0d85-4b10-a292-1264c7402ac3
+                stepCounter: 593b451d-0043-42e5-a342-92e105de6b14
+            transform: PFB.PARENT_PLANNING_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f3a11883-bd3a-4467-a72c-29d3f18b3112
+          stepCounter: 59002237-7728-4dd0-97e0-478144ff53e8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PLANNINGID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b8d4ed0c-6eb2-45e0-b6f1-a1e1b8b6e512
+                stepCounter: 593b451d-0043-42e5-a342-92e105de6b14
+            transform: PFB.PLANNING_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d166299b-d017-48f5-93c0-3f1c8e8749c9
+          stepCounter: 59002237-7728-4dd0-97e0-478144ff53e8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: BROKERNAME
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f72a2e41-001a-47fa-80a5-f7129f121dfc
+                stepCounter: 593b451d-0043-42e5-a342-92e105de6b14
+            transform: PFB.BROKER_NAME
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5f102047-3cf3-48ee-a64e-4e4f514b80b7
+          stepCounter: 59002237-7728-4dd0-97e0-478144ff53e8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: BROKERLOOKUPCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 53c15539-74e9-43c2-a9b0-9c2f6d0a7a35
+                stepCounter: 593b451d-0043-42e5-a342-92e105de6b14
+            transform: PFB.BROKER_LOOKUP_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 31f900a3-3e11-4ebc-9e2c-28c0c45143a2
+          stepCounter: 59002237-7728-4dd0-97e0-478144ff53e8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: PLANNINGALIAS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 2d33453b-e85d-4f18-a62d-96a8479c4a03
+                stepCounter: 593b451d-0043-42e5-a342-92e105de6b14
+            transform: PFB.PLANNING_ALIAS
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ad17502c-38bb-4b95-a4b5-0c9f136e053a
+          stepCounter: 59002237-7728-4dd0-97e0-478144ff53e8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCESYSTEMBROKERLOOKUPCODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e82e051c-2236-4e44-b258-c92da0ed9f01
+                stepCounter: 593b451d-0043-42e5-a342-92e105de6b14
+            transform: PFB.SOURCE_SYSTEM_BROKER_LOOKUP_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 97816bb6-4dfb-402a-a92c-68798e404b9c
+          stepCounter: 59002237-7728-4dd0-97e0-478144ff53e8
+        config: {}
+        dataType: INTEGER
+        description: ""
+        name: BROKERMASTERID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 63866c6b-275d-4c3e-8c7c-48b4847e5b12
+                stepCounter: 593b451d-0043-42e5-a342-92e105de6b14
+            transform: PFB.DW_BROKER_MASTER_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b5719a6d-88b8-4721-a48a-64156543b355
+          stepCounter: 59002237-7728-4dd0-97e0-478144ff53e8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCESYSTEM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: b13c4c96-039c-4ec7-93be-efd727a3f4a3
+                stepCounter: 593b451d-0043-42e5-a342-92e105de6b14
+            transform: PFB.SOURCE_SYSTEM
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e61df1f-13a6-427a-bd0d-c01e52184cd2
+          stepCounter: 59002237-7728-4dd0-97e0-478144ff53e8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: CLIENSTATUSINDICATOR
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 8b0ed695-977d-473d-8e43-1e6462ec54f1
+                stepCounter: 593b451d-0043-42e5-a342-92e105de6b14
+            transform: PFB.BROKER_STATUS_INDICATOR
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d32d0083-05ef-4da3-aa1b-a48eb4642ab6
+          stepCounter: 59002237-7728-4dd0-97e0-478144ff53e8
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: DW_DATE_CREATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: e5566de3-d8ed-4b2a-af90-c08a405367b9
+                stepCounter: 593b451d-0043-42e5-a342-92e105de6b14
+            transform: PFB.DW_DATE_CREATED
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c2e2303c-82da-476c-95b7-7e61882d49fe
+          stepCounter: 59002237-7728-4dd0-97e0-478144ff53e8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: DW_CREATE_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 0f4b51a5-81ef-4299-82fd-7789d970e5b7
+                stepCounter: 593b451d-0043-42e5-a342-92e105de6b14
+            transform: PFB.DW_CREATE_USER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 77f152d5-dd8c-4a11-b1e4-fde7f33d7b32
+          stepCounter: 59002237-7728-4dd0-97e0-478144ff53e8
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: DW_DATE_UPDATED
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a6317c49-2e1d-444a-9e19-33b6807469a5
+                stepCounter: 593b451d-0043-42e5-a342-92e105de6b14
+            transform: PFB.DW_DATE_UPDATED
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 014a51e6-42d4-4841-a068-0857502c40c8
+          stepCounter: 59002237-7728-4dd0-97e0-478144ff53e8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: DW_UPDATE_USER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 3267d30a-6e54-46c5-9273-0490b8f152d5
+                stepCounter: 593b451d-0043-42e5-a342-92e105de6b14
+            transform: PFB.DW_UPDATE_USER
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          PLANNING_FCCS_BROKER: pfb
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DBSHIFT
+            nodeName: PLANNING_FCCS_BROKER
+        join:
+          joinCondition: |-
+            FROM {{ ref('DBSHIFT', 'PLANNING_FCCS_BROKER') }} "pfb"
+            WHERE PFB.CURRENT_FLAG = 'Y'
+        name: VPLANNINGTHRESHOLDPRODUCERHIERARCHY
+        noLinkRefs: []
+  name: VPLANNINGTHRESHOLDPRODUCERHIERARCHY
+  overrideSQL: false
+  schema: DBO
+  sqlType: View
+  type: sql
+  version: 1
+type: Node
