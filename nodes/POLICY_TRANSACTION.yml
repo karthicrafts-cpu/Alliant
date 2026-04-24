@@ -1,0 +1,168 @@
+fileVersion: 1
+id: 56976938-e9f0-4665-b747-9df03d987d27
+name: POLICY_TRANSACTION
+operation:
+  database: ALLIANT_ONE
+  deployEnabled: true
+  description: ""
+  locationName: DBSHIFT
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3a985e93-27c9-44ef-9f93-1dd131065961
+          stepCounter: 56976938-e9f0-4665-b747-9df03d987d27
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: AO_CLAIM_EPIC_CLIENT_LOOKUP_CODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b13045a2-9721-4f36-9b56-3f04494191c9
+          stepCounter: 56976938-e9f0-4665-b747-9df03d987d27
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: AO_CLAIM_EPIC_POLICY_NUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a6114254-8c83-4a6c-9226-e41d8e13d9cc
+          stepCounter: 56976938-e9f0-4665-b747-9df03d987d27
+        config: {}
+        dataType: NUMBER
+        defaultValue: ""
+        description: ""
+        name: POLICY_YEAR
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c02c114f-4d3f-4e1b-b79e-f00e12d44933
+          stepCounter: 56976938-e9f0-4665-b747-9df03d987d27
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: DW_POLICY_NUMBER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 98971fcd-0785-4ef5-b040-60b2dd8c6b12
+          stepCounter: 56976938-e9f0-4665-b747-9df03d987d27
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        name: DW_POLICY_EFFECTIVE_DATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4f44047a-6b22-487e-b7d6-3d60773d12d4
+          stepCounter: 56976938-e9f0-4665-b747-9df03d987d27
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        name: DW_POLICY_EXPIRATION_DATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5eb3f86e-b153-43f1-b95c-f1d279d4793f
+          stepCounter: 56976938-e9f0-4665-b747-9df03d987d27
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: POLICY_IN_EPIC_FLAG
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2d14b434-601e-451e-91c6-302a488e3678
+          stepCounter: 56976938-e9f0-4665-b747-9df03d987d27
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: DW_POLICY_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: POLICY_TRANSACTION
+  schema: RPT
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node
