@@ -1,0 +1,79 @@
+fileVersion: 1
+id: b3c4d5e6-f1a2-4b3c-9d8e-7f6a5b4c3d2e
+name: STG_VCLIENTAUDIT_NOT_IN_SF
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ALLIANT_DW
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c4d5e6f1-a2b3-4c4d-8e7f-6a5b4c3d2e1f
+          stepCounter: b3c4d5e6-f1a2-4b3c-9d8e-7f6a5b4c3d2e
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: CLIENT_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a1b2c3d4-e5f6-4a1b-9c8d-7e6f5a4b3c2d
+                stepCounter: c3e5e4d2-3a9a-4f5e-9a2c-9a1d5e3c1b1a
+            transform: VCLIENT.CLIENT_KEY
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d5e6f1a2-b3c4-4d5e-7f6a-5b4c3d2e1f2a
+          stepCounter: b3c4d5e6-f1a2-4b3c-9d8e-7f6a5b4c3d2e
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: AUDITDESCRIPTION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'Client Not in SF'"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e6f1a2b3-c4d5-4e6f-6a5b-4c3d2e1f2a3b
+          stepCounter: b3c4d5e6-f1a2-4b3c-9d8e-7f6a5b4c3d2e
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: AUDITID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "2"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          VCLIENT: VCLIENT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DBSHIFT
+            nodeName: VCLIENT
+        join:
+          joinCondition: FROM {{ ref('DBSHIFT', 'VCLIENT') }} "VCLIENT"
+            WHERE VCLIENT.INSFACCOUNTFLAG = 'N'
+        name: STG_VCLIENTAUDIT_NOT_IN_SF
+        noLinkRefs: []
+  name: STG_VCLIENTAUDIT_NOT_IN_SF
+  overrideSQL: false
+  schema: STAGING
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

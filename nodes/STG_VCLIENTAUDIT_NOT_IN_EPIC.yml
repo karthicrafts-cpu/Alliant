@@ -1,0 +1,79 @@
+fileVersion: 1
+id: d4e5f6a1-b2c3-4d5e-8f9a-0b1c2d3e4f5a
+name: STG_VCLIENTAUDIT_NOT_IN_EPIC
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ALLIANT_DW
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: DBSHIFT
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e5f6a1b2-c3d4-4e5f-9a0b-1c2d3e4f5a6b
+          stepCounter: d4e5f6a1-b2c3-4d5e-8f9a-0b1c2d3e4f5a
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: CLIENT_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: a1b2c3d4-e5f6-4a1b-9c8d-7e6f5a4b3c2d
+                stepCounter: c3e5e4d2-3a9a-4f5e-9a2c-9a1d5e3c1b1a
+            transform: VCLIENT.CLIENT_KEY
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f6a1b2c3-d4e5-4f6a-0b1c-2d3e4f5a6b7c
+          stepCounter: d4e5f6a1-b2c3-4d5e-8f9a-0b1c2d3e4f5a
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: AUDITDESCRIPTION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'Client Not in EPIC'"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a1b2c3d4-e5f6-4a7b-b1c2-d3e4f5a6b7c8
+          stepCounter: d4e5f6a1-b2c3-4d5e-8f9a-0b1c2d3e4f5a
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: AUDITID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "1"
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases:
+          VCLIENT: VCLIENT
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: DBSHIFT
+            nodeName: VCLIENT
+        join:
+          joinCondition: FROM {{ ref('DBSHIFT', 'VCLIENT') }} "VCLIENT"
+            WHERE VCLIENT.CLIENTINEPICFLAG = 'N'
+        name: STG_VCLIENTAUDIT_NOT_IN_EPIC
+        noLinkRefs: []
+  name: STG_VCLIENTAUDIT_NOT_IN_EPIC
+  overrideSQL: false
+  schema: STAGING
+  sqlType: View
+  type: sql
+  version: 1
+type: Node
