@@ -1,0 +1,320 @@
+fileVersion: 1
+id: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+name: AO_DATE
+operation:
+  database: ""
+  deployEnabled: true
+  description: ""
+  locationName: DBSHIFT
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 5e638d2f-48d0-4e3e-8692-a9b0c03c5d6c
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: AO_DATE_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 326f3333-e7f1-479c-b169-d40b4904a434
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        name: FULL_DATE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: bf890ac3-5a0d-45c1-903b-d5a2d65d4b55
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: DAY_NUMBER_OF_WEEK
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 3010b998-0c6a-4b95-a226-f76c5b9f7122
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: DAY_NAME_OF_WEEK
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e875b141-8637-4d1a-8e2b-426c59d9a334
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: DAY_NUMBER_OF_MONTH
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8d2c0b43-426a-4952-b062-113e1645e7f8
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: DAY_NUMBER_OF_YEAR
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 978a3c50-3a21-46ab-8a4b-01edb5d84d72
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: WEEK_NUMBER_OF_YEAR
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: f3a24683-16a1-4383-a75d-3574d754e0c3
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: MONTH_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b577e1aa-f17e-407b-8451-b844f19b2659
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: MONTH_SHORT_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: c79040fe-ffbe-40f4-88d4-f64eb270d473
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: MONTH_NUMBER_OF_YEAR
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f2b23a9-e8da-432d-ae5d-318e47f7b3a0
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: CALENDAR_QUARTER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 327fcc18-8f85-48b8-b48e-d71624b5893d
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: CALENDAR_QUARTER_NAME
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 01511c97-02fa-4da6-b9fd-ba1c002166aa
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: CALENDAR_YEAR_QUARTER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b138c205-d143-4f51-b4f8-4e3a89e00ec2
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: VARCHAR
+        defaultValue: ""
+        description: ""
+        name: CALENDAR_YEAR_MONTH
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a63897b7-58b9-47f1-806d-55615707de6b
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: CALENDAR_YEAR_MONTH_SORT
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b57e8424-6992-4f05-aa5c-512c0cc7675f
+          stepCounter: 546f564f-4d2d-48a5-83e8-8a8b84d436a9
+        config: {}
+        dataType: INT
+        defaultValue: ""
+        description: ""
+        name: CALENDAR_YEAR
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: AO_DATE
+  schema: ""
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node
