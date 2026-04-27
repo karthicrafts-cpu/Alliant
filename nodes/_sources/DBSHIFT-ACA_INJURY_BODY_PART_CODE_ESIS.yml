@@ -1,0 +1,282 @@
+fileVersion: 1
+id: 89ed1367-e3dc-4f81-8df2-750d004047fb
+name: ACA_INJURY_BODY_PART_CODE_ESIS
+operation:
+  database: AUS_DEV_RAW
+  deployEnabled: true
+  description: ""
+  locationName: SRC-ASTRUS
+  metadata:
+    columns:
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 27b779b9-c899-4c48-a9a6-229233f94eb5
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: ACA_INJURY_BODY_PART_CODE_ESIS_ID
+        nullable: false
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 376b14ae-058d-40fc-a102-1dcfec6f3136
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: VARCHAR(6)
+        defaultValue: ""
+        description: ""
+        name: CLNT_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4d5f19ab-d5c4-4113-adb2-ea2f92c34512
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: VARCHAR(2)
+        defaultValue: ""
+        description: ""
+        name: INJURY_GROUP_CODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 73ee0532-290a-4fe7-be29-78826acee149
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: VARCHAR(2)
+        defaultValue: ""
+        description: ""
+        name: INJURY_CODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: true
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 91b6665f-b0c7-4ade-8116-b339ee33b5e5
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: VARCHAR(125)
+        defaultValue: ""
+        description: ""
+        name: INJURY_DESCRIPTION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: b832dfde-e2e1-48ea-966a-5b614744d242
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: VARCHAR(50)
+        defaultValue: ""
+        description: ""
+        name: INJURY_GROUP_DESCRIPTION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: e2544fad-926d-4842-b2c9-5acdd6c798d2
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: VARCHAR(2)
+        defaultValue: ""
+        description: ""
+        name: BODY_PART_CODE
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 4d0f27c9-e50f-47b0-9dbf-de9b50f0c026
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: VARCHAR(50)
+        defaultValue: ""
+        description: ""
+        name: BODY_PART_DESCRIPTION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0febd648-0c95-4810-9081-b40a603230a5
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: VARCHAR(125)
+        defaultValue: ""
+        description: ""
+        name: INJURY_ABBREV_DESCRIPTION
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 8c9802bb-6ff3-4e79-8481-4a2e412e08f4
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: NUMBER(38,0)
+        defaultValue: ""
+        description: ""
+        name: ACA_SOURCE_SYSTEM_ID
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: a0e5e5a0-e963-4c6c-ac68-9351b6ef73e0
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: ACA_DATE_CREATED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 96bd265d-72a3-42d5-8568-68705970cccf
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        name: ACA_CREATE_USER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: d1633ece-92db-4a0d-aff2-ab59abf4c795
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: TIMESTAMP_NTZ(9)
+        defaultValue: ""
+        description: ""
+        name: ACA_DATE_UPDATED
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+      - acceptedValues:
+          strictMatch: true
+          values: []
+        appliedColumnTests: {}
+        columnReference:
+          columnCounter: 2fdb089f-f591-4b00-ae52-bdbddc126833
+          stepCounter: 89ed1367-e3dc-4f81-8df2-750d004047fb
+        config: {}
+        dataType: VARCHAR(100)
+        defaultValue: ""
+        description: ""
+        name: ACA_UPDATE_USER
+        nullable: true
+        primaryKey: false
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+        uniqueKey: false
+  name: ACA_INJURY_BODY_PART_CODE_ESIS
+  schema: SNAPSHOT
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node
