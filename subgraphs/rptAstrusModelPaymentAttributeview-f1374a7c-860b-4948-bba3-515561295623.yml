@@ -1,0 +1,7 @@
+fileVersion: 1
+id: f1374a7c-860b-4948-bba3-515561295623
+name: rpt.AstrusModelPaymentAttribute.view
+steps:
+  - 3c5e0a6d-8b4f-4a3d-9b1c-7e5d3a1b2c3d
+  - f09d2eeb-91b6-492c-bfe1-75121787777a
+type: Subgraph

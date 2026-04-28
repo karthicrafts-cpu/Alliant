@@ -1,0 +1,7 @@
+fileVersion: 1
+id: 4b4548a0-affc-4a20-8a3e-3d43786a123d
+name: rpt.AstrusModelReserveType.view
+steps:
+  - 0e5a840e-54d9-4d6f-87d2-74c05273752e
+  - 85e066da-2109-4a71-b655-b425cf5b192d
+type: Subgraph

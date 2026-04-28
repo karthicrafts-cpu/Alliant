@@ -1,0 +1,192 @@
+fileVersion: 1
+id: 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+name: STG_ACA_RESERVE_TRANSACTION
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Staging table for ACA reserve transactions with filtered columns
+  isMultisource: false
+  locationName: SRC-ASTRUS
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dd296-aa97-7652-a30e-d5b1c14c0641
+          stepCounter: 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_RESERVE_TRANSACTION_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: A.ACA_RESERVE_TRANSACTION_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dd296-aa97-7652-a30e-d9fa5e2489a2
+          stepCounter: 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_CLAIM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: A.ACA_CLAIM_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dd296-aa97-7652-a30e-dd982e3988f9
+          stepCounter: 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_RESERVE_TYPE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: A.ACA_RESERVE_TYPE_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dd296-aa97-7652-a30e-e14c28c4cdf0
+          stepCounter: 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_DATE_ID_TRANSACTION_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: A.ACA_DATE_ID_TRANSACTION_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dd296-aa97-7652-a30e-e750d2850e2e
+          stepCounter: 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+        config: {}
+        dataType: VARCHAR(30)
+        description: ""
+        name: SOURCE_SYSTEM_CLAIM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: A.SOURCE_SYSTEM_CLAIM_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dd296-aa97-7652-a30e-eb9ef351cfa1
+          stepCounter: 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+        config: {}
+        dataType: DATE
+        description: ""
+        name: TRANSACTION_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: A.TRANSACTION_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dd296-aa97-7652-a30e-eea27e31dd0e
+          stepCounter: 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: TRANSACTION_SEQUENCE_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: A.TRANSACTION_SEQUENCE_NUMBER
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dd296-aa97-7652-a30e-f2256c5a3a61
+          stepCounter: 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: PAYMENT_TYPE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: A.PAYMENT_TYPE_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dd296-aa97-7652-a30e-f6434f57b56e
+          stepCounter: 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+        config: {}
+        dataType: VARCHAR(16777216)
+        description: ""
+        name: COVERAGE_GROUP_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: A.COVERAGE_GROUP_CODE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dd296-aa97-7652-a30e-fb1732ecb7a8
+          stepCounter: 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+        config: {}
+        dataType: VARCHAR(16)
+        description: ""
+        name: RESERVE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: A.RESERVE_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dd296-aa97-7652-a30e-fd2d6b13a6e6
+          stepCounter: 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+        config: {}
+        dataType: NUMBER(19,2)
+        description: ""
+        name: RESERVE_AMOUNT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: A.RESERVE_AMOUNT
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dd296-aa97-7652-a30f-031eff481812
+          stepCounter: 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_SOURCE_SYSTEM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: A.ACA_SOURCE_SYSTEM_ID
+    cteString: ""
+    description: ""
+    destinationName: ""
+    enabledColumnTestIDs: []
+    materializationOption: ""
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC-ASTRUS
+            nodeName: ACA_CLAIM
+          - locationName: SRC-ASTRUS
+            nodeName: ACA_RESERVE_TRANSACTION
+        join:
+          joinCondition: |-
+            FROM {{ ref('SRC-ASTRUS', 'ACA_RESERVE_TRANSACTION') }} A
+            INNER JOIN {{ ref('SRC-ASTRUS', 'ACA_CLAIM') }} C
+                ON C.ACA_CLAIM_ID = A.ACA_CLAIM_ID
+            WHERE C.DELETED_FLAG = 'N' OR C.DELETED_FLAG IS NULL
+        name: STG_ACA_RESERVE_TRANSACTION
+        noLinkRefs: []
+  name: STG_ACA_RESERVE_TRANSACTION
+  overrideSQL: false
+  schema: ""
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

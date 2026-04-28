@@ -1,0 +1,568 @@
+fileVersion: 1
+id: 19f6e333-cd2e-472b-b680-e1246073f64e
+name: STG_ACA_CLAIM
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: ""
+  deployEnabled: true
+  description: Staging table for ACA claims with payment transaction structure
+  isMultisource: false
+  locationName: SRC-ASTRUS
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d12-dc499e4d850d
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_PAYMENT_TRANSACTION_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ROW_NUMBER() OVER (ORDER BY C.ACA_CLAIM_ID ASC, M.ACA_RESERVE_TYPE_ID ASC) + I.ACA_PAYMENT_TRANSACTION_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d12-e1c655fe9a40
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_CLAIM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: C.ACA_CLAIM_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d12-e51e189084c2
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_RESERVE_TYPE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: M.ACA_RESERVE_TYPE_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d12-e8ea77fddbea
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_PAYMENT_ATTRIBUTE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d12-eda90a1b94b9
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_PAYEE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "-1"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d12-f104adbda4f8
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_DATE_ID_TRANSACTION_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(TO_CHAR(C.CLAIM_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d12-f495b711173d
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_DATE_ID_PAYMENT_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(TO_CHAR(C.CLAIM_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d12-f91a41a4737e
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_DATE_ID_PAYMENT_ENTRY_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(TO_CHAR(C.CLAIM_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d12-ff31335bc12f
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_DATE_ID_SERVICE_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(TO_CHAR(C.CLAIM_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-01b46c3b9f74
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_DATE_ID_SERVICE_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(TO_CHAR(C.CLAIM_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-0791ca5a1aba
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_DATE_ID_BENEFIT_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(TO_CHAR(C.CLAIM_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-0a71fc2db8d1
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_DATE_ID_BENEFIT_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(TO_CHAR(C.CLAIM_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-0cbc71997129
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_DATE_ID_SETTLEMENT_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(TO_CHAR(C.CLAIM_DATE, 'YYYYMMDD') AS INT)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-1160530eaaec
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(25)
+        description: ""
+        name: SOURCE_SYSTEM_CLAIM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: C.SOURCE_SYSTEM_CLAIM_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-1699a24f4678
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: DATE
+        description: ""
+        name: TRANSACTION_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: C.CLAIM_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-18d9b7c060c2
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: DATE
+        description: ""
+        name: PAYMENT_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: C.CLAIM_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-1da1b63c6a48
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: DATE
+        description: ""
+        name: PAYMENT_ENTRY_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: C.CLAIM_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-20b8f30f7895
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: DATE
+        description: ""
+        name: SERVICE_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: C.CLAIM_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-2613498cc4b3
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: DATE
+        description: ""
+        name: SERVICE_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: C.CLAIM_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-2a6768ba2b6a
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: DATE
+        description: ""
+        name: BENEFIT_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: C.CLAIM_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-2dc50073aea0
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: DATE
+        description: ""
+        name: BENEFIT_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: C.CLAIM_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-32a46864fbe4
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: DATE
+        description: ""
+        name: SETTLEMENT_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: C.CLAIM_DATE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-35dd72cc5d46
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(4)
+        description: ""
+        name: TRANSACTION_SEQUENCE_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-3a91e903e604
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(16)
+        description: ""
+        name: PAYMENT_CONTROL_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-3f38dedea683
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(10)
+        description: ""
+        name: PAYMENT_CONTROL_NUMBER_CLIENT
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-408c665972f0
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(16)
+        description: ""
+        name: RECIPIENT_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-4431c8ba52a9
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: LOST_WORK_DAYS
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-4a37689c893a
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(30)
+        description: ""
+        name: CHECK_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-4f58de74c680
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: CLIENT_NUMBER_BANK
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-52478cb1ba33
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: BANK_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-555a4dacac5f
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: ACCOUNT_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-5b99a3276a81
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(15)
+        description: ""
+        name: PAYMENT_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-5e384ea5087e
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        name: EXPENSE_PAYMENT_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-625cc010fd3d
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(40)
+        description: ""
+        name: CLIENT_OPTIONAL_PAYMENT_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-66e19557382d
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(5)
+        description: ""
+        name: CLAIM_ADJUSTING_BRANCH_NUMBER
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-6b7821f26118
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(256)
+        description: ""
+        name: PAYMENT_MESSAGE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-6c293d7a4edc
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: PAYMENT_TYPE_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-72fdc7791dcc
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(2)
+        description: ""
+        name: COVERAGE_GROUP_CODE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-75265ca39689
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(16)
+        description: ""
+        name: RESERVE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: M.RESERVE_TYPE
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-7937c41f9000
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMERIC(19,2)
+        description: ""
+        name: PAYMENT_AMOUNT_BY_RESERVE_TYPE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(0.00 AS NUMERIC(19, 2))
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-7df9588ca40e
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: VARCHAR(10)
+        description: ""
+        name: RESERVED_FOR_INTERNAL_USE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "NULL"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 019dcebb-bbbc-76fe-8d13-83734f6d52ed
+          stepCounter: 19f6e333-cd2e-472b-b680-e1246073f64e
+        config: {}
+        dataType: NUMBER(38,0)
+        description: ""
+        name: ACA_SOURCE_SYSTEM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: C.ACA_SOURCE_SYSTEM_ID
+    cteString: ""
+    description: ""
+    destinationName: ""
+    enabledColumnTestIDs: []
+    materializationOption: ""
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC-ASTRUS
+            nodeName: ACA_CLAIM
+          - locationName: SRC-ASTRUS
+            nodeName: ACA_PAYMENT_TRANSACTION
+          - locationName: SRC-ASTRUS
+            nodeName: ACA_RESERVE_TYPE
+        join:
+          joinCondition: |-
+            FROM {{ ref('SRC-ASTRUS', 'ACA_CLAIM') }} C
+            INNER JOIN (
+                SELECT ACA_RESERVE_TYPE_ID, 
+                       ACA_SOURCE_SYSTEM_ID, 
+                       COALESCE(RESERVE_TYPE, TRANSACTION_GROUP) AS RESERVE_TYPE
+                FROM {{ ref('SRC-ASTRUS', 'ACA_RESERVE_TYPE') }} 
+                GROUP BY ACA_RESERVE_TYPE_ID, ACA_SOURCE_SYSTEM_ID, COALESCE(RESERVE_TYPE, TRANSACTION_GROUP)
+            ) M
+                ON M.ACA_SOURCE_SYSTEM_ID = C.ACA_SOURCE_SYSTEM_ID
+            LEFT JOIN {{ ref('SRC-ASTRUS', 'ACA_PAYMENT_TRANSACTION') }} T
+                ON T.ACA_CLAIM_ID = C.ACA_CLAIM_ID
+                AND T.ACA_RESERVE_TYPE_ID = M.ACA_RESERVE_TYPE_ID
+            CROSS JOIN (
+                SELECT MAX(ACA_PAYMENT_TRANSACTION_ID) AS ACA_PAYMENT_TRANSACTION_ID
+                FROM {{ ref('SRC-ASTRUS', 'ACA_PAYMENT_TRANSACTION') }}
+            ) I
+            WHERE T.ACA_CLAIM_ID IS NULL 
+              AND (C.DELETED_FLAG = 'N' OR C.DELETED_FLAG IS NULL)
+        name: STG_ACA_CLAIM
+        noLinkRefs: []
+  name: STG_ACA_CLAIM
+  overrideSQL: false
+  schema: ""
+  sqlType: Stage
+  type: sql
+  version: 1
+type: Node

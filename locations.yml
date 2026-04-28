@@ -1,3 +1,10 @@
-defaultStorageMapping: null
+defaultStorageMapping: SRC-ASTRUS
 fileVersion: 1
-locations: []
+locations:
+  - ASTRUS-CURATED
+  - ASTRUS-PRESENTATION
+  - ASTRUS-REFINED
+  - SRC-ADF_TMP
+  - SRC-ASTRUS
+  - SRC-CLAIMS
+  - TARGET

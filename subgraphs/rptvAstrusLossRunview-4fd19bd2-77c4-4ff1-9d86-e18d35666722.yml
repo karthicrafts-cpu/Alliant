@@ -1,0 +1,7 @@
+fileVersion: 1
+id: 4fd19bd2-77c4-4ff1-9d86-e18d35666722
+name: rpt.vAstrusLossRun.view
+steps:
+  - 5c851c5f-3957-4148-bd03-8d693b484553
+  - f982e8f3-aa2b-4053-b7ba-c9a67b889352
+type: Subgraph

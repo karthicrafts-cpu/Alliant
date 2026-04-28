@@ -1,0 +1,67 @@
+fileVersion: 1
+id: 8d0e1f2a-5f6a-4h4i-c1d2-e3f4a5b6c7d8
+name: ASTRUSMODELSOURCESYSTEM
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: ""
+    testsEnabled: true
+    truncateBefore: true
+  database: AUS_DEV_PRESENTATION
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: ASTRUS-PRESENTATION
+  materializationType: view
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 9e1f2a3b-6a7b-4i5j-d2e3-f4a5b6c7d8e9
+          stepCounter: 8d0e1f2a-5f6a-4h4i-c1d2-e3f4a5b6c7d8
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: ACA_SOURCE_SYSTEM_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: f2349008-be48-46be-a762-3c2764fcef5f
+                stepCounter: b293bb9b-831d-4924-bc38-f96b8203914d
+            transform: ACA_SOURCE_SYSTEM.ACA_SOURCE_SYSTEM_ID
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 0f2a3b4c-7b8c-4j6k-e3f4-a5b6c7d8e9f0
+          stepCounter: 8d0e1f2a-5f6a-4h4i-c1d2-e3f4a5b6c7d8
+        config: {}
+        dataType: VARCHAR
+        description: ""
+        name: SOURCE_SYSTEM
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences:
+              - columnCounter: 7f3aa24e-9dbe-41ea-a95f-8ab80fe5a409
+                stepCounter: b293bb9b-831d-4924-bc38-f96b8203914d
+            transform: ACA_SOURCE_SYSTEM.SOURCE_SYSTEM
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        customSQL:
+          customSQL: ""
+        dependencies:
+          - locationName: SRC-ASTRUS
+            nodeName: ACA_SOURCE_SYSTEM
+        join:
+          joinCondition: FROM {{ ref('SRC-ASTRUS', 'ACA_SOURCE_SYSTEM') }} "ACA_SOURCE_SYSTEM"
+        name: ASTRUSMODELSOURCESYSTEM
+        noLinkRefs: []
+  name: ASTRUSMODELSOURCESYSTEM
+  overrideSQL: false
+  schema: ASTRUS
+  sqlType: View
+  type: sql
+  version: 1
+type: Node

@@ -1,0 +1,10 @@
+fileVersion: 1
+id: e7d7edfd-830c-46fb-9dac-fcd50c80cce4
+name: rpt.AstrusModelReserveTransaction.view
+steps:
+  - 3873c208-fccc-418e-9d6d-957be5dc1e15
+  - 3aeba5a8-8846-43a1-a6ec-d69fd6eef338
+  - 45ad923b-1254-4d98-82ca-223c9e8fb45e
+  - 9eddf21a-b6f7-4040-8e66-6ec1cbbb015c
+  - def7748f-b847-48b8-9b96-a88637f45b33
+type: Subgraph

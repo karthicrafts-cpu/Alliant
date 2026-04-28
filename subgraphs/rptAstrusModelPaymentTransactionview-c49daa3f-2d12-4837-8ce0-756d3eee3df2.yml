@@ -1,0 +1,10 @@
+fileVersion: 1
+id: c49daa3f-2d12-4837-8ce0-756d3eee3df2
+name: rpt.AstrusModelPaymentTransaction.view
+steps:
+  - 118aa9d2-75eb-4905-9156-7553427cf3f8
+  - 19f6e333-cd2e-472b-b680-e1246073f64e
+  - 3873c208-fccc-418e-9d6d-957be5dc1e15
+  - b305b5be-29fe-4eda-94ed-005dc0590bc1
+  - b983f8eb-4ad5-48e6-b859-bb7fc3e3d157
+type: Subgraph
