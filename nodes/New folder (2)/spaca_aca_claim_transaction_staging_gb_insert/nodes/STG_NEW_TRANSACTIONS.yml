@@ -1,0 +1,1022 @@
+fileVersion: 1
+id: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+name: STG_NEW_TRANSACTIONS
+type: Node
+operation:
+  name: STG_NEW_TRANSACTIONS
+  type: sql
+  config:
+    insertStrategy: INSERT
+    postSQL: ''
+    preSQL: ''
+    testsEnabled: true
+    truncateBefore: true
+  database: AUS_DEV_REFINED
+  deployEnabled: true
+  description: ''
+  isMultisource: false
+  locationName: ASTRUS-REFINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: b6d41a9e-8f2c-4e5a-3c7d-1e9a8f2b5c4d
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: SOURCE_SYSTEM_CLAIM_ID
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.UNIQUE_CLAIM_ID
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1a9e8f2c-5b7d-4a3e-b6d4-1c9a8f3b5e7a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: BINARY(16)
+      description: ''
+      name: SOURCE_SYSTEM_CLAIMANT_ID
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: IFF(T.CLAIMANT IS NULL, NULL, MD5(TO_JSON(OBJECT_CONSTRUCT('claimant_type', T.CLAIMANT_TYPE, 'ssn', T.CLAIMANT_SSN, 'claimant', T.CLAIMANT))))
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8f2c5b7d-1a9e-4e3a-b6d4-1c8a5f3b9e2a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: BINARY(16)
+      description: ''
+      name: SOURCE_SYSTEM_POLICY_ID
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: MD5(TO_JSON(OBJECT_CONSTRUCT('policy_number', ATC.POLICY_NUMBER30, 'effective_date', TRY_CAST(ATC.POLICY_EFFECTIVE_DATE AS DATE))))
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 3e8f2b9a-1c7d-4a5e-b6d4-1a9e8f2b5c7a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: BINARY(16)
+      description: ''
+      name: SOURCE_SYSTEM_CLAIM_ATTRIBUTE_ID
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: MD5(TO_JSON(OBJECT_CONSTRUCT('claim_status_code', ATC.CLAIM_STATUS, 'reserve_type_code', ATC.RESERVE_TYPE_CODE, 'convert_code', ATC.CONVERT_CODE, 'death_result_code', ATC.DEATH_RESULT_CODE, 'reporting_basis_code', ATC.REPORTING_BASIS_CODE, 'claimant_type_code', ATC.CLAIMANT_NAME_FORMAT, 'workers_compensation_claim_type_code', ATC.WORKERS_COMPENSATION_CLAIMTYPE, 'fraud_indicator_code', ATC.FRAUD_INDICATOR, 'catastrophe_code', ATC.CATASTROPHE_CODE, 'driver_gender', ATC.DRIVER_SEX, 'reporting_unit_type_code', ATC.REPORTING_UNIT_NAME_FORMAT, 'insuit_flag', ATC.INSUIT_FLAG, 'driver_chargeable_flag', ATC.DRIVER_CHARGEABLE_FLAG, 'surgery_flag', ATC.SURGERY_FLAG, 'employer_premises_flag', ATC.EMPLOYER_PREMISES_FLAG, 'number_of_dependents_flag', ATC.NUMBER_OF_DEPENDENTS_FLAG, 'controverted_case_flag', ATC.CONTROVERTED_CASE_FLAG, 'employment_status_flag', ATC.EMPLOYMENT_STATUS_FLAG, 'attorney_authorized_representative_flag', ATC.ATTORNEY_AUTHORIZED_REPRESENTATIVE_FLAG, 'multi_claim_occur_flag',
+          ATC.MULTI_CLAIM_OCCUR_FLAG, 'unemployment_offset_flag', ATC.UNEMPLOYMENT_OFFSET_FLAG, 'full_pay_day_of_injury_flag', ATC.FULL_PAY_DAY_OF_INJURY_FLAG, 'return_to_work_restricted_flag', ATC.RETURN_TO_WORK_RESTRICTED_FLAG, 'claim_ever_controverted_flag', ATC.CLAIM_EVER_CONTROVERTED_FLAG, 'lost_time_case_flag', ATC.LOST_TIME_CASE_FLAG, 'salary_continued_flag', ATC.SALARY_CONTINUED_FLAG, 'other_recovery_potential_flag', ATC.OTHER_RECOVERY_POTENTIAL, 'social_security_offset_flag', ATC.SOCIAL_SECURITY_OFFSET_FLAG, 'pension_offset_flag', ATC.PENSION_OFFSET_FLAG, 'other_offset_flag', ATC.OTHER_OFFSET_FLAG, 'deductible_flag', ATC.DEDUCTIBLE_FLAG, 'degree_of_loss_code', ATC.DEGREE_OF_LOSSFLAG, 'appraised_eligibility_code', ATC.APPRAISED_ELIGIBILITY_FLAG)))
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2b9a1c7d-4a5e-4e3f-b6d4-1c9a8f2b5e7a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: BINARY(16)
+      description: ''
+      name: SOURCE_SYSTEM_ACCIDENT_SOURCE_CODE_ID
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: MD5(TO_JSON(OBJECT_CONSTRUCT('claim_coverage_code', '-1', 'accident_source_code', ATC.ACCIDENT_SOURCE_CODE)))
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1c7d4a5e-b6d4-4e3f-8f2b-9a1c7d4a5e6f
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: DATE
+      description: ''
+      name: SOURCE_SYSTEM_TRANSACTION_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.TRANSACTION_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4a5e8f2b-9a1c-4e3f-b6d4-1c7d4a5e8f2b
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: POLICY_NUMBER
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.POLICY_NUMBER30
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8f2b9a1c-7d4a-4e3f-b6d4-1a5e8f2b9a1c
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: POLICY_EFFECTIVE_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.POLICY_EFFECTIVE_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9a1c7d4a-5e8f-4e3f-b6d4-2b9a1c7d4a5e
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: POLICY_EXPIRATION_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.POLICY_EXPIRATION_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7d4a5e8f-2b9a-4e3f-b6d4-1c7d4a5e8f2b
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: CLAIM_STATUS_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.CLAIM_STATUS
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5e8f2b9a-1c7d-4e3f-b6d4-4a5e8f2b9a1c
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: CLAIM_STATUS
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.CLAIM_STATUS_DESCRIPTION
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2b9a1c7d-4a5e-4f3f-b6d4-8f2b9a1c7d4a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: STATUS_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.STATUS_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1c7d4a5e-8f2b-4e3f-b6d4-9a1c7d4a5e8f
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: REPORTED_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.REPORTED_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4a5e8f2b-9a1c-4f3f-b6d4-7d4a5e8f2b9a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: ACCIDENT_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.ACCIDENT_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8f2b9a1c-7d4a-4f3f-b6d4-5e8f2b9a1c7d
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: ACCIDENT_TYPE_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.ACCIDENT_TYPE_CODE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9a1c7d4a-5e8f-4f3f-b6d4-2b9a1c7d4a5e
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: ACCIDENT_SOURCE_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.ACCIDENT_SOURCE_CODE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7d4a5e8f-2b9a-4f3f-b6d4-1c7d4a5e8f2b
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: ACCIDENT_CITY_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.ACCIDENT_CITY_CODE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5e8f2b9a-1c7d-4f3f-b6d4-4a5e8f2b9a1c
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: ACCIDENT_STATE_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.ACCIDENT_STATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2b9a1c7d-4a5e-5e3f-b6d4-8f2b9a1c7d4a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: ACCIDENT_ZIP_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.ACCIDENT_ZIPCODE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1c7d4a5e-8f2b-5e3f-b6d4-9a1c7d4a5e8f
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: PART_OF_BODY_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.PART_OF_BODY_CODE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4a5e8f2b-9a1c-5e3f-b6d4-7d4a5e8f2b9a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: NATURE_OF_LOSS_CODE_PROPERTY_DAMAGE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.NATURE_OF_LOSS_CODE_PROPERTY_DAMAGE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8f2b9a1c-7d4a-5e3f-b6d4-5e8f2b9a1c7d
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: NATURE_OF_LOSS_CODE_BODILY_INJURY
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.NATURE_OF_LOSS_CODE_BODILY_INJURY
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9a1c7d4a-5e8f-5e3f-b6d4-2b9a1c7d4a5e
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: METHOD_OF_SETTLEMENT_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.METHOD_OF_SETTLEMENT
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7d4a5e8f-2b9a-5e3f-b6d4-1c7d4a5e8f2b
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: NCCI_LOSS_COVERAGE_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.NCCI_LOSS_COVERAGE_CODE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5e8f2b9a-1c7d-5e3f-b6d4-4a5e8f2b9a1c
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(510)
+      description: ''
+      name: DESCRIPTION_OF_LOSS
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: NULLIF(TRIM(CAST(DECRYPTBYKEY(ATC.DESCRIPTION_OF_LOSS_ENCRYPTED, 1, '123') AS VARCHAR(510))), '')
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2b9a1c7d-4a5e-6e3f-b6d4-8f2b9a1c7d4a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: BINARY
+      description: ''
+      name: DESCRIPTION_OF_LOSS_ENCRYPTED
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), CAST(NULLIF(TRIM(CAST(DECRYPTBYKEY(ATC.DESCRIPTION_OF_LOSS_ENCRYPTED, 1, '123') AS VARCHAR(510))), '') AS VARCHAR(500)), 1, '123')
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1c7d4a5e-8f2b-6e3f-b6d4-9a1c7d4a5e8f
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: BENEFIT_JURISDICTION_STATE_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.BENEFIT_JURISDICTION_STATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4a5e8f2b-9a1c-6e3f-b6d4-7d4a5e8f2b9a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: EXPOSURE_STATE_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.EXPOSURE_STATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8f2b9a1c-7d4a-6e3f-b6d4-5e8f2b9a1c7d
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: EXPOSURE_COUNTRY_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.EXPOSURE_COUNTRY
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9a1c7d4a-5e8f-6e3f-b6d4-2b9a1c7d4a5e
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: STATE_CLAIM_NUMBER
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.STATE_CLAIM_NUMBER
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7d4a5e8f-2b9a-6e3f-b6d4-1c7d4a5e8f2b
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: FULL_STATE_CLAIM_NUMBER
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.FULL_STATE_CLAIM_NUMBER
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5e8f2b9a-1c7d-6e3f-b6d4-4a5e8f2b9a1c
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: EMPLOYER_NOTIFICATION_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.EMPLOYER_NOTIFICIATION_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2b9a1c7d-4a5e-7e3f-b6d4-8f2b9a1c7d4a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(510)
+      description: ''
+      name: VEHICLE_IDENTIFICATION_NUMBER
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: NULLIF(TRIM(CAST(DECRYPTBYKEY(ATC.VEHICLE_IDENTIFICATION_NUMBER_ENCRYPTED, 1, '123') AS VARCHAR(510))), '')
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1c7d4a5e-8f2b-7e3f-b6d4-9a1c7d4a5e8f
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: BINARY
+      description: ''
+      name: VEHICLE_IDENTIFICATION_NUMBER_ENCRYPTED
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), CAST(NULLIF(TRIM(CAST(DECRYPTBYKEY(ATC.VEHICLE_IDENTIFICATION_NUMBER_ENCRYPTED, 1, '123') AS VARCHAR(510))), '') AS VARCHAR(34)), 1, '123')
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4a5e8f2b-9a1c-7e3f-b6d4-7d4a5e8f2b9a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: CLAIM_ADJUSTING_BRANCH_NUMBER
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.CLAIM_ADJUSTING_BRANCH_NUMBER
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8f2b9a1c-7d4a-7e3f-b6d4-5e8f2b9a1c7d
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: ADJUSTER_NUMBER
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.ADJUSTER_NUMBER
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9a1c7d4a-5e8f-7e3f-b6d4-2b9a1c7d4a5e
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: NUMBER(10,0)
+      description: ''
+      name: NUMBER_OF_DEPENDENTS
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.NUMBER_OF_DEPENDENTS
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7d4a5e8f-2b9a-7e3f-b6d4-1c7d4a5e8f2b
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(12)
+      description: ''
+      name: CLAIMANT_TYPE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: T.CLAIMANT_TYPE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5e8f2b9a-1c7d-7e3f-b6d4-4a5e8f2b9a1c
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(100)
+      description: ''
+      name: CLAIMANT
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: T.CLAIMANT
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2b9a1c7d-4a5e-8e3f-b6d4-8f2b9a1c7d4a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: BINARY
+      description: ''
+      name: CLAIMANT_ENCRYPTED
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), T.CLAIMANT, 1, '123')
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1c7d4a5e-8f2b-8e3f-b6d4-9a1c7d4a5e8f
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(11)
+      description: ''
+      name: CLAIMANT_SSN
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: T.CLAIMANT_SSN
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4a5e8f2b-9a1c-8e3f-b6d4-7d4a5e8f2b9a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: BINARY
+      description: ''
+      name: CLAIMANT_SSN_ENCRYPTED
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ENCRYPTBYKEY(KEY_GUID('SymmetricKey1'), T.CLAIMANT_SSN, 1, '123')
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8f2b9a1c-7d4a-8e3f-b6d4-5e8f2b9a1c7d
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: EMPLOYEE_LAST_WORK_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.DATE_LAST_WORKED
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9a1c7d4a-5e8f-8e3f-b6d4-2b9a1c7d4a5e
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: NUMBER(19,4)
+      description: ''
+      name: COMPENSATION_RATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.COMPENSATION_RATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7d4a5e8f-2b9a-8e3f-b6d4-1c7d4a5e8f2b
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: NCCI_INJURY_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.NCCI_INJURY_CODE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5e8f2b9a-1c7d-8e3f-b6d4-4a5e8f2b9a1c
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: DISABILITY_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.DISABILITY_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2b9a1c7d-4a5e-9e3f-b6d4-8f2b9a1c7d4a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: RETURN_TO_WORK_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.RETURN_TO_WORK_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1c7d4a5e-8f2b-9e3f-b6d4-9a1c7d4a5e8f
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: MAX_MEDICAL_IMPROVEMENT_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.MAX_MEDICAL_IMPROVEMENT_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4a5e8f2b-9a1c-9e3f-b6d4-7d4a5e8f2b9a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: NUMBER(19,4)
+      description: ''
+      name: POST_INJURY_WEEKLY_WAGE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.POST_INJURY_WEEKLY_WAGE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8f2b9a1c-7d4a-9e3f-b6d4-5e8f2b9a1c7d
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: NUMBER(10,0)
+      description: ''
+      name: PERCENTAGE_OF_IMPAIRMENT
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.PERCENTAGE_OF_IMPAIRMENT
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9a1c7d4a-5e8f-9e3f-b6d4-2b9a1c7d4a5e
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: INSURER_NAME
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.INSURER_NAME
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7d4a5e8f-2b9a-9e3f-b6d4-1c7d4a5e8f2b
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: NUMBER(19,4)
+      description: ''
+      name: OTHER_WEEKLY_PAYMENTS
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.OTHER_WEEKLY_PAYMENTS
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5e8f2b9a-1c7d-9e3f-b6d4-4a5e8f2b9a1c
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: ATTORNEY_DISCLOSURE_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.ATTORNEY_DISCLOSURE_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2b9a1c7d-4a5e-0e3f-b6d4-8f2b9a1c7d4a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: REPORTING_BASIS_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.REPORT_BASIS_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1c7d4a5e-8f2b-0e3f-b6d4-9a1c7d4a5e8f
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: OCCURRENCE_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.OCCURRENCE_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4a5e8f2b-9a1c-0e3f-b6d4-7d4a5e8f2b9a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: MULTI_CLAIM_OCCUR_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.MULTI_CLAIM_OCCUR_CODE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8f2b9a1c-7d4a-0e3f-b6d4-5e8f2b9a1c7d
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: NCCI_METHOD_OF_SETTLEMENT_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.NCCI_METHOD_OF_SETTLEMENT_CODE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9a1c7d4a-5e8f-0e3f-b6d4-2b9a1c7d4a5e
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: LOSS_PROGRAM_NUMBER
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.LOSS_PROGRAM_NUMBER
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7d4a5e8f-2b9a-0e3f-b6d4-1c7d4a5e8f2b
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: DENIAL_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.DENIAL_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5e8f2b9a-1c7d-0e3f-b6d4-4a5e8f2b9a1c
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: NUMBER(19,4)
+      description: ''
+      name: WEEKLY_BENEFIT
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.WEEKLY_BENEFIT
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2b9a1c7d-4a5e-1e3f-b6d4-8f2b9a1c7d4a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: NCCI_TYPE_OF_LOSS_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.NCCI_TYPE_OF_LOSS_FLAG
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1c7d4a5e-8f2b-1e3f-b6d4-9a1c7d4a5e8f
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: NCCI_PPO_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.NCCI_PPO_FLAG
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4a5e8f2b-9a1c-1e3f-b6d4-7d4a5e8f2b9a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: NUMBER(10,0)
+      description: ''
+      name: TOTAL_LOST_WORK_DAYS
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.TOTAL_LOST_WORK_DAYS
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8f2b9a1c-7d4a-1e3f-b6d4-5e8f2b9a1c7d
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: CLIENT_OPTIONAL_CLAIM_CODE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.CLIENT_OPTIONAL_CLAIM_CODES
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9a1c7d4a-5e8f-1e3f-b6d4-2b9a1c7d4a5e
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: NUMBER(10,0)
+      description: ''
+      name: INSURED_VEHICLE_YEAR
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.INSURED_VEHICLE_YEAR
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7d4a5e8f-2b9a-1e3f-b6d4-1c7d4a5e8f2b
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: INSURED_VEHICLE_MAKE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.INSURED_VEHICLE_MAKE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5e8f2b9a-1c7d-1e3f-b6d4-4a5e8f2b9a1c
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: BENEFICIARY_INFORMATION
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.BENEFICIARY_INFORMATION
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2b9a1c7d-4a5e-2e3f-b6d4-8f2b9a1c7d4a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(16777216)
+      description: ''
+      name: REPORTING_UNIT_NUMBER
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.REPORTING_UNIT_NUMBER
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1c7d4a5e-8f2b-2e3f-b6d4-9a1c7d4a5e8f
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: RETURN_TO_WORK_FULL_DUTY_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.RETURN_TO_WORK_FULL_DUTY_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4a5e8f2b-9a1c-2e3f-b6d4-7d4a5e8f2b9a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: RETURN_TO_WORK_RELEASE_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.RETURN_TO_WORK_RELEASE_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8f2b9a1c-7d4a-2e3f-b6d4-5e8f2b9a1c7d
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: REPRESENTATION_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.REPRESENTATION_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9a1c7d4a-5e8f-2e3f-b6d4-2b9a1c7d4a5e
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: SALARY_CONTINUED_START_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.SALARY_CONTINUED_START_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7d4a5e8f-2b9a-2e3f-b6d4-1c7d4a5e8f2b
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: SALARY_CONTINUED_END_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.SALARY_CONTINUED_END_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5e8f2b9a-1c7d-2e3f-b6d4-4a5e8f2b9a1c
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: MEDICAL_TO_INDEMNITY_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.MEDICAL_TO_INDEMNITY_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2b9a1c7d-4a5e-3e3f-b6d4-8f2b9a1c7d4a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: LAST_REVIEW_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ATC.LAST_REVIEW_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1c7d4a5e-8f2b-3e3f-b6d4-9a1c7d4a5e8f
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(2)
+      description: ''
+      name: SOURCE_SYSTEM
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: '''GB'''
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4a5e8f2b-9a1c-3e3f-b6d4-7d4a5e8f2b9a
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: NUMBER(10,0)
+      description: ''
+      name: ACA_SOURCE_SYSTEM_ID
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: (SELECT ACA_SOURCE_SYSTEM_ID FROM {{ ref('SRC-ASTRUS', 'ACA_SOURCE_SYSTEM') }} WHERE SOURCE_SYSTEM = 'GB')
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8f2b9a1c-7d4a-3e3f-b6d4-5e8f2b9a1c7d
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: ACA_DATE_CREATED
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: CURRENT_TIMESTAMP()
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9a1c7d4a-5e8f-3e3f-b6d4-2b9a1c7d4a5e
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(50)
+      description: ''
+      name: ACA_CREATE_USER
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: '''spaca_aca_claim_transaction_staging_gb_insert'''
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7d4a5e8f-2b9a-3e3f-b6d4-1c7d4a5e8f2b
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: ACA_DATE_UPDATED
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: CURRENT_TIMESTAMP()
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5e8f2b9a-1c7d-3e3f-b6d4-4a5e8f2b9a1c
+        stepCounter: 5a8e2b9c-4f7d-4e1a-b6d3-1c9a8f2b5e7a
+      config: {}
+      dataType: VARCHAR(50)
+      description: ''
+      name: ACA_UPDATE_USER
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: '''spaca_aca_claim_transaction_staging_gb_insert'''
+    cteString: ''
+    enabledColumnTestIDs: []
+    sourceMapping:
+    - aliases:
+        T: T
+        ATC: ATC
+      customSQL:
+        customSQL: ''
+      dependencies:
+      - locationName: ASTRUS-REFINED
+        nodeName: TMP_ACA_TRANSACTION_CLAIM
+      - locationName: SRC-ASTRUS
+        nodeName: ACA_TRANSACTION_CLAIM
+      - locationName: SRC-ASTRUS
+        nodeName: ACA_SOURCE_SYSTEM
+      join:
+        joinCondition: 'FROM {{ ref(''ASTRUS-REFINED'', ''TMP_ACA_TRANSACTION_CLAIM'') }} AS T
+
+          INNER JOIN {{ ref(''SRC-ASTRUS'', ''ACA_TRANSACTION_CLAIM'') }} AS ATC ON T.ACA_TRANSACTION_CLAIM_ID = ATC.ACA_TRANSACTION_CLAIM_ID
+
+          WHERE T.ROW_NUM_SEQ = 1'
+      name: STG_NEW_TRANSACTIONS
+      noLinkRefs: []
+  overrideSQL: false
+  schema: ASTRUS
+  sqlType: Stage
+  version: 1

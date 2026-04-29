@@ -1,0 +1,157 @@
+fileVersion: 1
+id: 6c8f4b1e-3a9d-4e5c-7b2a-1f8d9c5b6e4a
+name: TMP_ACA_TRANSACTION_CLAIM
+type: Node
+operation:
+  name: TMP_ACA_TRANSACTION_CLAIM
+  type: sql
+  config:
+    insertStrategy: INSERT
+    postSQL: ''
+    preSQL: ''
+    testsEnabled: true
+    truncateBefore: true
+  database: AUS_DEV_REFINED
+  deployEnabled: true
+  description: ''
+  isMultisource: false
+  locationName: ASTRUS-REFINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 9c2a5e8b-1d7f-4a3c-b6d4-1a9e8f2b5c7a
+        stepCounter: 6c8f4b1e-3a9d-4e5c-7b2a-1f8d9c5b6e4a
+      config: {}
+      dataType: NUMBER(10,0)
+      description: ''
+      name: ACA_TRANSACTION_CLAIM_ID
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: da257386-232c-41c1-b491-9262391dc42e
+          stepCounter: ebd87372-6110-4616-be4f-bbba364a4bc8
+        transform: ATC.ACA_TRANSACTION_CLAIM_ID
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5a8c2e1b-9d7f-4e3a-b6d4-1c9a8f2b5e7a
+        stepCounter: 6c8f4b1e-3a9d-4e5c-7b2a-1f8d9c5b6e4a
+      config: {}
+      dataType: VARCHAR(19)
+      description: ''
+      name: UNIQUE_CLAIM_ID
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: f5808697-bf49-45f3-9ccf-718d1d2c4215
+          stepCounter: ebd87372-6110-4616-be4f-bbba364a4bc8
+        transform: ATC.UNIQUE_CLAIM_ID
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7c2b5e8a-1d9f-4a3e-b6c4-1a9f8d2b5e3a
+        stepCounter: 6c8f4b1e-3a9d-4e5c-7b2a-1f8d9c5b6e4a
+      config: {}
+      dataType: DATE
+      description: ''
+      name: TRANSACTION_DATE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: ecc25542-861b-4b7a-9389-92306943cb13
+          stepCounter: ebd87372-6110-4616-be4f-bbba364a4bc8
+        transform: ATC.TRANSACTION_DATE
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2d5e8a1b-9c7f-4a3e-b6d4-1a9c8f2b5e7a
+        stepCounter: 6c8f4b1e-3a9d-4e5c-7b2a-1f8d9c5b6e4a
+      config: {}
+      dataType: VARCHAR(12)
+      description: ''
+      name: CLAIMANT_TYPE
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: 419c8f9b-1047-4e95-b037-a377e5f1da2e
+          stepCounter: ebd87372-6110-4616-be4f-bbba364a4bc8
+        transform: IFF(ATC.CLAIMANT_NAME_FORMAT = 'I', 'INDIVIDUAL', 'ORGANIZATION')
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: b6d41a9e-8f2c-4e5a-3c7d-1e9a8f2b5c4d
+        stepCounter: 6c8f4b1e-3a9d-4e5c-7b2a-1f8d9c5b6e4a
+      config: {}
+      dataType: VARCHAR(100)
+      description: ''
+      name: CLAIMANT
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: 419c8f9b-1047-4e95-b037-a377e5f1da2e
+          stepCounter: ebd87372-6110-4616-be4f-bbba364a4bc8
+        - columnCounter: 460d6950-1671-4f04-8321-9f825899e323
+          stepCounter: ebd87372-6110-4616-be4f-bbba364a4bc8
+        - columnCounter: 0f488861-64c0-4824-bd88-27ebecb608da
+          stepCounter: ebd87372-6110-4616-be4f-bbba364a4bc8
+        - columnCounter: a3bb1b32-7806-4150-aefe-c05c27449191
+          stepCounter: ebd87372-6110-4616-be4f-bbba364a4bc8
+        transform: "IFF(ATC.CLAIMANT_NAME_FORMAT = 'I',\n\t\t\t\t   NULLIF(TRIM(CONCAT(NULLIF(TRIM(ATC.CLAIMANT_FIRSTNAME), ''),\n\t\t\t\t\t\t\t\t\t\t\t ' ',\n\t\t\t\t\t\t\t\t\t\t\t NULLIF(TRIM(CAST(DECRYPTBYKEY(ATC.CLAIMANT_LASTNAME_ENCRYPTED, 1, '123') AS VARCHAR(510))), ''))), ''),\n\t\t\t\t   NULLIF(TRIM(CAST(DECRYPTBYKEY(ATC.CLAIMANT_ORGANIZATION_NAME_ENCRYPTED, 1, '123') AS VARCHAR(510))), ''))"
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1a9e8f2c-5b7d-4a3e-b6d4-1c9a8f3b5e7a
+        stepCounter: 6c8f4b1e-3a9d-4e5c-7b2a-1f8d9c5b6e4a
+      config: {}
+      dataType: VARCHAR(11)
+      description: ''
+      name: CLAIMANT_SSN
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: 9ae22063-95b3-46a1-9b0a-ba79cf71de6b
+          stepCounter: ebd87372-6110-4616-be4f-bbba364a4bc8
+        transform: NULLIF(TRIM(REPLACE(CAST(DECRYPTBYKEY(ATC.CLAIMANT_SOCIALSECURITYNUMBER_ENCRYPTED, 1, '123') AS VARCHAR(512)), '-', '')), '')
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 8f2c5b7d-1a9e-4e3a-b6d4-1c8a5f3b9e2a
+        stepCounter: 6c8f4b1e-3a9d-4e5c-7b2a-1f8d9c5b6e4a
+      config: {}
+      dataType: NUMBER(10,0)
+      description: ''
+      name: ROW_NUM_SEQ
+      nullable: true
+      sourceColumnReferences:
+      - columnReferences:
+        - columnCounter: f5808697-bf49-45f3-9ccf-718d1d2c4215
+          stepCounter: ebd87372-6110-4616-be4f-bbba364a4bc8
+        - columnCounter: ecc25542-861b-4b7a-9389-92306943cb13
+          stepCounter: ebd87372-6110-4616-be4f-bbba364a4bc8
+        - columnCounter: bf300cd3-52bc-4e72-8fac-adff308a9cf4
+          stepCounter: ebd87372-6110-4616-be4f-bbba364a4bc8
+        - columnCounter: da257386-232c-41c1-b491-9262391dc42e
+          stepCounter: ebd87372-6110-4616-be4f-bbba364a4bc8
+        transform: ROW_NUMBER() OVER (PARTITION BY ATC.UNIQUE_CLAIM_ID, ATC.TRANSACTION_DATE ORDER BY ATC.STATUS_DATE DESC, ATC.ACA_TRANSACTION_CLAIM_ID DESC)
+    cteString: ''
+    enabledColumnTestIDs: []
+    sourceMapping:
+    - aliases:
+        ATC: ATC
+      customSQL:
+        customSQL: ''
+      dependencies:
+      - locationName: SRC-ASTRUS
+        nodeName: ACA_TRANSACTION_CLAIM
+      - locationName: SRC-ASTRUS
+        nodeName: ACA_SOURCE_SYSTEM
+      - locationName: SRC-ASTRUS
+        nodeName: V_ACA_TRANSACTION_DATE_CURRENT
+      - locationName: SRC-ASTRUS
+        nodeName: ACA_CLAIM_TRANSACTION
+      join:
+        joinCondition: "FROM {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_CLAIM') }} AS ATC\nINNER JOIN (\n    SELECT ACA_TRANSACTION_CLAIM_ID, \n           ROW_NUMBER() OVER (PARTITION BY UNIQUE_CLAIM_ID, TRANSACTION_DATE ORDER BY STATUS_DATE DESC, ACA_TRANSACTION_CLAIM_ID DESC) AS ROW_NUM_SEQ\n    FROM {{ ref('ALLIANT_CLref('SRC-ASTRUS', 'ACA_TRANSACTION_CLAIM') }}\n    WHERE ACA_DATE_UPDATED > IFF(COALESCE({{ parameters.IBYPASSDATEFILTERS }}, 0) = 1, '1900-01-01 00:00:00.000'::TIMESTAMP_NTZ, (SELECT COALESCE(MAX(ACA_DATE_UPDATED), '1776-07-04 00:00:00.000'::TIMESTAMP_NTZ) FROM {{ ref('ALLIANT_CLAIMS_ASTRUS_DBO', 'ACA_CLAIM_TRANSACTION') }} WHERE ACA_SOURCE_SYSTEM_ID = (SELECT ACA_SOURCE_SYSTEM_ID FROM {{ ref('SRC-ASTRUS', 'ACA_SOURCE_SYSTEM') }} WHERE SOURCE_SYSTEM = 'GB')))\n    AND TRANSACTION_DATE > IFF(COALESCE({{ parameters.IBYPASSDATEFILTERS }}, 0) = 1, '1900-01-01'::DATE, (SELECT TRANSACTION_DATE FROM {{ ref('SRC-ASTRUS', 'V_ACA_TRANSACTION_DATE_CURRENT') }} WHERE ACA_SOURCE_SYSTEM_ID\
+          \ = (SELECT ACA_SOURCE_SYSTEM_ID FROM {{ ref('ALLIANT_CLref('SRC-ASTRUS', 'ACA_SOURCE_SYSTEM')E_SYSTEM = 'GB')))\n) AS ATC_RNUM ON ATC.ACA_TRANSACTION_CLAIM_ID = ATC_RNUM.ACA_TRANSACTION_CLAIM_ID\nWHERE ATC_RNUM.ROW_NUM_SEQ = 1"
+      name: TMP_ACA_TRANSACTION_CLAIM
+      noLinkRefs: []
+  overrideSQL: false
+  schema: ASTRUS
+  sqlType: Stage
+  version: 1

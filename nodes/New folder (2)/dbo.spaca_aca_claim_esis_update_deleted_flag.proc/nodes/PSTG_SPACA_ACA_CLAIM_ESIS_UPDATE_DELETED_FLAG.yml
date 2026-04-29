@@ -1,0 +1,128 @@
+fileVersion: 1
+id: f78e4d3a-1b5c-4e89-a21b-6d3e4f7a8b9c
+name: PSTG_SPACA_ACA_CLAIM_ESIS_UPDATE_DELETED_FLAG
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ''
+    preSQL: "BEGIN\nUSE DATABASE ALLIANT_CLAIMS_ASTRUS;\n\nUPDATE ALLIANT_CLAIMS_ASTRUS.DBO.ACA_CLAIM AS AC\nSET AC.DELETED_DATE = SOURCE.NEW_DELETED_DATE,\n    AC.DELETED_FLAG = SOURCE.NEW_DELETED_FLAG,\n    AC.ACA_UPDATE_USER = SOURCE.NEW_ACA_UPDATE_USER,\n    AC.ACA_DATE_UPDATED = SOURCE.NEW_ACA_DATE_UPDATED\nFROM (\n    SELECT \n        AC.SOURCE_SYSTEM_CLAIM_ID AS JOIN_KEY_1,\n        AC.ACA_SOURCE_SYSTEM_ID AS JOIN_KEY_2,\n        EDC.DELETE_DATE AS NEW_DELETED_DATE,\n        'Y' AS NEW_DELETED_FLAG,\n        'spaca_aca_claim_esis_update_deleted_flag' AS NEW_ACA_UPDATE_USER,\n        CURRENT_TIMESTAMP() AS NEW_ACA_DATE_UPDATED\n    FROM ALLIANT_CLAIMS_ASTRUS.DBO.ACA_CLAIM AS AC\n    INNER JOIN ALLIANT_CLAIMS_ASTRUS_STAGE.DBO.ACA_DELETED_CLAIM_STAGING_ESIS AS EDC\n        ON AC.SOURCE_SYSTEM_CLAIM_ID = EDC.SOURCE_SYSTEM_CLAIM_ID \n        AND AC.ACA_SOURCE_SYSTEM_ID = EDC.ACA_SOURCE_SYSTEM_ID\n) AS SOURCE\nWHERE AC.SOURCE_SYSTEM_CLAIM_ID = SOURCE.JOIN_KEY_1 \n  AND AC.ACA_SOURCE_SYSTEM_ID\
+      \ = SOURCE.JOIN_KEY_2;\nEND;"
+    testsEnabled: true
+    truncateBefore: false
+  database: AUS_DEV_REFINED
+  deployEnabled: true
+  description: ''
+  isMultisource: false
+  locationName: ASTRUS-REFINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d
+        stepCounter: f78e4d3a-1b5c-4e89-a21b-6d3e4f7a8b9c
+      config: {}
+      dataType: NUMBER(38,0)
+      description: ''
+      name: SURROGATE_KEY
+      nullable: true
+      primaryKey: true
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ''
+      transform: ''
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 2b3c4d5e-6f7a-8b9c-0d1e-2f3a4b5c6d7e
+        stepCounter: f78e4d3a-1b5c-4e89-a21b-6d3e4f7a8b9c
+      config: {}
+      dataType: NUMBER(38,0)
+      description: ''
+      name: SYSTEM_VERSION
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ''
+      transform: '1'
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 3c4d5e6f-7a8b-9c0d-1e2f-3a4b5c6d7e8f
+        stepCounter: f78e4d3a-1b5c-4e89-a21b-6d3e4f7a8b9c
+      config: {}
+      dataType: VARCHAR(1)
+      description: ''
+      name: SYSTEM_CURRENT_FLAG
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ''
+      transform: '''Y'''
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 4d5e6f7a-8b9c-0d1e-2f3a-4b5c6d7e8f9a
+        stepCounter: f78e4d3a-1b5c-4e89-a21b-6d3e4f7a8b9c
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: SYSTEM_START_DATE
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ''
+      transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 5e6f7a8b-9c0d-1e2f-3a4b-5c6d7e8f9a0b
+        stepCounter: f78e4d3a-1b5c-4e89-a21b-6d3e4f7a8b9c
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: SYSTEM_END_DATE
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ''
+      transform: CAST('9999-12-31 00:00:00' AS TIMESTAMP)
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 6f7a8b9c-0d1e-2f3a-4b5c-6d7e8f9a0b1c
+        stepCounter: f78e4d3a-1b5c-4e89-a21b-6d3e4f7a8b9c
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: SYSTEM_CREATE_DATE
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ''
+      transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+    - appliedColumnTests: {}
+      columnReference:
+        columnCounter: 7a8b9c0d-1e2f-3a4b-5c6d-7e8f9a0b1c2d
+        stepCounter: f78e4d3a-1b5c-4e89-a21b-6d3e4f7a8b9c
+      config: {}
+      dataType: TIMESTAMP_NTZ
+      description: ''
+      name: SYSTEM_UPDATE_DATE
+      nullable: true
+      primaryKey: false
+      sourceColumnReferences:
+      - columnReferences: []
+        transform: ''
+      transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+    cteString: ''
+    enabledColumnTestIDs: []
+    sourceMapping: []
+  name: PSTG_SPACA_ACA_CLAIM_ESIS_UPDATE_DELETED_FLAG
+  overrideSQL: false
+  schema: ASTRUS
+  sqlType: persistentStage
+  type: sql
+  version: 1
+type: Node
