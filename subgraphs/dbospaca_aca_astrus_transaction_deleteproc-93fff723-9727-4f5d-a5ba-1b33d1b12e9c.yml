@@ -1,0 +1,6 @@
+fileVersion: 1
+id: 93fff723-9727-4f5d-a5ba-1b33d1b12e9c
+name: dbo.spaca_aca_astrus_transaction_delete.proc
+steps:
+  - a839f21d-4071-419b-ab28-769ef99cc8f2
+type: Subgraph

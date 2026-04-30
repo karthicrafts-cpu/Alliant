@@ -1,0 +1,163 @@
+fileVersion: 1
+id: a839f21d-4071-419b-ab28-769ef99cc8f2
+name: PSTG_SPACA_ACA_ASTRUS_TRANSACTION_DELETE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: |-
+      BEGIN
+
+        LET row_count NUMBER := (
+          SELECT COUNT(*)
+          FROM {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_HEADER') }} TH
+          INNER JOIN {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_HEADER_STAGING') }} THS 
+            ON TH.ACTIVITY_FROM_DATE = THS.ACTIVITY_FROM_DATE
+          LIMIT 1
+        );
+
+        IF (row_count > 0) THEN
+          DELETE FROM {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_HEADER') }} AS TH
+          USING {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_HEADER_STAGING') }} AS THS
+          WHERE TH.ACTIVITY_FROM_DATE = THS.ACTIVITY_FROM_DATE;
+
+          DELETE FROM  {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_CLAIM') }} AS TC
+          USING  {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_HEADER_STAGING') }} AS THS
+          WHERE TC.TRANSACTION_DATE = THS.ACTIVITY_FROM_DATE;
+
+          DELETE FROM  {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_EXCESS') }} AS TC
+          USING  {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_HEADER_STAGING') }} AS THS
+          WHERE TC.EXCESS_TRANSACTION_DATE = THS.ACTIVITY_FROM_DATE;
+
+          DELETE FROM  {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_EXPERIENCE') }} AS TC
+          USING  {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_HEADER_STAGING') }} AS THS
+          WHERE TC.EXPERIENCE_TRANSACTION_DATE = THS.ACTIVITY_FROM_DATE;
+
+          DELETE FROM  {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_PAYMENT') }} AS TC
+          USING  {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_HEADER_STAGING') }} AS THS
+          WHERE TC.PAYMENT_TRANSACTION_DATE = THS.ACTIVITY_FROM_DATE;
+
+          DELETE FROM  {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_THIRD_PARTY_RECOVERY') }} AS TC
+          USING  {{ ref('SRC-ASTRUS', 'ACA_TRANSACTION_HEADER_STAGING') }} AS THS
+          WHERE TC.THIRD_PARTY_RECOVERY_TRANSACTION_DATE = THS.ACTIVITY_FROM_DATE;
+        END IF;
+      END;
+    testsEnabled: true
+    truncateBefore: false
+  database: AUS_DEV_REFINED
+  deployEnabled: true
+  description: ""
+  isMultisource: false
+  locationName: ASTRUS-REFINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: b36c8da5-13b7-4c12-9c10-b99144883f06
+          stepCounter: a839f21d-4071-419b-ab28-769ef99cc8f2
+        config: {}
+        dataType: VARCHAR(36)
+        description: ""
+        name: SURROGATE_KEY
+        nullable: true
+        primaryKey: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: UUID_STRING()
+        transform: UUID_STRING()
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d5e82b7b-2321-4f15-8121-6e0624bb8d5a
+          stepCounter: a839f21d-4071-419b-ab28-769ef99cc8f2
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: SYSTEM_VERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "1"
+        transform: "1"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: f957ebbb-b918-4d51-9dc5-d14437a3f5a5
+          stepCounter: a839f21d-4071-419b-ab28-769ef99cc8f2
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        name: SYSTEM_CURRENT_FLAG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: "'Y'"
+        transform: "'Y'"
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 7df315fc-3e61-460d-bcfa-11ad2eb88b48
+          stepCounter: a839f21d-4071-419b-ab28-769ef99cc8f2
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP() AS TIMESTAMP_NTZ)
+        transform: CAST(CURRENT_TIMESTAMP() AS TIMESTAMP_NTZ)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: e3d7a8d5-18e3-4f9e-bd41-e945dc5df4ba
+          stepCounter: a839f21d-4071-419b-ab28-769ef99cc8f2
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST('9999-12-31 00:00:00' AS TIMESTAMP_NTZ)
+        transform: CAST('9999-12-31 00:00:00' AS TIMESTAMP_NTZ)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: a9d1bbce-dbff-4f46-95e2-632598be6f40
+          stepCounter: a839f21d-4071-419b-ab28-769ef99cc8f2
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP() AS TIMESTAMP_NTZ)
+        transform: CAST(CURRENT_TIMESTAMP() AS TIMESTAMP_NTZ)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 15668e1a-c5ad-49f9-aa28-8687a4128f73
+          stepCounter: a839f21d-4071-419b-ab28-769ef99cc8f2
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP() AS TIMESTAMP_NTZ)
+        transform: CAST(CURRENT_TIMESTAMP() AS TIMESTAMP_NTZ)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: PSTG_SPACA_ACA_ASTRUS_TRANSACTION_DELETE
+        noLinkRefs: []
+  name: PSTG_SPACA_ACA_ASTRUS_TRANSACTION_DELETE
+  overrideSQL: false
+  schema: ASTRUS
+  sqlType: persistentStage
+  type: sql
+  version: 1
+type: Node

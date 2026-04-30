@@ -1,0 +1,186 @@
+fileVersion: 1
+id: 4d1b827e-85a2-4a0b-801b-c737c3c0a526
+name: PSTG_SPACA_ACA_ACCOUNT_STRUCTURE_STAGING_ESIS_UPDATE
+operation:
+  config:
+    insertStrategy: INSERT
+    postSQL: ""
+    preSQL: |-
+      BEGIN
+
+        LET proc_name VARCHAR(100) := 'spaca_aca_account_structure_staging_esis_update';
+        LET current_timestamp TIMESTAMP_NTZ := CURRENT_TIMESTAMP();
+        LET source_system VARCHAR(25) := 'ESIS';
+        LET aca_source_system_id NUMBER(10,0);
+
+        SELECT ACA_SOURCE_SYSTEM_ID INTO :aca_source_system_id
+        FROM {{ ref('SRC-ASTRUS', 'ACA_SOURCE_SYSTEM') }}
+        WHERE SOURCE_SYSTEM = :source_system;
+
+        UPDATE {{ ref('SRC-ASTRUS', 'ACA_ACCOUNT_STRUCTURE_STAGING_ESIS') }} AS TGT
+        SET 
+            aca_source_system_id = :aca_source_system_id,
+       
+          aca_account_structure_id = COALESCE(ac.aca_account_structure_id, -1),
+       
+          aca_date_id_claim_date = COALESCE(
+              TRY_CAST(TO_CHAR(e.claim_date, 'YYYYMMDD') AS INT), -1
+          ),
+       
+          aca_date_id_original_open_date = COALESCE(
+              TRY_CAST(TO_CHAR(e.original_open_date, 'YYYYMMDD') AS INT), -1
+          ),
+       
+          -- Encryption: Snowflake uses ENCRYPT() — store as VARCHAR/BINARY
+          employee_identification_number_encrypted = COALESCE(
+              e.employee_identification_number_encrypted,
+              ENCRYPT(e.employee_identification_number, :encryption_key)
+          ),
+       
+          employer_federal_tax_identification_number_encrypted = COALESCE(
+              e.employer_federal_tax_identification_number_encrypted,
+              ENCRYPT(e.employer_federal_tax_identification_number, :encryption_key)
+          ),
+       
+          death_date_encrypted = COALESCE(
+              e.death_date_encrypted,
+              ENCRYPT(TO_VARCHAR(e.death_date), :encryption_key)
+          ),
+       
+          -- Null out PII columns after encryption
+          employee_identification_number = NULL,
+          employer_federal_tax_identification_number = NULL,
+          death_date = NULL,
+       
+          aca_date_updated = CURRENT_TIMESTAMP(),
+          aca_update_user = 'spaca_aca_claim_staging_esis_update'
+       
+      FROM (
+          SELECT 
+              e.ACA_CLAIM_STAGING_ESIS_ID,   -- primary key to match update target
+              COALESCE(ac.aca_account_structure_id, -1) AS aca_account_structure_id
+          FROM AUS_DEV_RAW.SNAPSHOT.ACA_CLAIM_STAGING_ESIS e
+          LEFT JOIN ALLIANT_CLAIMS_ASTRUS.DBO.ACA_ACCOUNT_STRUCTURE ac
+              ON  e.source_system_account_structure_id = ac.source_system_account_structure_id
+              AND ac.aca_source_system_id = :aca_source_system_id
+      ) ac
+      WHERE e.ACA_CLAIM_STAGING_ESIS_ID = ac.ACA_CLAIM_STAGING_ESIS_ID;
+      END;
+    testsEnabled: true
+    truncateBefore: false
+  database: AUS_DEV_REFINED
+  deployEnabled: true
+  description: UPDATE-only conversion of spaca_aca_account_structure_staging_esis_update
+  isMultisource: false
+  locationName: ASTRUS-REFINED
+  materializationType: table
+  metadata:
+    appliedNodeTests: []
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d05b5ef7-7e61-4606-bd36-092bf0f9d924
+          stepCounter: 4d1b827e-85a2-4a0b-801b-c737c3c0a526
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: SURROGATE_KEY
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: ad9eab2b-8a95-4eb8-b9f1-a1e12739fa8e
+          stepCounter: 4d1b827e-85a2-4a0b-801b-c737c3c0a526
+        config: {}
+        dataType: NUMBER
+        description: ""
+        name: SYSTEM_VERSION
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 6c47657b-7b06-4b68-b76e-213eb98a7cf8
+          stepCounter: 4d1b827e-85a2-4a0b-801b-c737c3c0a526
+        config: {}
+        dataType: VARCHAR(1)
+        description: ""
+        name: SYSTEM_CURRENT_FLAG
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+        transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 95a70af3-314d-44a5-bdf6-b873a4b99824
+          stepCounter: 4d1b827e-85a2-4a0b-801b-c737c3c0a526
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_START_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+        transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 11c42fbd-78cb-402a-92e1-454157afbf80
+          stepCounter: 4d1b827e-85a2-4a0b-801b-c737c3c0a526
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_END_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+        transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 21bf4a08-e7d6-4443-bad5-2fb074983050
+          stepCounter: 4d1b827e-85a2-4a0b-801b-c737c3c0a526
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_CREATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+        transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: 63afbfde-2b4f-40e9-b5cd-cdcc37c72f10
+          stepCounter: 4d1b827e-85a2-4a0b-801b-c737c3c0a526
+        config: {}
+        dataType: TIMESTAMP_NTZ
+        description: ""
+        name: SYSTEM_UPDATE_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+        transform: CAST(CURRENT_TIMESTAMP AS TIMESTAMP)
+    cteString: ""
+    enabledColumnTestIDs: []
+    sourceMapping:
+      - aliases: {}
+        dependencies: []
+        join:
+          joinCondition: ""
+        name: PSTG_SPACA_ACA_ACCOUNT_STRUCTURE_STAGING_ESIS_UPDATE
+        noLinkRefs: []
+  name: PSTG_SPACA_ACA_ACCOUNT_STRUCTURE_STAGING_ESIS_UPDATE
+  overrideSQL: false
+  schema: ASTRUS
+  sqlType: persistentStage
+  type: sql
+  version: 1
+type: Node

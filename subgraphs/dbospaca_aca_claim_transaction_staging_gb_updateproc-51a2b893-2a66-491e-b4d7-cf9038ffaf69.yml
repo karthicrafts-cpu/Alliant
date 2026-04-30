@@ -1,0 +1,6 @@
+fileVersion: 1
+id: 51a2b893-2a66-491e-b4d7-cf9038ffaf69
+name: dbo.spaca_aca_claim_transaction_staging_gb_update.proc
+steps:
+  - 66870503-68d3-4fc6-b25b-0cfc3be1bcda
+type: Subgraph

@@ -1,0 +1,6 @@
+fileVersion: 1
+id: e4f36d57-cdbf-4341-9312-eca8d28f6096
+name: dbo.spaca_aca_account_structure_staging_esis_update.proc
+steps:
+  - 4d1b827e-85a2-4a0b-801b-c737c3c0a526
+type: Subgraph

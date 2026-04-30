@@ -1,0 +1,42 @@
+fileVersion: 1
+id: 7c6a0c56-9a29-45e3-82a1-026c4598007a
+name: ACA_DATE
+operation:
+  database: AUS_DEV_RAW
+  deployEnabled: true
+  description: ""
+  locationName: SRC-ASTRUS
+  metadata:
+    columns:
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: c1d2e3f4-a1b2-c3d4-e5f6-1234567890ab
+          stepCounter: 7c6a0c56-9a29-45e3-82a1-026c4598007a
+        config: {}
+        dataType: NUMBER(10,0)
+        defaultValue: ""
+        description: ""
+        name: ACA_DATE_ID
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+      - appliedColumnTests: {}
+        columnReference:
+          columnCounter: d2e3f4a1-b2c3-d4e5-f6a1-234567890abc
+          stepCounter: 7c6a0c56-9a29-45e3-82a1-026c4598007a
+        config: {}
+        dataType: DATE
+        defaultValue: ""
+        description: ""
+        name: FULL_DATE
+        nullable: true
+        sourceColumnReferences:
+          - columnReferences: []
+            transform: ""
+  name: ACA_DATE
+  schema: SNAPSHOT
+  sqlType: Source
+  type: sourceInput
+  version: 1
+type: Node

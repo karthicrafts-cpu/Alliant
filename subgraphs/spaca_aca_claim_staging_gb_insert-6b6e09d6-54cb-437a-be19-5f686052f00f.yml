@@ -1,0 +1,11 @@
+fileVersion: 1
+id: 6b6e09d6-54cb-437a-be19-5f686052f00f
+name: spaca_aca_claim_staging_gb_insert
+steps:
+  - 40006d64-d31c-4b2b-b2c8-d192d4c41f80
+  - 6a1c5df6-9966-4c38-d995-45e6f8a1b295
+  - 7b2d6ea7-aa77-4d49-eaa6-56f7a9b2c3a6
+  - 8c3e7fb8-bb88-4e5a-fbb7-67a8b0c3d4b7
+  - 9d4f8fc9-cc99-4f6b-acc8-78b9c1d4e5c8
+  - ebd87372-6110-4616-be4f-bbba364a4bc8
+type: Subgraph
